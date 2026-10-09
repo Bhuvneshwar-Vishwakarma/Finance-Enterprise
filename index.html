@@ -1,0 +1,2407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Enterprise - Users Per Company</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <div class="brand-badge">
+          <div class="badge-inner">
+            <span class="badge-title">B & S</span>
+            <div class="badge-color-bar">
+              <span class="bar-c1"></span>
+              <span class="bar-c2"></span>
+              <span class="bar-c3"></span>
+              <span class="bar-c4"></span>
+              <span class="bar-c5"></span>
+            </div>
+          </div>
+        </div>
+        <h1 class="app-title">FINANCE ENTERPRISE</h1>
+      </div>
+      <div class="header-right">
+        <div class="user-badge" id="userBadgeDropdown" title="User Role: System Administrator / Finance Manager">
+          <span class="welcome-text">Welcome,</span>
+          <div class="user-info">
+            <span class="user-id">UNSS0P4</span>
+            <i class="fa-solid fa-caret-down dropdown-arrow"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb Toolbar -->
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <div class="breadcrumb-content" id="breadcrumbContent">
+        <a href="#" class="breadcrumb-home"><i class="fa-solid fa-house"></i></a>
+        <a href="#" class="breadcrumb-item">Accounting Rules</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <span class="breadcrumb-item">User Data</span>
+        <span class="breadcrumb-separator">&gt;</span>
+        <span class="breadcrumb-current">Users Per Company</span>
+      </div>
+    </nav>
+
+    <!-- Main Workspace Layout -->
+    <div class="main-layout">
+      <!-- Left Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <ul class="nav-tree">
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Customer</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Supplier</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Mix Payment</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Reports</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-user-gear"></i></span>
+              <span class="nav-label">Admin</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Customer Orders</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">General Ledger</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Inventory</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Purchasing</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
+              <span class="nav-label">Home</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <li class="nav-node">
+            <div class="nav-item">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Management Reports</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+          </li>
+          <!-- Expanded Accounting Rules Node -->
+          <li class="nav-node expanded" id="accountingRulesNode">
+            <div class="nav-item active-node" id="accountingRulesToggle">
+              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+              <span class="nav-label">Accounting Rules</span>
+              <i class="fa-solid fa-chevron-down nav-arrow"></i>
+            </div>
+            <ul class="sub-nav-tree">
+              <li class="sub-nav-item"><a href="#currency-rates">Currency Rates</a></li>
+              <li class="sub-nav-item"><a href="#tax-codes">Tax Codes</a></li>
+              <li class="sub-nav-item"><a href="#cost-center">Cost Center</a></li>
+              <li class="sub-nav-item"><a href="#account-groups">Account Groups</a></li>
+              <li class="sub-nav-item"><a href="#accounts">Accounts</a></li>
+              <li class="sub-nav-item"><a href="#payment-terms" data-section="" data-title="Payment Terms">Payment Terms</a></li>
+              
+              <!-- User Data Section -->
+              <li class="sub-nav-group expanded" id="userDataGroup">
+                <div class="sub-nav-group-header" id="userDataToggle">
+                  <span class="sub-group-icon"><i class="fa-regular fa-folder-open"></i></span>
+                  <span class="sub-group-title">User Data</span>
+                  <i class="fa-solid fa-chevron-down sub-group-arrow"></i>
+                </div>
+                <ul class="nested-sub-nav-tree">
+                  <li class="sub-nav-item selected"><a href="#user-per-company" data-section="User Data" data-title="Users Per Company" class="active-red">Users Per Company</a></li>
+                  <li class="sub-nav-item"><a href="#user-groups" data-section="User Data" data-title="User Groups">User Groups</a></li>
+                  <li class="sub-nav-item"><a href="#users-per-user-group" data-section="User Data" data-title="Users Per User Group">Users Per User Group</a></li>
+                  <li class="sub-nav-item"><a href="#define-voucher-type" data-section="User Data" data-title="Define Voucher Type">Define Voucher Type</a></li>
+                  <li class="sub-nav-item"><a href="#voucher-series-per-voucher-type" data-section="User Data" data-title="Voucher Series Per Voucher Type">Voucher Series Per Voucher Type</a></li>
+                  <li class="sub-nav-item"><a href="#query-voucher-types" data-section="User Data" data-title="Query Voucher Types">Query Voucher Types</a></li>
+                  <li class="sub-nav-item"><a href="#accounting-periods-user" data-section="User Data" data-title="Accounting Periods">Accounting Periods</a></li>
+                </ul>
+              </li>
+
+              <!-- Authority Section -->
+              <li class="sub-nav-group expanded" id="authorityGroup">
+                <div class="sub-nav-group-header" id="authorityToggle">
+                  <span class="sub-group-icon"><i class="fa-regular fa-folder-open"></i></span>
+                  <span class="sub-group-title">Authority</span>
+                  <i class="fa-solid fa-chevron-down sub-group-arrow"></i>
+                </div>
+                <ul class="nested-sub-nav-tree">
+                  <li class="sub-nav-item"><a href="#authority-classes" data-section="Authority" data-title="Authority Classes">Authority Classes</a></li>
+                  <li class="sub-nav-item"><a href="#authority-combinations" data-section="Authority" data-title="Authority Combinations">Authority Combinations</a></li>
+                  <li class="sub-nav-item"><a href="#users-per-authority-class" data-section="Authority" data-title="Users per Authority Class">Users per Authority Class</a></li>
+                </ul>
+              </li>
+
+              <li class="sub-nav-item"><a href="#user-groups-per-period" data-section="" data-title="User Groups per Period">User Groups per Period</a></li>
+              <li class="sub-nav-item"><a href="#accounting-periods" data-section="" data-title="Accounting Periods">Accounting Periods</a></li>
+              <li class="sub-nav-item"><a href="#accounting-years" data-section="" data-title="Accounting Years">Accounting Years</a></li>
+              <li class="sub-nav-item"><a href="#voucher-series" data-section="" data-title="Voucher Series per Voucher Type">Voucher Series per Voucher Type</a></li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="content-area">
+        <!-- ================================================================= -->
+        <!-- SCREEN 1: USERS PER COMPANY (MASTER SCREEN)                       -->
+        <!-- ================================================================= -->
+        <div id="screenUsersPerCompany" class="erp-screen">
+          <!-- Header / Search Section -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <!-- Company Code Dropdown -->
+              <div class="filter-group">
+                <div class="filter-label-btn">Company</div>
+                <div class="filter-select-wrapper">
+                  <select id="upcCompanySelect" class="filter-select" aria-label="Company Code">
+                    <option value="">Select Company</option>
+                    <option value="COMP01">COMP01</option>
+                    <option value="COMP02">COMP02</option>
+                    <option value="COMP03">COMP03</option>
+                    <option value="COMP04">COMP04</option>
+                    <option value="COMP05">COMP05</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Company Name Read-Only Field -->
+              <div class="filter-group company-name-filter">
+                <div class="filter-label-btn">Company Name</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="upcCompanyNameInput" class="filter-input filter-readonly" readonly placeholder="Auto-populated upon Company Code selection" aria-label="Company Name">
+                </div>
+              </div>
+
+              <!-- Header Search Actions -->
+              <div class="filter-actions">
+                <button type="button" class="btn-search" id="btnUpcSearch" title="Search / Refresh records">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnUpcReset" title="Reset Company Selection">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Users Grid Card -->
+          <section class="grid-card" id="upcGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="upcGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-users"></i>
+                <span>Users Per Company</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddUser" title="Add User to Company">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add User</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseUpcGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Users Grid Viewport -->
+            <div class="grid-viewport" id="upcGridViewport">
+              <table class="enterprise-table" id="upcUsersTable">
+                <thead>
+                  <tr>
+                    <th style="width: 8%;">Sr. No.</th>
+                    <th style="width: 22%;">User ID</th>
+                    <th style="width: 36%;">User Name</th>
+                    <th style="width: 18%;">Default Company</th>
+                    <th style="width: 16%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="upcTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnUpcAddRow" title="Add User">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add User</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUpcDeleteRow" title="Delete Selected User">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUpcDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnUpcFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnUpcPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="upcPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="upcTotalPagesText">0</span></span>
+                <button type="button" class="page-nav-btn" id="btnUpcNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnUpcLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="upcPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="upcRecordStatusText">Please select a company</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 2: USER GROUPS (MASTER SCREEN)                             -->
+        <!-- ================================================================= -->
+        <div id="screenUserGroups" class="erp-screen" style="display: none;">
+          <!-- Header / Search Section -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <!-- User Group Search Input -->
+              <div class="filter-group user-group-filter">
+                <div class="filter-label-btn">User Group</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="ugSearchInput" class="filter-input" placeholder="Search by User Group or Description" aria-label="Search User Group">
+                </div>
+              </div>
+
+              <!-- Accounting Period Filter -->
+              <div class="filter-group period-filter">
+                <div class="filter-label-btn">Period</div>
+                <div class="filter-select-wrapper">
+                  <select id="ugPeriodFilterSelect" class="filter-select" aria-label="Filter by Period">
+                    <option value="">All Accounting Periods</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Filter Search Actions -->
+              <div class="filter-actions">
+                <button type="button" class="btn-search" id="btnUgSearch" title="Search User Groups">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnUgReset" title="Reset Search">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- User Groups Grid Card -->
+          <section class="grid-card" id="ugGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="ugGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-users-rectangle"></i>
+                <span>User Groups</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddUg" title="Add User Group">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseUgGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport -->
+            <div class="grid-viewport" id="ugGridViewport">
+              <table class="enterprise-table" id="ugTable">
+                <thead>
+                  <tr>
+                    <th style="width: 22%;">User Group</th>
+                    <th style="width: 38%;">User Group Description</th>
+                    <th style="width: 26%;">Allowed Accounting Periods</th>
+                    <th style="width: 14%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="ugTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnUgAddRow" title="Add User Group">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUgDeleteRow" title="Delete Selected Group">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUgDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnUgFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnUgPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="ugPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="ugTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnUgNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnUgLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="ugPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="ugRecordStatusText">Displaying 1 - 5 of 5 records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 3: USERS PER USER GROUP (MASTER SCREEN)                    -->
+        <!-- ================================================================= -->
+        <div id="screenUsersPerUserGroup" class="erp-screen" style="display: none;">
+          <!-- Header / Search Section -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <!-- User Filter -->
+              <div class="filter-group" style="flex: 1; max-width: 320px;">
+                <div class="filter-label-btn">User</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="upugSearchUser" class="filter-input" placeholder="Search by User ID or Name" aria-label="Search User">
+                </div>
+              </div>
+
+              <!-- User Group Filter -->
+              <div class="filter-group" style="width: 260px;">
+                <div class="filter-label-btn">User Group</div>
+                <div class="filter-select-wrapper">
+                  <select id="upugFilterGroup" class="filter-select" aria-label="Filter by User Group">
+                    <option value="">All User Groups</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Filter Search Actions -->
+              <div class="filter-actions">
+                <button type="button" class="btn-search" id="btnUpugSearch" title="Search records">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnUpugReset" title="Reset filter">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Users Per User Group Grid Card -->
+          <section class="grid-card" id="upugGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="upugGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-user-tag"></i>
+                <span>Users Per User Group</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddUpug" title="Add User to Group">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseUpugGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport -->
+            <div class="grid-viewport" id="upugGridViewport">
+              <table class="enterprise-table" id="upugTable">
+                <thead>
+                  <tr>
+                    <th style="width: 8%;">Sr. No.</th>
+                    <th style="width: 18%;">User ID</th>
+                    <th style="width: 24%;">User Name</th>
+                    <th style="width: 20%;">User Group</th>
+                    <th style="width: 20%;">User Group Description</th>
+                    <th style="width: 10%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="upugTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnUpugAddRow" title="Add Record">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUpugDeleteRow" title="Delete Selected Record">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUpugDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnUpugFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnUpugPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="upugPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="upugTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnUpugNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnUpugLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="upugPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="upugRecordStatusText">Displaying 1 - 7 of 7 records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 4: DEFINE VOUCHER TYPE (MASTER SCREEN)                     -->
+        <!-- ================================================================= -->
+        <div id="screenDefineVoucherType" class="erp-screen" style="display: none;">
+          <!-- Top Form Card with Windows Header & Fieldsets -->
+          <section class="vt-card">
+            <!-- Legacy Titlebar -->
+            <div class="vt-window-bar">
+              <div class="vt-window-title">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span id="vtWindowCompanyTitle">LAXMI01 - Define Voucher Types</span>
+              </div>
+              <div class="vt-window-controls">
+                <span class="vt-win-btn" title="Minimize"><i class="fa-solid fa-minus"></i></span>
+                <span class="vt-win-btn" title="Maximize"><i class="fa-regular fa-square"></i></span>
+                <span class="vt-win-btn" title="Close"><i class="fa-solid fa-xmark"></i></span>
+              </div>
+            </div>
+
+            <div class="vt-form-body">
+              <!-- Top Row: Voucher Type & Voucher Type Description -->
+              <div class="vt-top-row">
+                <div class="vt-field-inline">
+                  <label for="vtTypeCodeSelect">Voucher Type:</label>
+                  <select id="vtTypeCodeSelect" class="vt-select-code" aria-label="Voucher Type">
+                    <!-- Populated via JS -->
+                  </select>
+                </div>
+
+                <div class="vt-field-inline" style="flex: 1;">
+                  <label for="vtTypeDescInput">Voucher Type Description:</label>
+                  <input type="text" id="vtTypeDescInput" class="vt-desc-input" placeholder="Enter or view voucher type description" aria-label="Voucher Type Description">
+                </div>
+
+                <div class="vt-form-actions">
+                  <button type="button" class="btn-primary-modal" id="btnSaveVoucherType" style="height: 25px; padding: 2px 12px; display: inline-flex; align-items: center; gap: 5px;">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span>Save</span>
+                  </button>
+                  <button type="button" class="btn-secondary-action" id="btnNewVoucherType" title="Create New Voucher Type">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Panels Row: Ledger Selection & Voucher Selection -->
+              <div class="vt-panels-row">
+                <!-- Fieldset 1: Ledger Selection -->
+                <fieldset class="erp-fieldset">
+                  <legend>Ledger Selection</legend>
+                  <div class="fieldset-controls-col">
+                    <div class="fieldset-row">
+                      <div class="vt-field-inline">
+                        <label for="vtLedgerSelect">Ledger:</label>
+                        <select id="vtLedgerSelect" class="filter-select" style="width: 170px; height: 23px;">
+                          <option value="01 - General Ledger">01 - General Ledger</option>
+                          <option value="02 - Simulation Ledger">02 - Simulation Ledger</option>
+                          <option value="03 - Parallel Ledger">03 - Parallel Ledger</option>
+                        </select>
+                      </div>
+
+                      <div class="vt-field-inline">
+                        <label for="vtLedgerIdInput">Ledger ID:</label>
+                        <input type="text" id="vtLedgerIdInput" class="fieldset-input-sm" value="GL01">
+                      </div>
+                    </div>
+
+                    <div class="fieldset-row">
+                      <label class="vt-checkbox-label">
+                        <input type="checkbox" id="vtBalanceMandatory" checked>
+                        <span>Balance Mandatory</span>
+                      </label>
+
+                      <label class="vt-checkbox-label">
+                        <input type="checkbox" id="vtUseManualInternalMethods">
+                        <span>Use Manual Internal Methods</span>
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <!-- Fieldset 2: Voucher Selection -->
+                <fieldset class="erp-fieldset">
+                  <legend>Voucher Selection</legend>
+                  <div class="fieldset-controls-col" style="justify-content: center; gap: 7px;">
+                    <label class="vt-checkbox-label">
+                      <input type="checkbox" id="vtAutomaticAllotment" checked>
+                      <span>Automatic Allotment</span>
+                    </label>
+
+                    <label class="vt-checkbox-label">
+                      <input type="checkbox" id="vtSingleFunctionGroup">
+                      <span>Single Function Group</span>
+                    </label>
+
+                    <label class="vt-checkbox-label">
+                      <input type="checkbox" id="vtSimulationVoucher">
+                      <span>Simulation Voucher</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </section>
+
+          <!-- Bottom Grid: Function Groups -->
+          <section class="grid-card" id="vtGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="vtGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-table-list"></i>
+                <span>Function Groups</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddFg" title="Add Function Group">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add Function Group</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseVtGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport (Matching screenshot column layout) -->
+            <div class="grid-viewport" id="vtGridViewport">
+              <table class="enterprise-table dotted-table" id="vtTable">
+                <thead>
+                  <tr>
+                    <th style="width: 4%;" class="table-row-indicator"></th>
+                    <th style="width: 14%;">Function Group</th>
+                    <th style="width: 32%;">Function Group Description</th>
+                    <th style="width: 13%;" class="th-multiline">Optional<br>Auto Balance</th>
+                    <th style="width: 11%;" class="th-multiline">Store<br>Original</th>
+                    <th style="width: 13%;" class="th-multiline">Automatic Allotment<br>Required</th>
+                    <th style="width: 13%;" class="th-multiline">Single Function<br>Group Required</th>
+                  </tr>
+                </thead>
+                <tbody id="vtTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnVtAddRow" title="Add Function Group">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnVtDeleteRow" title="Delete Selected Record">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnVtDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnVtFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnVtPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="vtPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="vtTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnVtNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnVtLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="vtPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="vtRecordStatusText">Displaying records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 5: QUERY VOUCHER TYPES (MASTER INQUIRY SCREEN)             -->
+        <!-- ================================================================= -->
+        <div id="screenQueryVoucherTypes" class="erp-screen" style="display: none;">
+          <!-- Search & Filter Card -->
+          <section class="filter-card" id="qvtFilterCard">
+            <div class="filter-row">
+              <div class="filter-group">
+                <div class="filter-label-btn">Voucher Type</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="qvtFilterVoucherType" class="filter-input" placeholder="Code or Description...">
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-label-btn">Function Group</div>
+                <div class="filter-select-wrapper">
+                  <select id="qvtFilterFunctionGroup" class="filter-select">
+                    <option value="">All Function Groups</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-label-btn">Ledger</div>
+                <div class="filter-select-wrapper">
+                  <select id="qvtFilterLedger" class="filter-select">
+                    <option value="">All Ledgers</option>
+                    <option value="01 - General Ledger">01 - General Ledger</option>
+                    <option value="02 - Simulation Ledger">02 - Simulation Ledger</option>
+                    <option value="03 - Parallel Ledger">03 - Parallel Ledger</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="button" class="btn-search" id="btnQvtSearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search</span>
+              </button>
+
+              <button type="button" class="btn-reset" id="btnQvtReset" title="Reset Filters">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Reset</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Legacy Windows Form Window & Dotted Table Card -->
+          <section class="vt-card" style="display: flex; flex-direction: column; flex: 1;">
+            <!-- Titlebar without window minimize/maximize/close controls -->
+            <div class="vt-window-bar">
+              <div class="vt-window-title">
+                <i class="fa-solid fa-table-cells"></i>
+                <span>LAXMI01 - Query Voucher Types</span>
+              </div>
+            </div>
+
+            <!-- Table Header Toolbar -->
+            <div class="grid-card-header" style="background: linear-gradient(180deg, #378bcc 0%, #1f5f94 100%);">
+              <div class="grid-title">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Voucher Types Inquiry Grid</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddQvt" title="Add Voucher Type Entry">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add Entry</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseQvtGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport (Matching screenshot 13 columns with dotted lines) -->
+            <div class="grid-viewport" id="qvtGridViewport" style="overflow-x: auto;">
+              <table class="enterprise-table dotted-table qvt-table" id="qvtTable">
+                <thead>
+                  <tr>
+                    <th style="width: 32px;" class="table-row-indicator"></th>
+                    <th style="width: 80px;" class="th-multiline">Voucher<br>Type</th>
+                    <th style="width: 180px;">Voucher Type Description</th>
+                    <th style="width: 80px;" class="th-multiline">Function<br>Group</th>
+                    <th style="width: 180px;">Function Group Description</th>
+                    <th style="width: 90px;" class="th-multiline">Automatic<br>Allotment</th>
+                    <th style="width: 100px;" class="th-multiline">Use Man<br>Internal M</th>
+                    <th style="width: 90px;" class="th-multiline">Simulation<br>Voucher</th>
+                    <th style="width: 95px;" class="th-multiline">Single<br>Function Gr</th>
+                    <th style="width: 75px;">Balance</th>
+                    <th style="width: 140px;">Ledger</th>
+                    <th style="width: 80px;">Ledger ID</th>
+                    <th style="width: 90px;" class="th-multiline">Optional<br>Auto Bal</th>
+                    <th style="width: 90px;" class="th-multiline">Store<br>Origin</th>
+                    <th style="width: 65px;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="qvtTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnQvtAddRow" title="Add Voucher Type Entry">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnQvtDeleteRow" title="Delete Selected Entry">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnQvtRefresh" title="Refresh Query Data">
+                  <i class="fa-solid fa-rotate"></i>
+                  <span>Refresh</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnQvtDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnQvtFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnQvtPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="qvtPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="qvtTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnQvtNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnQvtLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="qvtPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="qvtRecordStatusText">Displaying records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 6: PAYMENT TERMS SCREEN (ACCESSIBLE VIA SIDEBAR)           -->
+        <!-- ================================================================= -->
+        <div id="screenPaymentTerms" class="erp-screen" style="display: none;">
+          <!-- Search & Filter Card -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <div class="filter-group">
+                <div class="filter-label-btn">Company</div>
+                <div class="filter-select-wrapper">
+                  <select id="companySelect" class="filter-select">
+                    <option value="">Select Company</option>
+                    <option value="COMP01">COMP01 - Global Holdings Ltd</option>
+                    <option value="COMP02">COMP02 - Enterprise Finance Corp</option>
+                    <option value="COMP03">COMP03 - Pacific Trading Co</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter-group payment-term-filter">
+                <div class="filter-label-btn">Payment Term</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="paymentTermInput" class="filter-input" placeholder="">
+                </div>
+              </div>
+
+              <button type="button" class="btn-search" id="btnSearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Payment Terms Grid Card -->
+          <section class="grid-card" id="gridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="gridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-chart-simple"></i>
+                <span>Payment Terms</span>
+              </div>
+              <button type="button" class="grid-collapse-btn" id="btnCollapseGrid" title="Toggle section">
+                <i class="fa-solid fa-chevron-up"></i>
+              </button>
+            </div>
+
+            <!-- Grid Table Viewport -->
+            <div class="grid-viewport" id="gridViewport">
+              <table class="enterprise-table" id="paymentTermsTable">
+                <thead>
+                  <tr>
+                    <th style="width: 18%;">Payment Term</th>
+                    <th style="width: 32%;">Payment Term Desc</th>
+                    <th style="width: 18%;">Days to Due Date</th>
+                    <th style="width: 18%;">Use Commercial Year</th>
+                    <th style="width: 14%;">End of Month</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <tr class="row-even"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-odd"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-even"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-odd"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-even"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-odd"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-even"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-odd"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-even"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                  <tr class="row-odd"><td class="empty-cell">&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnAddRow" title="Add Record">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnDeleteRow" title="Delete Record">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnDownload" title="Download Records">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="pageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="totalPagesText">0</span></span>
+                <button type="button" class="page-nav-btn" id="btnNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="pageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="recordStatusText">No records to view</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 7: AUTHORITY CLASSES (MASTER SCREEN)                       -->
+        <!-- ================================================================= -->
+        <div id="screenAuthorityClasses" class="erp-screen" style="display: none;">
+          <!-- Header / Search Section -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <div class="filter-group" style="flex: 1; max-width: 340px;">
+                <div class="filter-label-btn">Authority Class</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="acSearchInput" class="filter-input" placeholder="Search by Authority Class or Description" aria-label="Search Authority Class">
+                </div>
+              </div>
+
+              <div class="filter-actions">
+                <button type="button" class="btn-search" id="btnAcSearch" title="Search Authority Classes">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnAcReset" title="Reset Search">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Authority Classes Grid Card -->
+          <section class="grid-card" id="acGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="acGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Authority Classes</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddAc" title="Add Authority Class">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseAcGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport -->
+            <div class="grid-viewport" id="acGridViewport">
+              <table class="enterprise-table" id="acTable">
+                <thead>
+                  <tr>
+                    <th style="width: 8%; text-align: center;">Sr. No.</th>
+                    <th style="width: 28%;">Authority Class</th>
+                    <th style="width: 50%;">Description</th>
+                    <th style="width: 14%; text-align: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="acTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnAcAddRow" title="Add Authority Class">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnAcDeleteRow" title="Delete Selected Authority Class">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnAcDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnAcFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnAcPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="acPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="acTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnAcNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnAcLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="acPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="acRecordStatusText">Displaying 1 - 6 of 6 records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 8: AUTHORITY COMBINATIONS (MASTER SCREEN)                  -->
+        <!-- ================================================================= -->
+        <div id="screenAuthorityCombinations" class="erp-screen" style="display: none;">
+          <!-- Header / Search Section -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <!-- Filter by Authority Class -->
+              <div class="filter-group" style="width: 220px;">
+                <div class="filter-label-btn">Authority Class</div>
+                <div class="filter-select-wrapper">
+                  <select id="combClassFilterSelect" class="filter-select" aria-label="Filter by Authority Class">
+                    <option value="">All Authority Classes</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Filter by Allowed -->
+              <div class="filter-group" style="width: 170px;">
+                <div class="filter-label-btn">Allowed</div>
+                <div class="filter-select-wrapper">
+                  <select id="combAllowedFilterSelect" class="filter-select" aria-label="Filter by Allowed Status">
+                    <option value="">All Statuses</option>
+                    <option value="true">Allowed Only</option>
+                    <option value="false">Disallowed Only</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Search by Code Parts -->
+              <div class="filter-group" style="flex: 1; max-width: 320px;">
+                <div class="filter-label-btn">Search</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="combSearchInput" class="filter-input" placeholder="Search Account, Cost Center, Project" aria-label="Search Code Parts">
+                </div>
+              </div>
+
+              <div class="filter-actions">
+                <button type="button" class="btn-search" id="btnCombSearch" title="Search Authority Combinations">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnCombReset" title="Reset Search">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Authority Combinations Grid Card -->
+          <section class="grid-card" id="combGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="combGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Authority Combinations</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddComb" title="Add Authority Combination">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseCombGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport -->
+            <div class="grid-viewport" id="combGridViewport">
+              <table class="enterprise-table" id="combTable">
+                <thead>
+                  <tr>
+                    <th style="width: 7%; text-align: center;">Sr. No.</th>
+                    <th style="width: 18%;">Authority Class</th>
+                    <th style="width: 14%; text-align: center;">Allowed</th>
+                    <th style="width: 18%;">Account</th>
+                    <th style="width: 18%;">Cost Center</th>
+                    <th style="width: 13%;">Project</th>
+                    <th style="width: 12%; text-align: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="combTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnCombAddRow" title="Add Authority Combination">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnCombDeleteRow" title="Delete Selected Combination">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnCombDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnCombFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnCombPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="combPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="combTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnCombNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnCombLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="combPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="combRecordStatusText">Displaying 1 - 7 of 7 records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN 9: USERS PER AUTHORITY CLASS (MASTER SCREEN)               -->
+        <!-- ================================================================= -->
+        <div id="screenUsersPerAuthorityClass" class="erp-screen" style="display: none;">
+          <!-- Header / Search Section -->
+          <section class="filter-card">
+            <div class="filter-row">
+              <!-- Filter by Authority Class -->
+              <div class="filter-group" style="width: 240px;">
+                <div class="filter-label-btn">Authority Class</div>
+                <div class="filter-select-wrapper">
+                  <select id="upacClassFilterSelect" class="filter-select" aria-label="Filter by Authority Class">
+                    <option value="">All Authority Classes</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Filter by User -->
+              <div class="filter-group" style="flex: 1; max-width: 340px;">
+                <div class="filter-label-btn">User</div>
+                <div class="filter-input-wrapper">
+                  <input type="text" id="upacSearchUserInput" class="filter-input" placeholder="Search by User ID or Name" aria-label="Search User">
+                </div>
+              </div>
+
+              <div class="filter-actions">
+                <button type="button" class="btn-search" id="btnUpacSearch" title="Search Users per Authority Class">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" class="btn-secondary-action" id="btnUpacReset" title="Reset Search">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Users per Authority Class Grid Card -->
+          <section class="grid-card" id="upacGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="upacGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-users-gear"></i>
+                <span>Users per Authority Class</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="btn-header-add" id="btnHeaderAddUpac" title="Assign User to Authority Class">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-collapse-btn" id="btnCollapseUpacGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid Viewport -->
+            <div class="grid-viewport" id="upacGridViewport">
+              <table class="enterprise-table" id="upacTable">
+                <thead>
+                  <tr>
+                    <th style="width: 8%; text-align: center;">Sr. No.</th>
+                    <th style="width: 18%;">User ID</th>
+                    <th style="width: 26%;">User Name</th>
+                    <th style="width: 20%;">Authority Class</th>
+                    <th style="width: 16%;">Description</th>
+                    <th style="width: 12%; text-align: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="upacTableBody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnUpacAddRow" title="Assign User to Authority Class">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUpacDeleteRow" title="Delete Selected User Assignment">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnUpacDownload" title="Download Records (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnUpacFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnUpacPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="upacPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="upacTotalPagesText">1</span></span>
+                <button type="button" class="page-nav-btn" id="btnUpacNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnUpacLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="upacPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="upacRecordStatusText">Displaying 1 - 7 of 7 records</span>
+              </div>
+            </footer>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add User to Company -->
+  <div class="modal-overlay" id="addUpcModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-user-plus"></i> Add User to Company
+        </div>
+        <button type="button" class="modal-close-btn" id="addUpcModalCloseBtn">&times;</button>
+      </div>
+      <form id="addUpcForm">
+        <div class="modal-body">
+          <div id="upcModalAlertContainer"></div>
+
+          <div class="form-group">
+            <label>Selected Company</label>
+            <div class="form-readonly-display" id="modalCompanyDisplay">COMP01 - Global Holdings Ltd</div>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUserIdSelect">User ID *</label>
+            <select id="modalUserIdSelect" required>
+              <option value="">-- Select User ID --</option>
+            </select>
+            <div class="form-tip">Selected from User Master. Manual user creation is restricted.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUserNameInput">User Name</label>
+            <input type="text" id="modalUserNameInput" class="filter-readonly" readonly placeholder="Auto-populated upon User ID selection">
+          </div>
+
+          <div class="form-group-checkbox" style="margin-top: 6px;">
+            <label>
+              <input type="checkbox" id="modalIsDefaultCompany">
+              <span>Set as <strong>Default Company</strong> for this user</span>
+            </label>
+            <div class="form-tip" style="margin-left: 20px;">
+              According to ERP rules, a user can only have one default company. Marking this will update any previous default company for this user.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddUpc">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addUpcModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Edit User Assignment -->
+  <div class="modal-overlay" id="editUpcModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-pen-to-square"></i> Edit User Assignment
+        </div>
+        <button type="button" class="modal-close-btn" id="editUpcModalCloseBtn">&times;</button>
+      </div>
+      <form id="editUpcForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Company</label>
+            <div class="form-readonly-display" id="editModalCompanyDisplay">COMP01 - Global Holdings Ltd</div>
+          </div>
+
+          <div class="form-group">
+            <label>User ID</label>
+            <input type="text" id="editModalUserId" class="filter-readonly" readonly>
+          </div>
+
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" id="editModalUserName" class="filter-readonly" readonly>
+          </div>
+
+          <div class="form-group-checkbox" style="margin-top: 6px;">
+            <label>
+              <input type="checkbox" id="editModalIsDefaultCompany">
+              <span>Set as <strong>Default Company</strong> for this user</span>
+            </label>
+            <div class="form-tip" style="margin-left: 20px;">
+              According to ERP rules, a user can only have one default company.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveEditUpc">
+            <i class="fa-solid fa-floppy-disk"></i> Update
+          </button>
+          <button type="button" class="btn-cancel-modal" id="editUpcModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add User Group -->
+  <div class="modal-overlay" id="addUgModalOverlay">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-plus-circle"></i> Add User Group
+        </div>
+        <button type="button" class="modal-close-btn" id="addUgModalCloseBtn">&times;</button>
+      </div>
+      <form id="addUgForm">
+        <div class="modal-body">
+          <div id="addUgModalAlert"></div>
+
+          <div class="form-group">
+            <label for="modalUgName">User Group *</label>
+            <input type="text" id="modalUgName" required placeholder="e.g. Finance Admin, Accounts Team" style="text-transform: uppercase;">
+            <div class="form-tip">Unique identifier or name of the user group. Mandatory.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUgDesc">User Group Description</label>
+            <input type="text" id="modalUgDesc" placeholder="e.g. Full administrative finance and posting access">
+            <div class="form-tip">Purpose or responsibility of the group.</div>
+          </div>
+
+          <div class="form-group">
+            <label>Allowed Accounting Periods *</label>
+            <div class="period-selector-container">
+              <div class="period-selector-header">
+                <div class="period-quick-actions">
+                  <button type="button" class="btn-period-quick" id="btnUgSelectAllPeriods">Select All</button>
+                  <button type="button" class="btn-period-quick" id="btnUgClearPeriods">Clear All</button>
+                  <button type="button" class="btn-period-quick" id="btnUgSelectOpenPeriods">Open Only</button>
+                </div>
+                <div class="period-count-badge" id="modalUgPeriodCount">0 periods selected</div>
+              </div>
+              <div class="period-checklist-grid" id="modalUgPeriodsList">
+                <!-- Populated dynamically from Accounting Periods Master -->
+              </div>
+            </div>
+            <div class="form-tip">Select periods permitted for this user group. Must be selected from Accounting Periods master.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddUg">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addUgModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Edit User Group -->
+  <div class="modal-overlay" id="editUgModalOverlay">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-pen-to-square"></i> Edit User Group
+        </div>
+        <button type="button" class="modal-close-btn" id="editUgModalCloseBtn">&times;</button>
+      </div>
+      <form id="editUgForm">
+        <div class="modal-body">
+          <div id="editUgModalAlert"></div>
+
+          <div class="form-group">
+            <label>User Group</label>
+            <input type="text" id="editModalUgName" class="filter-readonly" readonly>
+            <div class="form-tip">User Group identifier cannot be modified once created.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalUgDesc">User Group Description</label>
+            <input type="text" id="editModalUgDesc" placeholder="e.g. Purpose or responsibility of the group">
+          </div>
+
+          <div class="form-group">
+            <label>Allowed Accounting Periods *</label>
+            <div class="period-selector-container">
+              <div class="period-selector-header">
+                <div class="period-quick-actions">
+                  <button type="button" class="btn-period-quick" id="btnEditUgSelectAllPeriods">Select All</button>
+                  <button type="button" class="btn-period-quick" id="btnEditUgClearPeriods">Clear All</button>
+                  <button type="button" class="btn-period-quick" id="btnEditUgSelectOpenPeriods">Open Only</button>
+                </div>
+                <div class="period-count-badge" id="editModalUgPeriodCount">0 periods selected</div>
+              </div>
+              <div class="period-checklist-grid" id="editModalUgPeriodsList">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+            <div class="form-tip">Must be selected from Accounting Periods master.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveEditUg">
+            <i class="fa-solid fa-floppy-disk"></i> Update
+          </button>
+          <button type="button" class="btn-cancel-modal" id="editUgModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: View User Group Details -->
+  <div class="modal-overlay" id="viewUgModalOverlay">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> View User Group Details
+        </div>
+        <button type="button" class="modal-close-btn" id="viewUgModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>User Group</label>
+          <div class="form-readonly-display" id="viewModalUgName" style="font-size: 12px; font-weight: bold; color: #164f78;"></div>
+        </div>
+
+        <div class="form-group">
+          <label>User Group Description</label>
+          <div class="form-readonly-display" id="viewModalUgDesc"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Allowed Accounting Periods</label>
+          <div class="period-badges-container" id="viewModalUgPeriods" style="padding: 8px; border: 1px solid #c2d6e7; border-radius: 3px; background: #fafcfe; min-height: 48px;">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="viewUgModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add User to User Group -->
+  <div class="modal-overlay" id="addUpugModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-plus-circle"></i> Add User to User Group
+        </div>
+        <button type="button" class="modal-close-btn" id="addUpugModalCloseBtn">&times;</button>
+      </div>
+      <form id="addUpugForm">
+        <div class="modal-body">
+          <div id="addUpugModalAlert"></div>
+
+          <div class="form-group">
+            <label for="modalUpugUserId">User ID *</label>
+            <select id="modalUpugUserId" required>
+              <option value="">-- Select User ID --</option>
+            </select>
+            <div class="form-tip">Select existing user from User Master.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUpugUserName">User Name</label>
+            <input type="text" id="modalUpugUserName" class="filter-readonly" readonly placeholder="Auto-populated upon User ID selection">
+          </div>
+
+          <div class="form-group">
+            <label for="modalUpugGroup">User Group *</label>
+            <select id="modalUpugGroup" required>
+              <option value="">-- Select User Group --</option>
+            </select>
+            <div class="form-tip">Select user group from User Groups master.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUpugGroupDesc">User Group Description</label>
+            <input type="text" id="modalUpugGroupDesc" class="filter-readonly" readonly placeholder="Auto-populated upon User Group selection">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddUpug">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addUpugModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: View Users Per User Group Detail -->
+  <div class="modal-overlay" id="viewUpugModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> View Assignment Details
+        </div>
+        <button type="button" class="modal-close-btn" id="viewUpugModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>User ID</label>
+          <div class="form-readonly-display" id="viewUpugUserId" style="font-weight: bold; color: #164f78;"></div>
+        </div>
+        <div class="form-group">
+          <label>User Name</label>
+          <div class="form-readonly-display" id="viewUpugUserName"></div>
+        </div>
+        <div class="form-group">
+          <label>User Group</label>
+          <div class="form-readonly-display" id="viewUpugGroupName" style="font-weight: bold; color: #164f78;"></div>
+        </div>
+        <div class="form-group">
+          <label>User Group Description</label>
+          <div class="form-readonly-display" id="viewUpugGroupDesc"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="viewUpugModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: New Voucher Type -->
+  <div class="modal-overlay" id="addVtModalOverlay">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-plus-circle"></i> Define New Voucher Type
+        </div>
+        <button type="button" class="modal-close-btn" id="addVtModalCloseBtn">&times;</button>
+      </div>
+      <form id="addVtForm">
+        <div class="modal-body">
+          <div id="addVtModalAlert"></div>
+
+          <div style="display: flex; gap: 12px;">
+            <div class="form-group" style="width: 140px;">
+              <label for="modalVtCode">Voucher Type *</label>
+              <input type="text" id="modalVtCode" required placeholder="e.g. M, J, V1" style="text-transform: uppercase;">
+              <div class="form-tip">Short code (Mandatory)</div>
+            </div>
+
+            <div class="form-group" style="flex: 1;">
+              <label for="modalVtDesc">Voucher Type Description *</label>
+              <input type="text" id="modalVtDesc" required placeholder="e.g. Manual Journal Voucher">
+            </div>
+          </div>
+
+          <!-- Ledger Selection -->
+          <fieldset class="erp-fieldset" style="margin-top: 6px;">
+            <legend>Ledger Selection</legend>
+            <div class="fieldset-controls-col">
+              <div class="fieldset-row">
+                <div class="form-group" style="flex: 1;">
+                  <label for="modalVtLedger">Ledger:</label>
+                  <select id="modalVtLedger">
+                    <option value="01 - General Ledger">01 - General Ledger</option>
+                    <option value="02 - Simulation Ledger">02 - Simulation Ledger</option>
+                    <option value="03 - Parallel Ledger">03 - Parallel Ledger</option>
+                  </select>
+                </div>
+                <div class="form-group" style="width: 120px;">
+                  <label for="modalVtLedgerId">Ledger ID:</label>
+                  <input type="text" id="modalVtLedgerId" value="GL01">
+                </div>
+              </div>
+
+              <div class="fieldset-row">
+                <label class="vt-checkbox-label">
+                  <input type="checkbox" id="modalVtBalMandatory" checked>
+                  <span>Balance Mandatory</span>
+                </label>
+                <label class="vt-checkbox-label">
+                  <input type="checkbox" id="modalVtManualMethods">
+                  <span>Use Manual Internal Methods</span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Voucher Selection -->
+          <fieldset class="erp-fieldset" style="margin-top: 6px;">
+            <legend>Voucher Selection</legend>
+            <div class="fieldset-row" style="gap: 16px;">
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalVtAutoAllot" checked>
+                <span>Automatic Allotment</span>
+              </label>
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalVtSingleGroup">
+                <span>Single Function Group</span>
+              </label>
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalVtSimVoucher">
+                <span>Simulation Voucher</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveNewVt">
+            <i class="fa-solid fa-floppy-disk"></i> Create
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addVtModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add Function Group -->
+  <div class="modal-overlay" id="addFgModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-plus-circle"></i> Add Function Group
+        </div>
+        <button type="button" class="modal-close-btn" id="addFgModalCloseBtn">&times;</button>
+      </div>
+      <form id="addFgForm">
+        <div class="modal-body">
+          <div id="addFgModalAlert"></div>
+
+          <div class="form-group">
+            <label>Active Voucher Type</label>
+            <div class="form-readonly-display" id="modalFgActiveVtDisplay">M - Manual Journal Voucher</div>
+          </div>
+
+          <div class="form-group">
+            <label for="modalFgSelect">Function Group *</label>
+            <select id="modalFgSelect" required>
+              <option value="">-- Select Function Group --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalFgDescInput">Function Group Description</label>
+            <input type="text" id="modalFgDescInput" class="filter-readonly" readonly placeholder="Auto-populated upon Function Group selection">
+          </div>
+
+          <fieldset class="erp-fieldset" style="margin-top: 4px;">
+            <legend>Group Options</legend>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalFgOptAutoBal">
+                <span>Optional Auto Balance</span>
+              </label>
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalFgStoreOrig" checked>
+                <span>Store Original</span>
+              </label>
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalFgAutoAllotReq" checked>
+                <span>Automatic Allotment Required</span>
+              </label>
+              <label class="vt-checkbox-label">
+                <input type="checkbox" id="modalFgSingleGroupReq">
+                <span>Single Function Group Required</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddFg">
+            <i class="fa-solid fa-floppy-disk"></i> Add Group
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addFgModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: View Query Voucher Type Record Details -->
+  <div class="modal-overlay" id="viewQvtModalOverlay">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> Voucher Type Query Details
+        </div>
+        <button type="button" class="modal-close-btn" id="viewQvtModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Voucher Type</label>
+            <div class="form-readonly-display" id="viewQvtTypeCode" style="font-weight: bold; color: #164f78;"></div>
+          </div>
+          <div class="form-group">
+            <label>Voucher Type Description</label>
+            <div class="form-readonly-display" id="viewQvtTypeDesc"></div>
+          </div>
+          <div class="form-group">
+            <label>Function Group</label>
+            <div class="form-readonly-display" id="viewQvtFgCode" style="font-weight: bold; color: #164f78;"></div>
+          </div>
+          <div class="form-group">
+            <label>Function Group Description</label>
+            <div class="form-readonly-display" id="viewQvtFgDesc"></div>
+          </div>
+          <div class="form-group">
+            <label>Ledger</label>
+            <div class="form-readonly-display" id="viewQvtLedger"></div>
+          </div>
+          <div class="form-group">
+            <label>Ledger ID</label>
+            <div class="form-readonly-display" id="viewQvtLedgerId"></div>
+          </div>
+        </div>
+
+        <fieldset class="erp-fieldset" style="margin-top: 10px;">
+          <legend>Voucher & Ledger Configuration Attributes</legend>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-top: 4px;">
+            <div id="viewQvtFlagAutoAllot"></div>
+            <div id="viewQvtFlagManualMethods"></div>
+            <div id="viewQvtFlagSimulation"></div>
+            <div id="viewQvtFlagSingleGroup"></div>
+            <div id="viewQvtFlagBalance"></div>
+            <div id="viewQvtFlagOptAutoBal"></div>
+            <div id="viewQvtFlagStoreOrig"></div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="viewQvtModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add Query Voucher Type Entry -->
+  <div class="modal-overlay" id="addQvtModalOverlay">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-plus-circle"></i> Add Voucher Type Entry
+        </div>
+        <button type="button" class="modal-close-btn" id="addQvtModalCloseBtn">&times;</button>
+      </div>
+      <form id="addQvtForm">
+        <div class="modal-body">
+          <div id="addQvtModalAlert"></div>
+
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="addQvtTypeCode">Voucher Type *</label>
+              <input type="text" id="addQvtTypeCode" required placeholder="e.g. M, F, J" style="text-transform: uppercase;">
+              <div class="form-tip">Short code (Mandatory)</div>
+            </div>
+            <div class="form-group">
+              <label for="addQvtTypeDesc">Voucher Type Description *</label>
+              <input type="text" id="addQvtTypeDesc" required placeholder="e.g. Manual Journal Voucher">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 140px 1fr; gap: 12px; margin-top: 4px;">
+            <div class="form-group">
+              <label for="addQvtFgCode">Function Group</label>
+              <select id="addQvtFgCode">
+                <option value="">-- Select (Optional) --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="addQvtFgDesc">Function Group Description</label>
+              <input type="text" id="addQvtFgDesc" placeholder="Auto-populated or enter custom description">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 140px; gap: 12px; margin-top: 4px;">
+            <div class="form-group">
+              <label for="addQvtLedger">Ledger</label>
+              <select id="addQvtLedger">
+                <option value="01 - General Ledger">01 - General Ledger</option>
+                <option value="02 - Simulation Ledger">02 - Simulation Ledger</option>
+                <option value="03 - Parallel Ledger">03 - Parallel Ledger</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="addQvtLedgerId">Ledger ID</label>
+              <input type="text" id="addQvtLedgerId" value="GL01">
+            </div>
+          </div>
+
+          <!-- Voucher & Ledger Configuration Fields (Manual Input) -->
+          <fieldset class="erp-fieldset" style="margin-top: 8px;">
+            <legend>Voucher & Ledger Configuration Fields (Manual Input)</legend>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 4px;">
+              <div class="form-group">
+                <label for="addQvtAutoAllot">Automatic Allotment *</label>
+                <input type="text" id="addQvtAutoAllot" required placeholder="Enter Automatic Allotment">
+              </div>
+
+              <div class="form-group">
+                <label for="addQvtManualMethods">Use Manual Internal Methods *</label>
+                <input type="text" id="addQvtManualMethods" required placeholder="Enter Use Man Internal M">
+              </div>
+
+              <div class="form-group">
+                <label for="addQvtSimulation">Simulation Voucher *</label>
+                <input type="text" id="addQvtSimulation" required placeholder="Enter Simulation Voucher">
+              </div>
+
+              <div class="form-group">
+                <label for="addQvtSingleGroup">Single Function Group *</label>
+                <input type="text" id="addQvtSingleGroup" required placeholder="Enter Single Function Gr">
+              </div>
+
+              <div class="form-group">
+                <label for="addQvtBalance">Balance *</label>
+                <input type="text" id="addQvtBalance" required placeholder="Enter Balance">
+              </div>
+
+              <div class="form-group">
+                <label for="addQvtOptAutoBal">Optional Auto Balance *</label>
+                <input type="text" id="addQvtOptAutoBal" required placeholder="Enter Optional Auto Bal">
+              </div>
+
+              <div class="form-group">
+                <label for="addQvtStoreOrig">Store Original *</label>
+                <input type="text" id="addQvtStoreOrig" required placeholder="Enter Store Origin">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddQvt">
+            <i class="fa-solid fa-floppy-disk"></i> Save Entry
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addQvtModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog for Adding Payment Term (Legacy/Screen 2) -->
+  <div class="modal-overlay" id="addModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-plus-circle"></i> Add Payment Term
+        </div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <form id="addPaymentTermForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="newCompany">Company *</label>
+            <select id="newCompany" required>
+              <option value="COMP01">COMP01 - Global Holdings Ltd</option>
+              <option value="COMP02">COMP02 - Enterprise Finance Corp</option>
+              <option value="COMP03">COMP03 - Pacific Trading Co</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="newPaymentTerm">Payment Term Code *</label>
+            <input type="text" id="newPaymentTerm" required placeholder="e.g. NET30" style="text-transform:uppercase;">
+          </div>
+          <div class="form-group">
+            <label for="newPaymentTermDesc">Payment Term Description *</label>
+            <input type="text" id="newPaymentTermDesc" required placeholder="e.g. 30 Days Net">
+          </div>
+          <div class="form-group">
+            <label for="newDaysToDueDate">Days to Due Date *</label>
+            <input type="number" id="newDaysToDueDate" required min="0" value="30">
+          </div>
+          <div class="form-group-checkbox">
+            <label>
+              <input type="checkbox" id="newUseCommercialYear"> Use Commercial Year (360 Days)
+            </label>
+          </div>
+          <div class="form-group-checkbox">
+            <label>
+              <input type="checkbox" id="newEndOfMonth"> End of Month
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal">Save</button>
+          <button type="button" class="btn-cancel-modal" id="modalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add Authority Class -->
+  <div class="modal-overlay" id="addAcModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-shield-halved"></i> Add Authority Class
+        </div>
+        <button type="button" class="modal-close-btn" id="addAcModalCloseBtn">&times;</button>
+      </div>
+      <form id="addAcForm">
+        <div class="modal-body">
+          <div id="addAcModalAlert"></div>
+
+          <div class="form-group">
+            <label for="modalAcClass">Authority Class *</label>
+            <input type="text" id="modalAcClass" required placeholder="e.g. FIN_ADMIN" style="text-transform: uppercase;">
+          </div>
+
+          <div class="form-group">
+            <label for="modalAcDesc">Description *</label>
+            <input type="text" id="modalAcDesc" required placeholder="e.g. Financial System Administrator Class">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddAc">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addAcModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Edit Authority Class -->
+  <div class="modal-overlay" id="editAcModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-pen-to-square"></i> Edit Authority Class
+        </div>
+        <button type="button" class="modal-close-btn" id="editAcModalCloseBtn">&times;</button>
+      </div>
+      <form id="editAcForm">
+        <div class="modal-body">
+          <div id="editAcModalAlert"></div>
+
+          <div class="form-group">
+            <label for="editModalAcClass">Authority Class</label>
+            <input type="text" id="editModalAcClass" class="filter-readonly" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalAcDesc">Description *</label>
+            <input type="text" id="editModalAcDesc" required placeholder="Enter description">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveEditAc">
+            <i class="fa-solid fa-floppy-disk"></i> Update
+          </button>
+          <button type="button" class="btn-cancel-modal" id="editAcModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: View Authority Class Details -->
+  <div class="modal-overlay" id="viewAcModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> View Authority Class Details
+        </div>
+        <button type="button" class="modal-close-btn" id="viewAcModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="view-detail-card" style="margin-bottom: 12px; border: 1px solid #c2d6e7; border-radius: 3px; background: #fafcfe; padding: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Authority Class:</span>
+              <div id="viewModalAcClass" style="font-size: 13px; font-weight: 700; color: #0d3859; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Description:</span>
+              <div id="viewModalAcDesc" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="viewAcModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add Authority Combination -->
+  <div class="modal-overlay" id="addCombModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-layer-group"></i> Add Authority Combination
+        </div>
+        <button type="button" class="modal-close-btn" id="addCombModalCloseBtn">&times;</button>
+      </div>
+      <form id="addCombForm">
+        <div class="modal-body">
+          <div id="addCombModalAlert"></div>
+
+          <div class="form-group">
+            <label for="modalCombClassSelect">Authority Class *</label>
+            <select id="modalCombClassSelect" required>
+              <option value="">Select Authority Class</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalCombAllowedSelect">Allowed *</label>
+            <select id="modalCombAllowedSelect" required>
+              <option value="true" selected>Allowed (Yes)</option>
+              <option value="false">Disallowed (No)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalCombAccount">Account *</label>
+            <input type="text" id="modalCombAccount" required placeholder="e.g. 1000..3999 or %">
+          </div>
+
+          <div class="form-group">
+            <label for="modalCombCostCenter">Cost Center</label>
+            <input type="text" id="modalCombCostCenter" placeholder="e.g. CC100 or %" value="%">
+          </div>
+
+          <div class="form-group">
+            <label for="modalCombProject">Project</label>
+            <input type="text" id="modalCombProject" placeholder="e.g. PRJ01 or %" value="%">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddComb">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addCombModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Edit Authority Combination -->
+  <div class="modal-overlay" id="editCombModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-pen-to-square"></i> Edit Authority Combination
+        </div>
+        <button type="button" class="modal-close-btn" id="editCombModalCloseBtn">&times;</button>
+      </div>
+      <form id="editCombForm">
+        <div class="modal-body">
+          <div id="editCombModalAlert"></div>
+
+          <div class="form-group">
+            <label for="editModalCombClass">Authority Class</label>
+            <input type="text" id="editModalCombClass" class="filter-readonly" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalCombAllowed">Allowed *</label>
+            <select id="editModalCombAllowed" required>
+              <option value="true">Allowed (Yes)</option>
+              <option value="false">Disallowed (No)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalCombAccount">Account *</label>
+            <input type="text" id="editModalCombAccount" required placeholder="Account code or %">
+          </div>
+
+          <div class="form-group">
+            <label for="editModalCombCostCenter">Cost Center</label>
+            <input type="text" id="editModalCombCostCenter" placeholder="Cost Center or %">
+          </div>
+
+          <div class="form-group">
+            <label for="editModalCombProject">Project</label>
+            <input type="text" id="editModalCombProject" placeholder="Project or %">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveEditComb">
+            <i class="fa-solid fa-floppy-disk"></i> Update
+          </button>
+          <button type="button" class="btn-cancel-modal" id="editCombModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: View Authority Combination Details -->
+  <div class="modal-overlay" id="viewCombModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> View Authority Combination Details
+        </div>
+        <button type="button" class="modal-close-btn" id="viewCombModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="view-detail-card" style="margin-bottom: 12px; border: 1px solid #c2d6e7; border-radius: 3px; background: #fafcfe; padding: 12px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Authority Class:</span>
+              <div id="viewModalCombClass" style="font-size: 13px; font-weight: 700; color: #0d3859; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Allowed Status:</span>
+              <div id="viewModalCombAllowed" style="margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Account:</span>
+              <div id="viewModalCombAccount" style="font-size: 12px; font-weight: 600; color: #164f78; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Cost Center:</span>
+              <div id="viewModalCombCostCenter" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Project:</span>
+              <div id="viewModalCombProject" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="viewCombModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Add User to Authority Class -->
+  <div class="modal-overlay" id="addUpacModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-user-plus"></i> Assign User to Authority Class
+        </div>
+        <button type="button" class="modal-close-btn" id="addUpacModalCloseBtn">&times;</button>
+      </div>
+      <form id="addUpacForm">
+        <div class="modal-body">
+          <div id="addUpacModalAlert"></div>
+
+          <div class="form-group">
+            <label for="modalUpacUserId">User ID *</label>
+            <select id="modalUpacUserId" required>
+              <option value="">Select User ID</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUpacUserName">User Name</label>
+            <input type="text" id="modalUpacUserName" class="filter-readonly" readonly placeholder="Auto-populated upon User ID selection">
+          </div>
+
+          <div class="form-group">
+            <label for="modalUpacClass">Authority Class *</label>
+            <select id="modalUpacClass" required>
+              <option value="">Select Authority Class</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalUpacClassDesc">Authority Class Description</label>
+            <input type="text" id="modalUpacClassDesc" class="filter-readonly" readonly placeholder="Auto-populated upon Authority Class selection">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveAddUpac">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          <button type="button" class="btn-cancel-modal" id="addUpacModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Edit User Authority Class Assignment -->
+  <div class="modal-overlay" id="editUpacModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-pen-to-square"></i> Edit User Authority Assignment
+        </div>
+        <button type="button" class="modal-close-btn" id="editUpacModalCloseBtn">&times;</button>
+      </div>
+      <form id="editUpacForm">
+        <div class="modal-body">
+          <div id="editUpacModalAlert"></div>
+
+          <div class="form-group">
+            <label for="editModalUpacUserId">User ID</label>
+            <input type="text" id="editModalUpacUserId" class="filter-readonly" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalUpacUserName">User Name</label>
+            <input type="text" id="editModalUpacUserName" class="filter-readonly" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalUpacClass">Authority Class *</label>
+            <select id="editModalUpacClass" required>
+              <option value="">Select Authority Class</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editModalUpacClassDesc">Authority Class Description</label>
+            <input type="text" id="editModalUpacClassDesc" class="filter-readonly" readonly>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-modal" id="btnSaveEditUpac">
+            <i class="fa-solid fa-floppy-disk"></i> Update
+          </button>
+          <button type="button" class="btn-cancel-modal" id="editUpacModalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: View User Authority Class Assignment Details -->
+  <div class="modal-overlay" id="viewUpacModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> View User Authority Assignment Details
+        </div>
+        <button type="button" class="modal-close-btn" id="viewUpacModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="view-detail-card" style="margin-bottom: 12px; border: 1px solid #c2d6e7; border-radius: 3px; background: #fafcfe; padding: 12px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">User ID:</span>
+              <div id="viewModalUpacUserId" style="font-size: 13px; font-weight: 700; color: #0d3859; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">User Name:</span>
+              <div id="viewModalUpacUserName" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Authority Class:</span>
+              <div id="viewModalUpacClass" style="font-size: 13px; font-weight: 700; color: #164f78; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Description:</span>
+              <div id="viewModalUpacClassDesc" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="viewUpacModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="erp-toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
