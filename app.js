@@ -1958,6 +1958,7 @@ function switchScreen(screenId) {
 
   document.querySelectorAll('.sub-nav-item a').forEach(l => {
     l.classList.remove('active-red');
+    l.classList.remove('active-nav');
     l.parentElement.classList.remove('selected');
   });
 
@@ -1977,7 +1978,7 @@ function switchScreen(screenId) {
 
     const upugLink = document.querySelector('a[href="#users-per-user-group"]');
     if (upugLink) {
-      upugLink.classList.add('active-red');
+      upugLink.classList.add('active-nav');
       upugLink.parentElement.classList.add('selected');
     }
 
@@ -1997,7 +1998,7 @@ function switchScreen(screenId) {
 
     const ugLink = document.querySelector('a[href="#user-groups"]');
     if (ugLink) {
-      ugLink.classList.add('active-red');
+      ugLink.classList.add('active-nav');
       ugLink.parentElement.classList.add('selected');
     }
 
@@ -2017,7 +2018,7 @@ function switchScreen(screenId) {
 
     const upcLink = document.querySelector('a[href="#user-per-company"]');
     if (upcLink) {
-      upcLink.classList.add('active-red');
+      upcLink.classList.add('active-nav');
       upcLink.parentElement.classList.add('selected');
     }
 
@@ -2037,7 +2038,7 @@ function switchScreen(screenId) {
 
     const vtLink = document.querySelector('a[href="#define-voucher-type"]');
     if (vtLink) {
-      vtLink.classList.add('active-red');
+      vtLink.classList.add('active-nav');
       vtLink.parentElement.classList.add('selected');
     }
 
@@ -2057,7 +2058,7 @@ function switchScreen(screenId) {
 
     const qvtLink = document.querySelector('a[href="#query-voucher-types"]');
     if (qvtLink) {
-      qvtLink.classList.add('active-red');
+      qvtLink.classList.add('active-nav');
       qvtLink.parentElement.classList.add('selected');
     }
 
@@ -2077,7 +2078,7 @@ function switchScreen(screenId) {
 
     const ptLink = document.querySelector('a[href="#payment-terms"]');
     if (ptLink) {
-      ptLink.classList.add('active-red');
+      ptLink.classList.add('active-nav');
       ptLink.parentElement.classList.add('selected');
     }
 
@@ -2095,7 +2096,7 @@ function switchScreen(screenId) {
 
     const acLink = document.querySelector('a[href="#authority-classes"]');
     if (acLink) {
-      acLink.classList.add('active-red');
+      acLink.classList.add('active-nav');
       acLink.parentElement.classList.add('selected');
     }
 
@@ -2115,7 +2116,7 @@ function switchScreen(screenId) {
 
     const combLink = document.querySelector('a[href="#authority-combinations"]');
     if (combLink) {
-      combLink.classList.add('active-red');
+      combLink.classList.add('active-nav');
       combLink.parentElement.classList.add('selected');
     }
 
@@ -2135,7 +2136,7 @@ function switchScreen(screenId) {
 
     const upacLink = document.querySelector('a[href="#users-per-authority-class"]');
     if (upacLink) {
-      upacLink.classList.add('active-red');
+      upacLink.classList.add('active-nav');
       upacLink.parentElement.classList.add('selected');
     }
 

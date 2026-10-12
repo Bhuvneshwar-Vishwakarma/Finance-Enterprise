@@ -331,9 +331,39 @@ html, body {
 }
 
 .sub-nav-item.selected a,
+.sub-nav-item a.active-nav,
 .sub-nav-item a.active-red {
-  color: var(--text-active-red) !important;
+  color: #0b4570 !important;
   font-weight: 700;
+  background-color: #dceaf7;
+}
+
+.sub-nav-item.selected a:hover,
+.sub-nav-item a.active-nav:hover,
+.sub-nav-item a.active-red:hover {
+  color: #083353 !important;
+  background-color: #d4e4f3;
+}
+
+/* Discarded sub navigation items (User Data menu) */
+.sub-nav-item a.menu-discarded,
+.nested-sub-nav-tree .sub-nav-item a.menu-discarded {
+  color: #d90f0f !important;
+}
+
+.sub-nav-item a.menu-discarded:hover,
+.nested-sub-nav-tree .sub-nav-item a.menu-discarded:hover {
+  color: #b50b0b !important;
+  background-color: #fdf0f0;
+}
+
+.sub-nav-item.selected a.menu-discarded,
+.nested-sub-nav-tree .sub-nav-item.selected a.menu-discarded,
+.sub-nav-item a.menu-discarded.active-nav,
+.sub-nav-item a.menu-discarded.active-red {
+  color: #d90f0f !important;
+  font-weight: 700;
+  background-color: #fce8e8;
 }
 
 /* Sub-group (e.g. User Data inside Accounting Rules) */
