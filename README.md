@@ -9,6 +9,9 @@ An exact, pixel-accurate web recreation of the **Finance Enterprise** legacy ERP
 6. **Query Voucher Types** inquiry screen (`Accounting Rules > User Data > Query Voucher Types`)
 7. **Authority Classes** master screen (`Accounting Rules > Authority > Authority Classes`)
 8. **Authority Combinations** master screen (`Accounting Rules > Authority > Authority Combinations`)
+9. **Users per Authority Class** master screen (`Accounting Rules > Authority > Users per Authority Class`)
+10. **Nominal Account** master screen (`Accounting Rules > Nominal Account`)
+11. **Account Linking** mapping screen (`Accounting Rules > Account Linking`)
 
 ---
 
@@ -233,11 +236,86 @@ A master data association screen linking ERP system users to financial authority
 
 ---
 
+## 📖 10. Nominal Account / Cash Accounts Master Screen
+
+Faithfully recreated from the legacy IFS Applications screenshot (`IFS Financial Integration - [LAXMI01 - Cash Accounts]`), providing complete master maintenance for Cash and Nominal Accounts:
+
+### 10.1 Extracted Fields & Grid Columns
+1. **Row Pointer / Selector**: Classic IFS indicator (`►` for active selected record, high-contrast dark row highlighting).
+2. **Short Name**: Unique account code/short name identifier (e.g. `BAD DEBTS`, `CASH-HY`, `CURRAC`, `EURAC`, `FACFLOW`).
+3. **Payment Institute**: Associated financial institution or clearing code (e.g. `BAD DEBTS`, `NATWEST`, `HSBC CURR (GBP)`, `RBS`).
+4. **Currency**: Transaction currency code (`GBP`, `EUR`, `USD`, `CZK`, `PLN`, `DKK`, `NOK`).
+5. **Account Number**: Official bank/ledger account number (e.g. `24661619`, `4397-4400-6685-9563`, `1234`).
+6. **Description**: Complete account description (e.g. `Natwest Current Account-10`, `Cash Account - HY`).
+7. **Default Flag**: Checkbox indicating primary default operational cash account.
+8. **International Cash Account**: Checkbox indicating cross-border international cash account status.
+9. **Statement Not Editable**: Checkbox restricting electronic statement modifications.
+10. **Associated Cash Account**: Linked clearing or subsidiary cash account identifier.
+11. **Balance Method**: Balance calculation methodology (`Detailed` or `Summary`), clickable link style.
+12. **Voucher Type**: Associated transaction voucher prefix (e.g. `CB`, `N`, `EX`).
+13. **Voucher Type Description**: Full descriptor for transaction vouchers.
+14. **Institute Code**: Bank / institution routing identification code.
+15. **Office Code**: Branch or regional office code.
+16. **Excel Export `[X]`**: Dedicated green IFS Excel icon button located directly in the header cell.
+
+### 10.2 Features & Business Rules
+- **Faithful Legacy IFS Chrome**: Recreates the classic window title bar, menu bar (`File`, `Edit`, `Operations`, `Commands`, `Window`, `Help`), standard IFS navigation/query toolbar, and quick tabs (`Links: Overview - Customer Orders | Customer | ...`).
+- **Real-Time Data State**: Pre-populated with all 36 authentic records extracted directly from the system screenshot plus ERP cross-linked accounts.
+- **Interactive Checkbox Toggling**: Inline toggling for Default Flag, International Cash Account, and Statement Not Editable.
+- **Add / Edit / View Modals**: Full validation for mandatory fields (Short Name, Payment Institute, Account Number, Description) and duplicate prevention.
+- **IFS CSV Export**: Downloads all 14 columns into `IFS_Cash_Accounts_Export.csv`.
+- **System Information Bar**: Recreates authentic status pane (`Database: LIVE | Sid: IFSL | End User: RUTCHA`).
+- **Account Linking Compatibility**: Retains backward-compatible properties so Account Linking mapping continues to work without disruption.
+
+---
+
+## 🔗 11. Account Linking to Ledger / Posting Control Screen
+
+Faithfully recreated from the legacy IFS Posting Control screenshot (`Posting Control Details: IP2 - Customer Claims, Invoice`), providing automated account routing and ledger control rules:
+
+### 11.1 Extracted Fields & Master Definition
+1. **Posting Control Tabs**:
+   - `Posting Control Details` (Active view)
+   - `Posting Control`
+   - `Posting Control Details Specification`
+   - `Posting Control Combination Details`
+2. **Master Control Header Fields**:
+   - **Posting Type**: Dropdown selector (`IP2 - Customer Claims, Invoice`, `IP1 - Supplier Debts, Invoice`, `IP3 - Tax Received, Invoice`, `IP4 - Tax Disbursed, Invoice`, `IP5 - Preliminary Cost`, `IP17 - Customer Claims, Advance Inv`, `All Posting Types`).
+   - **Code Part Name**: Auto-populated code part descriptor (e.g. `Account`).
+   - **Control Type**: Auto-populated control type identifier (e.g. `IC2`, `IC1`, `IC3`, etc.).
+   - **Default Value No Details**: Master default account code when no specific rule matches (e.g. `1100`, `2000`).
+   - **Default Value No CT Value**: Optional default fallback value.
+   - **Valid From**: Master effective date (e.g. `01/07/2017`).
+
+### 11.2 Grid Columns (Posting Control Details)
+1. **Sr. No.**: Row index.
+2. **Customer Group**: Control type value / group code (e.g. `IC-GOW`, `IC-SYRI`, `DOM-SUP`, `INT-SUP`).
+3. **Control Type Description**: Descriptor of control entity (e.g. `Inter Co Debtors (Gowrie)`, `IC-SYRI`).
+4. **Account**: Linked Nominal Account code badge (e.g. `1100-GOW`, `1100-SYR`, `2000`).
+5. **Code Part Description**: Descriptive name of the nominal account code part (e.g. `Inter Co Debtors (Gowrie)`, `Inter Co Debtors (Syri)`).
+6. **Specification Control Type**: Optional specification rule control type code.
+7. **Specification Control Type Description**: Description of specification control type.
+8. **Specification No Details**: Specification default value.
+9. **Specification No CT Value**: Specification control type value.
+10. **Valid From**: Row-level effective date (e.g. `01/07/2017`).
+11. **Action**: Quick action buttons (`Edit`, `View Details`, `Delete`).
+
+### 11.3 Features & Business Logic
+- **Direct Integration with Nominal Account Master**: Account dropdown dynamically pulls accounts from `nominalAccountsData` (including authentic intercompany debtors `1100-GOW` and `1100-SYR`).
+- **Dynamic Live Preview**: Selecting a nominal account in the modal displays its type, account name, and balance characteristics in real time.
+- **Posting Type Switching**: Changing the Posting Type updates the master header fields and displays matching posting rules seamlessly.
+- **Search & Filters**: Search across Customer Group, Account, and Descriptions, plus filter by Nominal Account.
+- **Add / Edit / View Modals**: Full validation for mandatory fields (Customer Group, Control Type Description, Nominal Account) with duplicate rule prevention within the same Posting Type.
+- **CSV Export**: Downloads all 12 columns to `Posting_Control_Details_Export.csv`.
+- **Pagination & Toolbar Actions**: Full enterprise pagination controls and toolbar actions.
+
+---
+
 ## 📂 Project Structure
 
 ```
 d:\Projects\FE\
-├── index.html     # Semantic HTML structure with 9 ERP master screens and modals
+├── index.html     # Semantic HTML structure with 11 ERP master screens and modals
 ├── style.css      # Vanilla CSS replicating exact enterprise gradients, tables, tags & dialogs
 ├── app.js         # Master data models, business logic, validation rules, and routing
 └── README.md      # Documentation & user guide

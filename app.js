@@ -146,6 +146,1162 @@ let usersPerAuthorityClassData = [
   { userId: 'MGR006', authorityClass: 'TREASURY' }
 ];
 
+// Ledger Master Data (Pre-existing ERP Ledger directory)
+const ledgerMaster = [
+  { ledgerId: 'GL01', ledgerCode: 'GL01', ledgerName: '01 - General Ledger', type: 'Primary General Ledger', description: 'Primary General Ledger for all enterprise financial transactions' },
+  { ledgerId: 'SIM01', ledgerCode: 'SIM01', ledgerName: '02 - Simulation Ledger', type: 'Simulation / Forecasting', description: 'Simulation Ledger for budget forecasting and what-if scenarios' },
+  { ledgerId: 'PL01', ledgerCode: 'PL01', ledgerName: '03 - Parallel Ledger', type: 'Statutory / IFRS', description: 'Parallel IFRS / Statutory Accounting Ledger' }
+];
+
+// Nominal Accounts / Cash Accounts Master Data (State)
+let nominalAccountsData = [
+  {
+    shortName: 'BAD DEBTS',
+    paymentInstitute: 'BAD DEBTS',
+    currency: 'GBP',
+    accountNumber: '000',
+    description: 'BAD DEBTS',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'BAD DEBTS',
+    name: 'BAD DEBTS',
+    type: 'Expense',
+    group: 'Operating Expenses',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'CAPITAL ON TAP (CC)',
+    paymentInstitute: 'CC',
+    currency: 'GBP',
+    accountNumber: '4397-4400-6685-9563',
+    description: 'CAPITAL ON TAP (CC) 9563',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CAPITAL ON TAP (CC)',
+    name: 'CAPITAL ON TAP (CC) 9563',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'CASH-HY',
+    paymentInstitute: 'CASH-HY',
+    currency: 'GBP',
+    accountNumber: '1234',
+    description: 'Cash Account - HY',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CASH-HY',
+    name: 'Cash Account - HY',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'CURRAC',
+    paymentInstitute: 'NATWEST',
+    currency: 'GBP',
+    accountNumber: '24661619',
+    description: 'Natwest Current Account-10',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CURRAC',
+    name: 'Natwest Current Account-10',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'CURRAC (DD)',
+    paymentInstitute: 'NATWEST (DD)',
+    currency: 'GBP',
+    accountNumber: '25270508',
+    description: 'Natwest Current Account-10',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CURRAC (DD)',
+    name: 'Natwest Current Account-10',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'CURRAC - CZK',
+    paymentInstitute: 'HSBC CURR (CZK)',
+    currency: 'CZK',
+    accountNumber: '27684369',
+    description: 'Do not Use',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CURRAC - CZK',
+    name: 'Do not Use',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Inactive'
+  },
+  {
+    shortName: 'CURRAC - PLN',
+    paymentInstitute: 'HSBC CURR (PLN)',
+    currency: 'PLN',
+    accountNumber: '27684393',
+    description: 'Do not Use',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CURRAC - PLN',
+    name: 'Do not Use',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Inactive'
+  },
+  {
+    shortName: 'CURRAC WAYMADE (DD)',
+    paymentInstitute: 'NATWEST WAYMADE (DD)',
+    currency: 'GBP',
+    accountNumber: '25550640',
+    description: 'Natwest Current Account-10',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'CURRAC WAYMADE (DD)',
+    name: 'Natwest Current Account-10',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'EURAC',
+    paymentInstitute: 'NATWEST',
+    currency: 'EUR',
+    accountNumber: '27629872',
+    description: 'Natwest Current Account-10',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'EURAC',
+    name: 'Natwest Current Account-10',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'FACFLOW',
+    paymentInstitute: 'RBS',
+    currency: 'GBP',
+    accountNumber: 'C5333',
+    description: 'RBS Facflow-2103',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'FACFLOW',
+    name: 'RBS Facflow-2103',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'FACFLOW-STOCK(E)',
+    paymentInstitute: 'RBS',
+    currency: 'GBP',
+    accountNumber: '000',
+    description: 'RBS Facflow-1009',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'FACFLOW-STOCK(E)',
+    name: 'RBS Facflow-1009',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'FACFLOW-WAYMADE',
+    paymentInstitute: 'RBS-W',
+    currency: 'GBP',
+    accountNumber: 'C5337',
+    description: 'RBS Facflow-2156',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'FACFLOW-WAYMADE',
+    name: 'RBS Facflow-2156',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'GROUP (FIN) EURO',
+    paymentInstitute: 'NATWEST GROUP EURO',
+    currency: 'EUR',
+    accountNumber: '27684342',
+    description: 'Natwest- Group Finance (EU)',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'GROUP (FIN) EURO',
+    name: 'Natwest- Group Finance (EU)',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'GROUP (FIN) GBP',
+    paymentInstitute: 'NATWEST GROUP GBP',
+    currency: 'GBP',
+    accountNumber: '25547747',
+    description: 'Natwest- Group Finance (GB)',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'GROUP (FIN) GBP',
+    name: 'Natwest- Group Finance (GB)',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC CURR (EURO)',
+    paymentInstitute: 'HSBC CURR (EURO)',
+    currency: 'EUR',
+    accountNumber: '400515-82819007',
+    description: 'HSBC CURR (EURO) 9007',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC CURR (EURO)',
+    name: 'HSBC CURR (EURO) 9007',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC CURR (GBP)',
+    paymentInstitute: 'HSBC CURR (GBP)',
+    currency: 'GBP',
+    accountNumber: '403804-74726278',
+    description: 'HSBC CURR (GBP) 6278',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC CURR (GBP)',
+    name: 'HSBC CURR (GBP) 6278',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (CZK)',
+    paymentInstitute: 'HSBC CURR (CZK)',
+    currency: 'CZK',
+    accountNumber: '400515-82810490',
+    description: 'HSBC GOW CURR (CZK) 049',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (CZK)',
+    name: 'HSBC GOW CURR (CZK) 049',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (DKK)',
+    paymentInstitute: 'HSBC CURR (DKK)',
+    currency: 'DKK',
+    accountNumber: '400515-82810517',
+    description: 'HSBC GOW CURR (DKK) 051',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (DKK)',
+    name: 'HSBC GOW CURR (DKK) 051',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (EURO)',
+    paymentInstitute: 'HSBC CURR (EURO)',
+    currency: 'EUR',
+    accountNumber: '400515-82817369',
+    description: 'HSBC GOW CURR (EURO) 736',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (EURO)',
+    name: 'HSBC GOW CURR (EURO) 736',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (GBP)',
+    paymentInstitute: 'HSBC CURR (GBP)',
+    currency: 'GBP',
+    accountNumber: '403804-24661591',
+    description: 'HSBC GOW CURR (GBP) 159',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (GBP)',
+    name: 'HSBC GOW CURR (GBP) 159',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (NOK)',
+    paymentInstitute: 'HSBC CURR (NOK)',
+    currency: 'NOK',
+    accountNumber: '400515-82817774',
+    description: 'HSBC GOW CURR (NOK) 774',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (NOK)',
+    name: 'HSBC GOW CURR (NOK) 774',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (PLN)',
+    paymentInstitute: 'HSBC CURR (PLN)',
+    currency: 'PLN',
+    accountNumber: '400515-82817350',
+    description: 'HSBC GOW CURR (PLN) 735',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (PLN)',
+    name: 'HSBC GOW CURR (PLN) 735',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC GOW CURR (USD)',
+    paymentInstitute: 'HSBC CURR (USD)',
+    currency: 'USD',
+    accountNumber: '400515-82810525',
+    description: 'HSBC GOW CURR (USD) 052',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC GOW CURR (USD)',
+    name: 'HSBC GOW CURR (USD) 052',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC ID (EURO)',
+    paymentInstitute: 'HSBC ID (EURO)',
+    currency: 'EUR',
+    accountNumber: '34308',
+    description: 'HSBC ID (EURO) 34308',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC ID (EURO)',
+    name: 'HSBC ID (EURO) 34308',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC ID (GBP)',
+    paymentInstitute: 'HSBC ID (GBP)',
+    currency: 'GBP',
+    accountNumber: '34307',
+    description: 'HSBC ID (GBP) 34307',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC ID (GBP)',
+    name: 'HSBC ID (GBP) 34307',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'HSBC LAX ID (GBP)',
+    paymentInstitute: 'HSBC LAX ID (GBP)',
+    currency: 'GBP',
+    accountNumber: '46279',
+    description: 'HSBC ID (GBP) 46279',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'HSBC LAX ID (GBP)',
+    name: 'HSBC ID (GBP) 46279',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'I/CO CASH',
+    paymentInstitute: 'I/CO NET',
+    currency: 'GBP',
+    accountNumber: 'IC - GLAX',
+    description: 'I/Co Netting with GLAX',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'I/CO CASH',
+    name: 'I/Co Netting with GLAX',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'I/CO CASH BNS',
+    paymentInstitute: 'I/CO NET BNS',
+    currency: 'GBP',
+    accountNumber: 'IC - BNS',
+    description: 'I/Co Cash BNS',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'I/CO CASH BNS',
+    name: 'I/Co Cash BNS',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'I/CO CASH GHL',
+    paymentInstitute: 'I/CO NET GHL',
+    currency: 'GBP',
+    accountNumber: 'IC - GHL',
+    description: 'I/Co Cash GHL',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'I/CO CASH GHL',
+    name: 'I/Co Cash GHL',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'I/CO CASH GLAX',
+    paymentInstitute: 'I/CO NET GLAX',
+    currency: 'GBP',
+    accountNumber: 'IC - GLAX',
+    description: 'I/Co Cash GLAX',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'I/CO CASH GLAX',
+    name: 'I/Co Cash GLAX',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'I/CO CASH LBNS',
+    paymentInstitute: 'I/CO NET LBNS',
+    currency: 'GBP',
+    accountNumber: 'IC - LBNS',
+    description: 'I/Co Cash LBNS',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'I/CO CASH LBNS',
+    name: 'I/Co Cash LBNS',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'I/CO CASH SPE',
+    paymentInstitute: 'I/CO NET SPE',
+    currency: 'GBP',
+    accountNumber: 'IC - SPE',
+    description: 'I/Co Cash SPE',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'I/CO CASH SPE',
+    name: 'I/Co Cash SPE',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'NET AP/AR',
+    paymentInstitute: 'CASH',
+    currency: 'GBP',
+    accountNumber: '123456',
+    description: 'Netting AP/AR',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'NET AP/AR',
+    name: 'Netting AP/AR',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'NET AP/AR (EURO)',
+    paymentInstitute: 'CASH',
+    currency: 'EUR',
+    accountNumber: '123456',
+    description: 'Netting AP/AR (Euro)',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'NET AP/AR (EURO)',
+    name: 'Netting AP/AR (Euro)',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'PROPERTY',
+    paymentInstitute: 'PROPERTY',
+    currency: 'GBP',
+    accountNumber: 'TS336',
+    description: 'RBS FACTORING',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'PROPERTY',
+    name: 'RBS FACTORING',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: 'WRITE OFF',
+    paymentInstitute: 'WRITE OFF',
+    currency: 'GBP',
+    accountNumber: '000',
+    description: 'WRITE OFF',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: '',
+    voucherTypeDesc: '',
+    instituteCode: '',
+    officeCode: '',
+    code: 'WRITE OFF',
+    name: 'WRITE OFF',
+    type: 'Expense',
+    group: 'Operating Expenses',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  // Maintained accounts for Account Linking integration
+  {
+    shortName: '5100',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '5100-001',
+    description: 'Office Rent Expense',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'EX',
+    voucherTypeDesc: 'Expense Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '5100',
+    name: 'Office Rent Expense',
+    type: 'Expense',
+    group: 'Operating Expenses',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: '5200',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '5200-001',
+    description: 'Salary Expense',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'PY',
+    voucherTypeDesc: 'Payroll Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '5200',
+    name: 'Salary Expense',
+    type: 'Expense',
+    group: 'Payroll & Staff Expenses',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: '4100',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '4100-001',
+    description: 'Sales Revenue',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'RV',
+    voucherTypeDesc: 'Revenue Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '4100',
+    name: 'Sales Revenue',
+    type: 'Revenue',
+    group: 'Operating Revenue',
+    balance: 'Credit',
+    status: 'Active'
+  },
+  {
+    shortName: '1010',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '1010-001',
+    description: 'Bank Account',
+    defaultFlag: true,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'CB',
+    voucherTypeDesc: 'Cash Book Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '1010',
+    name: 'Bank Account',
+    type: 'Asset',
+    group: 'Cash & Cash Equivalents',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: '1100',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '1100-001',
+    description: 'Accounts Receivable',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'AR',
+    voucherTypeDesc: 'Receivables Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '1100',
+    name: 'Accounts Receivable',
+    type: 'Asset',
+    group: 'Current Assets',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: '2000',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '2000-001',
+    description: 'Accounts Payable',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'AP',
+    voucherTypeDesc: 'Payables Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '2000',
+    name: 'Accounts Payable',
+    type: 'Liability',
+    group: 'Current Liabilities',
+    balance: 'Credit',
+    status: 'Active'
+  },
+  {
+    shortName: '5300',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '5300-001',
+    description: 'Utilities Expense',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'EX',
+    voucherTypeDesc: 'Expense Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '5300',
+    name: 'Utilities Expense',
+    type: 'Expense',
+    group: 'Operating Expenses',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: '4200',
+    paymentInstitute: 'BANK-US',
+    currency: 'USD',
+    accountNumber: '4200-001',
+    description: 'Consulting Revenue',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'RV',
+    voucherTypeDesc: 'Revenue Voucher',
+    instituteCode: 'INST-01',
+    officeCode: 'OFF-01',
+    code: '4200',
+    name: 'Consulting Revenue',
+    type: 'Revenue',
+    group: 'Operating Revenue',
+    balance: 'Credit',
+    status: 'Active'
+  },
+  {
+    shortName: '1100-GOW',
+    paymentInstitute: 'NATWEST',
+    currency: 'GBP',
+    accountNumber: '1100-GOW-01',
+    description: 'Inter Co Debtors (Gowrie)',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'IP',
+    voucherTypeDesc: 'Customer Claims, Invoice',
+    instituteCode: 'NATWEST',
+    officeCode: 'OFF-01',
+    code: '1100-GOW',
+    name: 'Inter Co Debtors (Gowrie)',
+    type: 'Asset',
+    group: 'Intercompany Receivables',
+    balance: 'Debit',
+    status: 'Active'
+  },
+  {
+    shortName: '1100-SYR',
+    paymentInstitute: 'NATWEST',
+    currency: 'GBP',
+    accountNumber: '1100-SYR-01',
+    description: 'Inter Co Debtors (Syri)',
+    defaultFlag: false,
+    intlCashAccount: false,
+    statementNotEditable: false,
+    associatedCashAccount: '',
+    balanceMethod: 'Detailed',
+    voucherType: 'IP',
+    voucherTypeDesc: 'Customer Claims, Invoice',
+    instituteCode: 'NATWEST',
+    officeCode: 'OFF-01',
+    code: '1100-SYR',
+    name: 'Inter Co Debtors (Syri)',
+    type: 'Asset',
+    group: 'Intercompany Receivables',
+    balance: 'Debit',
+    status: 'Active'
+  }
+];
+
+// Account Linking / Posting Control Details Data (State from Screenshot)
+let accountLinkingData = [
+  {
+    id: 'AL001',
+    postingType: 'IP2',
+    codePartName: 'Account',
+    controlType: 'IC2',
+    customerGroup: 'IC-GOW',
+    controlTypeDesc: 'Inter Co Debtors (Gowrie)',
+    accountCode: '1100-GOW',
+    codePartDesc: 'Inter Co Debtors (Gowrie)',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/07/2017',
+    status: 'Active'
+  },
+  {
+    id: 'AL002',
+    postingType: 'IP2',
+    codePartName: 'Account',
+    controlType: 'IC2',
+    customerGroup: 'IC-SYRI',
+    controlTypeDesc: 'IC-SYRI',
+    accountCode: '1100-SYR',
+    codePartDesc: 'Inter Co Debtors (Syri)',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/07/2017',
+    status: 'Active'
+  },
+  {
+    id: 'AL003',
+    postingType: 'IP1',
+    codePartName: 'Account',
+    controlType: 'IC1',
+    customerGroup: 'DOM-SUP',
+    controlTypeDesc: 'Domestic Trade Payables',
+    accountCode: '2000',
+    codePartDesc: 'Accounts Payable',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/01/2014',
+    status: 'Active'
+  },
+  {
+    id: 'AL004',
+    postingType: 'IP1',
+    codePartName: 'Account',
+    controlType: 'IC1',
+    customerGroup: 'INT-SUP',
+    controlTypeDesc: 'International Suppliers',
+    accountCode: '2000',
+    codePartDesc: 'Accounts Payable',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/01/2014',
+    status: 'Active'
+  },
+  {
+    id: 'AL005',
+    postingType: 'IP3',
+    codePartName: 'Account',
+    controlType: 'IC3',
+    customerGroup: 'VAT-STD',
+    controlTypeDesc: 'Standard Output Tax',
+    accountCode: '1100',
+    codePartDesc: 'Accounts Receivable',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/01/2014',
+    status: 'Active'
+  },
+  {
+    id: 'AL006',
+    postingType: 'IP4',
+    codePartName: 'Account',
+    controlType: 'IC4',
+    customerGroup: 'VAT-INP',
+    controlTypeDesc: 'Input Tax Disbursed',
+    accountCode: '2000',
+    codePartDesc: 'Accounts Payable',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/01/2014',
+    status: 'Active'
+  },
+  {
+    id: 'AL007',
+    postingType: 'IP5',
+    codePartName: 'Account',
+    controlType: 'IC5',
+    customerGroup: 'PRE-COST',
+    controlTypeDesc: 'Preliminary Project Costing',
+    accountCode: '5100',
+    codePartDesc: 'Office Rent Expense',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/01/2015',
+    status: 'Active'
+  },
+  {
+    id: 'AL008',
+    postingType: 'IP17',
+    codePartName: 'Account',
+    controlType: 'IC17',
+    customerGroup: 'ADV-CLM',
+    controlTypeDesc: 'Customer Advance Claims',
+    accountCode: '1100',
+    codePartDesc: 'Accounts Receivable',
+    specControlTyp: '',
+    specControlTypDesc: '',
+    specNoDetails: '',
+    specNoCtValue: '',
+    validFrom: '01/01/2016',
+    status: 'Active'
+  }
+];
+
 // Function Groups Master Data (Pre-existing ERP Function Groups)
 const functionGroupsMaster = [
   { code: 'A', name: 'Direct Cash Payment' },
@@ -335,6 +1491,20 @@ let ptSelectedRowIndex = null;
 let ptCurrentPage = 1;
 let ptPageSize = 1000;
 
+// Nominal Account State
+let naCurrentDataset = [];
+let naSelectedRowIndex = null;
+let naCurrentPage = 1;
+let naPageSize = 1000;
+let naEditingIndex = null;
+
+// Account Linking State
+let alCurrentDataset = [];
+let alSelectedRowIndex = null;
+let alCurrentPage = 1;
+let alPageSize = 1000;
+let alEditingIndex = null;
+
 // =============================================================================
 // DOM INITIALIZATION
 // =============================================================================
@@ -348,6 +1518,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initAuthorityClassesModule();
   initAuthorityCombinationsModule();
   initUsersPerAuthorityClassModule();
+  initNominalAccountModule();
+  initAccountLinkingModule();
   initGlobalNavigation();
   initUserBadge();
 
@@ -369,6 +1541,10 @@ document.addEventListener('DOMContentLoaded', () => {
     switchScreen('authority-combinations');
   } else if (initialHash === '#users-per-authority-class') {
     switchScreen('users-per-authority-class');
+  } else if (initialHash === '#nominal-account') {
+    switchScreen('nominal-account');
+  } else if (initialHash === '#account-linking') {
+    switchScreen('account-linking');
   } else {
     switchScreen('query-voucher-types');
   }
@@ -1911,6 +3087,10 @@ function initGlobalNavigation() {
         switchScreen('authority-combinations');
       } else if (href === '#users-per-authority-class') {
         switchScreen('users-per-authority-class');
+      } else if (href === '#nominal-account') {
+        switchScreen('nominal-account');
+      } else if (href === '#account-linking') {
+        switchScreen('account-linking');
       } else {
         const title = link.getAttribute('data-title') || link.textContent.trim();
         showToast(`Navigated to ${title} (Screen template ready).`, 'info');
@@ -1937,6 +3117,10 @@ function initGlobalNavigation() {
       switchScreen('authority-combinations');
     } else if (window.location.hash === '#users-per-authority-class') {
       switchScreen('users-per-authority-class');
+    } else if (window.location.hash === '#nominal-account') {
+      switchScreen('nominal-account');
+    } else if (window.location.hash === '#account-linking') {
+      switchScreen('account-linking');
     } else {
       switchScreen('query-voucher-types');
     }
@@ -1954,6 +3138,8 @@ function switchScreen(screenId) {
   const screenAc = document.getElementById('screenAuthorityClasses');
   const screenComb = document.getElementById('screenAuthorityCombinations');
   const screenUpac = document.getElementById('screenUsersPerAuthorityClass');
+  const screenNa = document.getElementById('screenNominalAccount');
+  const screenAl = document.getElementById('screenAccountLinking');
   const breadcrumbContent = document.getElementById('breadcrumbContent');
 
   document.querySelectorAll('.sub-nav-item a').forEach(l => {
@@ -1972,6 +3158,8 @@ function switchScreen(screenId) {
   if (screenAc) screenAc.style.display = 'none';
   if (screenComb) screenComb.style.display = 'none';
   if (screenUpac) screenUpac.style.display = 'none';
+  if (screenNa) screenNa.style.display = 'none';
+  if (screenAl) screenAl.style.display = 'none';
 
   if (screenId === 'users-per-user-group') {
     if (screenUpug) screenUpug.style.display = 'flex';
@@ -2151,6 +3339,42 @@ function switchScreen(screenId) {
 
     document.title = 'Finance Enterprise - Users per Authority Class';
     window.location.hash = '#users-per-authority-class';
+  } else if (screenId === 'nominal-account') {
+    if (screenNa) screenNa.style.display = 'flex';
+
+    const naLink = document.querySelector('a[href="#nominal-account"]');
+    if (naLink) {
+      naLink.classList.add('active-nav');
+      naLink.parentElement.classList.add('selected');
+    }
+
+    breadcrumbContent.innerHTML = `
+      <a href="#" class="breadcrumb-home"><i class="fa-solid fa-house"></i></a>
+      <a href="#" class="breadcrumb-item">Accounting Rules</a>
+      <span class="breadcrumb-separator">&gt;</span>
+      <span class="breadcrumb-current">Nominal Account / Cash Accounts</span>
+    `;
+
+    document.title = 'Finance Enterprise - Cash Accounts';
+    window.location.hash = '#nominal-account';
+  } else if (screenId === 'account-linking') {
+    if (screenAl) screenAl.style.display = 'flex';
+
+    const alLink = document.querySelector('a[href="#account-linking"]');
+    if (alLink) {
+      alLink.classList.add('active-nav');
+      alLink.parentElement.classList.add('selected');
+    }
+
+    breadcrumbContent.innerHTML = `
+      <a href="#" class="breadcrumb-home"><i class="fa-solid fa-house"></i></a>
+      <a href="#" class="breadcrumb-item">Accounting Rules</a>
+      <span class="breadcrumb-separator">&gt;</span>
+      <span class="breadcrumb-current">Account Linking</span>
+    `;
+
+    document.title = 'Finance Enterprise - Account Linking';
+    window.location.hash = '#account-linking';
   }
 }
 
@@ -5259,6 +6483,1446 @@ function initUsersPerAuthorityClassModule() {
 
   // Initial render
   populateDropdowns();
+  renderTable();
+}
+
+// =============================================================================
+// MODULE 10: NOMINAL ACCOUNT (MASTER SCREEN)
+// =============================================================================
+function initNominalAccountModule() {
+  const searchInput = document.getElementById('naSearchInput');
+  const currencyFilterSelect = document.getElementById('naCurrencyFilterSelect');
+  const defaultFlagFilterSelect = document.getElementById('naDefaultFlagFilterSelect');
+  const btnSearch = document.getElementById('btnNaSearch');
+  const btnReset = document.getElementById('btnNaReset');
+  const btnHeaderAdd = document.getElementById('btnHeaderAddNa');
+  const btnCollapse = document.getElementById('btnCollapseNaGrid');
+  const gridViewport = document.getElementById('naGridViewport');
+
+  const tableBody = document.getElementById('naTableBody');
+  const btnAddRow = document.getElementById('btnNaAddRow');
+  const btnEditRow = document.getElementById('btnNaEditRow');
+  const btnDeleteRow = document.getElementById('btnNaDeleteRow');
+  const btnDownload = document.getElementById('btnNaDownload');
+
+  // Pagination elements
+  const pageSizeSelect = document.getElementById('naPageSizeSelect');
+  const pageNumberInput = document.getElementById('naPageNumberInput');
+  const btnFirst = document.getElementById('btnNaFirstPage');
+  const btnPrev = document.getElementById('btnNaPrevPage');
+  const btnNext = document.getElementById('btnNaNextPage');
+  const btnLast = document.getElementById('btnNaLastPage');
+  const totalPagesText = document.getElementById('naTotalPagesText');
+  const recordStatusText = document.getElementById('naRecordStatusText');
+
+  // Add Modal Elements
+  const addModalOverlay = document.getElementById('addNaModalOverlay');
+  const addForm = document.getElementById('addNaForm');
+  const modalNaShortName = document.getElementById('modalNaShortName');
+  const modalNaInstitute = document.getElementById('modalNaInstitute');
+  const modalNaCurrency = document.getElementById('modalNaCurrency');
+  const modalNaAccNumber = document.getElementById('modalNaAccNumber');
+  const modalNaDesc = document.getElementById('modalNaDesc');
+  const modalNaBalanceMethod = document.getElementById('modalNaBalanceMethod');
+  const modalNaAssocAcc = document.getElementById('modalNaAssocAcc');
+  const modalNaVoucherType = document.getElementById('modalNaVoucherType');
+  const modalNaVoucherTypeDesc = document.getElementById('modalNaVoucherTypeDesc');
+  const modalNaInstituteCode = document.getElementById('modalNaInstituteCode');
+  const modalNaOfficeCode = document.getElementById('modalNaOfficeCode');
+  const modalNaType = document.getElementById('modalNaType');
+  const modalNaBalance = document.getElementById('modalNaBalance');
+  const modalNaDefaultFlag = document.getElementById('modalNaDefaultFlag');
+  const modalNaIntlFlag = document.getElementById('modalNaIntlFlag');
+  const modalNaStmtFlag = document.getElementById('modalNaStmtFlag');
+  const addModalAlert = document.getElementById('addNaModalAlert');
+  const addModalCloseBtn = document.getElementById('addNaModalCloseBtn');
+  const addModalCancelBtn = document.getElementById('addNaModalCancelBtn');
+
+  // Edit Modal Elements
+  const editModalOverlay = document.getElementById('editNaModalOverlay');
+  const editForm = document.getElementById('editNaForm');
+  const editModalNaShortName = document.getElementById('editModalNaShortName');
+  const editModalNaInstitute = document.getElementById('editModalNaInstitute');
+  const editModalNaCurrency = document.getElementById('editModalNaCurrency');
+  const editModalNaAccNumber = document.getElementById('editModalNaAccNumber');
+  const editModalNaDesc = document.getElementById('editModalNaDesc');
+  const editModalNaBalanceMethod = document.getElementById('editModalNaBalanceMethod');
+  const editModalNaAssocAcc = document.getElementById('editModalNaAssocAcc');
+  const editModalNaVoucherType = document.getElementById('editModalNaVoucherType');
+  const editModalNaVoucherTypeDesc = document.getElementById('editModalNaVoucherTypeDesc');
+  const editModalNaInstituteCode = document.getElementById('editModalNaInstituteCode');
+  const editModalNaOfficeCode = document.getElementById('editModalNaOfficeCode');
+  const editModalNaType = document.getElementById('editModalNaType');
+  const editModalNaBalance = document.getElementById('editModalNaBalance');
+  const editModalNaDefaultFlag = document.getElementById('editModalNaDefaultFlag');
+  const editModalNaIntlFlag = document.getElementById('editModalNaIntlFlag');
+  const editModalNaStmtFlag = document.getElementById('editModalNaStmtFlag');
+  const editModalAlert = document.getElementById('editNaModalAlert');
+  const editModalCloseBtn = document.getElementById('editNaModalCloseBtn');
+  const editModalCancelBtn = document.getElementById('editNaModalCancelBtn');
+
+  // View Modal Elements
+  const viewModalOverlay = document.getElementById('viewNaModalOverlay');
+  const viewModalCloseBtn = document.getElementById('viewNaModalCloseBtn');
+  const viewModalOkBtn = document.getElementById('viewNaModalOkBtn');
+  const viewModalNaShortName = document.getElementById('viewModalNaShortName');
+  const viewModalNaInstitute = document.getElementById('viewModalNaInstitute');
+  const viewModalNaCurrency = document.getElementById('viewModalNaCurrency');
+  const viewModalNaAccNumber = document.getElementById('viewModalNaAccNumber');
+  const viewModalNaDesc = document.getElementById('viewModalNaDesc');
+  const viewModalNaBalanceMethod = document.getElementById('viewModalNaBalanceMethod');
+  const viewModalNaAssocAcc = document.getElementById('viewModalNaAssocAcc');
+  const viewModalNaVoucherType = document.getElementById('viewModalNaVoucherType');
+  const viewModalNaVoucherTypeDesc = document.getElementById('viewModalNaVoucherTypeDesc');
+  const viewModalNaInstituteCode = document.getElementById('viewModalNaInstituteCode');
+  const viewModalNaOfficeCode = document.getElementById('viewModalNaOfficeCode');
+  const viewModalNaFlags = document.getElementById('viewModalNaFlags');
+
+  // Default selection to first row if not set
+  if (naSelectedRowIndex === null && nominalAccountsData.length > 0) {
+    naSelectedRowIndex = 0;
+  }
+
+  function getFilteredRecords() {
+    const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+    const currFilter = currencyFilterSelect ? currencyFilterSelect.value : '';
+    const defFilter = defaultFlagFilterSelect ? defaultFlagFilterSelect.value : '';
+
+    return nominalAccountsData.filter(item => {
+      const sName = (item.shortName || item.code || '').toLowerCase();
+      const pInst = (item.paymentInstitute || '').toLowerCase();
+      const aNum = (item.accountNumber || '').toLowerCase();
+      const desc = (item.description || item.name || '').toLowerCase();
+
+      const matchQuery = !query ||
+        sName.includes(query) ||
+        pInst.includes(query) ||
+        aNum.includes(query) ||
+        desc.includes(query);
+
+      const matchCurr = !currFilter || item.currency === currFilter;
+      const matchDefault = !defFilter || (defFilter === 'true' ? item.defaultFlag : !item.defaultFlag);
+
+      return matchQuery && matchCurr && matchDefault;
+    });
+  }
+
+  function renderTable() {
+    naCurrentDataset = getFilteredRecords();
+    const totalRecords = naCurrentDataset.length;
+    const totalPages = Math.ceil(totalRecords / naPageSize) || 1;
+
+    if (naCurrentPage > totalPages) naCurrentPage = totalPages;
+    if (naCurrentPage < 1) naCurrentPage = 1;
+
+    if (pageNumberInput) pageNumberInput.value = naCurrentPage;
+    if (totalPagesText) totalPagesText.textContent = totalPages;
+
+    const startIndex = (naCurrentPage - 1) * naPageSize;
+    const endIndex = Math.min(startIndex + naPageSize, totalRecords);
+    const pageRows = naCurrentDataset.slice(startIndex, endIndex);
+
+    tableBody.innerHTML = '';
+
+    if (pageRows.length === 0) {
+      const emptyTr = document.createElement('tr');
+      emptyTr.innerHTML = `
+        <td colspan="16" style="text-align: center; color: #7f99b1; padding: 28px 8px; font-size: 11.5px;">
+          <i class="fa-solid fa-circle-exclamation" style="margin-right: 6px;"></i>No Nominal Accounts found matching criteria.
+        </td>
+      `;
+      tableBody.appendChild(emptyTr);
+    } else {
+      pageRows.forEach((row, pageIdx) => {
+        const actualIndex = startIndex + pageIdx;
+        const isSelected = naSelectedRowIndex === actualIndex;
+        const tr = document.createElement('tr');
+        tr.className = (pageIdx % 2 === 0) ? 'row-even' : 'row-odd';
+        if (isSelected) {
+          tr.classList.add('selected');
+        }
+
+        const shortNameDisplay = escapeHtml(row.shortName || row.code || '');
+        const instDisplay = escapeHtml(row.paymentInstitute || '');
+        const currDisplay = escapeHtml(row.currency || 'GBP');
+        const accNumDisplay = escapeHtml(row.accountNumber || '');
+        const descDisplay = escapeHtml(row.description || row.name || '');
+        const assocAccDisplay = escapeHtml(row.associatedCashAccount || '');
+        const balMethodDisplay = escapeHtml(row.balanceMethod || 'Detailed');
+        const vTypeDisplay = escapeHtml(row.voucherType || '');
+        const vTypeDescDisplay = escapeHtml(row.voucherTypeDesc || '');
+        const instCodeDisplay = escapeHtml(row.instituteCode || '');
+        const offCodeDisplay = escapeHtml(row.officeCode || '');
+
+        tr.innerHTML = `
+          <td style="text-align: center; color: #486581; font-weight: 600;">${actualIndex + 1}</td>
+          <td><strong>${shortNameDisplay}</strong></td>
+          <td>${instDisplay}</td>
+          <td style="text-align: center;"><span style="font-weight: 600; color: #164f78;">${currDisplay}</span></td>
+          <td>${accNumDisplay}</td>
+          <td>${descDisplay}</td>
+          <td style="text-align: center;">
+            <input type="checkbox" style="cursor: pointer; accent-color: #2c7bb6;" ${row.defaultFlag ? 'checked' : ''} onclick="event.stopPropagation(); window.toggleNaDefaultFlag(${actualIndex})">
+          </td>
+          <td style="text-align: center;">
+            <input type="checkbox" style="cursor: pointer; accent-color: #2c7bb6;" ${row.intlCashAccount ? 'checked' : ''} onclick="event.stopPropagation(); window.toggleNaIntlFlag(${actualIndex})">
+          </td>
+          <td style="text-align: center;">
+            <input type="checkbox" style="cursor: pointer; accent-color: #2c7bb6;" ${row.statementNotEditable ? 'checked' : ''} onclick="event.stopPropagation(); window.toggleNaStmtFlag(${actualIndex})">
+          </td>
+          <td>${assocAccDisplay || '-'}</td>
+          <td style="text-align: center;"><span style="color: #17527f; font-weight: 500;">${balMethodDisplay}</span></td>
+          <td style="text-align: center;">${vTypeDisplay ? `<span style="font-weight: 600; color: #0d3859;">${vTypeDisplay}</span>` : '-'}</td>
+          <td>${vTypeDescDisplay || '-'}</td>
+          <td>${instCodeDisplay || '-'}</td>
+          <td>${offCodeDisplay || '-'}</td>
+          <td style="text-align: center; white-space: nowrap;">
+            <div style="display: flex; gap: 4px; justify-content: center;">
+              <button type="button" class="btn-grid-action btn-edit-user" title="Edit Account" onclick="event.stopPropagation(); window.handleEditNa(${actualIndex})">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button type="button" class="btn-grid-action btn-view-user" title="View Details" onclick="event.stopPropagation(); window.handleViewNa(${actualIndex})">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <button type="button" class="btn-grid-action btn-delete-user" title="Delete Account" onclick="event.stopPropagation(); window.handleDeleteNa(${actualIndex})">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        `;
+
+        // Row selection click
+        tr.addEventListener('click', () => {
+          naSelectedRowIndex = actualIndex;
+          renderTable();
+        });
+
+        // Double click to edit
+        tr.addEventListener('dblclick', () => {
+          window.handleEditNa(actualIndex);
+        });
+
+        tableBody.appendChild(tr);
+      });
+    }
+
+    if (recordStatusText) {
+      if (totalRecords === 0) {
+        recordStatusText.textContent = 'No records to view';
+      } else {
+        const selItem = naCurrentDataset[naSelectedRowIndex];
+        const selLabel = selItem ? ` | Selected: ${selItem.shortName || selItem.code}` : '';
+        recordStatusText.textContent = `Displaying ${startIndex + 1} - ${endIndex} of ${totalRecords} records${selLabel}`;
+      }
+    }
+  }
+
+  // Interactive inline checkbox toggles
+  window.toggleNaDefaultFlag = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+    item.defaultFlag = !item.defaultFlag;
+    showToast(`"${item.shortName}": Default Flag set to ${item.defaultFlag ? 'Checked' : 'Unchecked'}.`, 'info');
+  };
+
+  window.toggleNaIntlFlag = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+    item.intlCashAccount = !item.intlCashAccount;
+    showToast(`"${item.shortName}": International Cash Account set to ${item.intlCashAccount ? 'Checked' : 'Unchecked'}.`, 'info');
+  };
+
+  window.toggleNaStmtFlag = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+    item.statementNotEditable = !item.statementNotEditable;
+    showToast(`"${item.shortName}": Statement Not Editable set to ${item.statementNotEditable ? 'Checked' : 'Unchecked'}.`, 'info');
+  };
+
+  // Window callbacks for action buttons
+  window.handleViewNa = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+
+    if (viewModalNaShortName) viewModalNaShortName.textContent = item.shortName || item.code;
+    if (viewModalNaInstitute) viewModalNaInstitute.textContent = item.paymentInstitute || '-';
+    if (viewModalNaCurrency) viewModalNaCurrency.textContent = item.currency || 'GBP';
+    if (viewModalNaAccNumber) viewModalNaAccNumber.textContent = item.accountNumber || '-';
+    if (viewModalNaDesc) viewModalNaDesc.textContent = item.description || item.name || '-';
+    if (viewModalNaBalanceMethod) viewModalNaBalanceMethod.textContent = item.balanceMethod || 'Detailed';
+    if (viewModalNaAssocAcc) viewModalNaAssocAcc.textContent = item.associatedCashAccount || '-';
+    if (viewModalNaVoucherType) viewModalNaVoucherType.textContent = item.voucherType || '-';
+    if (viewModalNaVoucherTypeDesc) viewModalNaVoucherTypeDesc.textContent = item.voucherTypeDesc || '-';
+    if (viewModalNaInstituteCode) viewModalNaInstituteCode.textContent = item.instituteCode || '-';
+    if (viewModalNaOfficeCode) viewModalNaOfficeCode.textContent = item.officeCode || '-';
+
+    if (viewModalNaFlags) {
+      viewModalNaFlags.innerHTML = `
+        <span class="${item.defaultFlag ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.defaultFlag ? 'check' : 'ban'}"></i> Default: ${item.defaultFlag ? 'Yes' : 'No'}</span>
+        <span class="${item.intlCashAccount ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.intlCashAccount ? 'check' : 'ban'}"></i> International: ${item.intlCashAccount ? 'Yes' : 'No'}</span>
+        <span class="${item.statementNotEditable ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.statementNotEditable ? 'check' : 'ban'}"></i> Stmt Not Editable: ${item.statementNotEditable ? 'Yes' : 'No'}</span>
+      `;
+    }
+
+    if (viewModalOverlay) viewModalOverlay.classList.add('active');
+  };
+
+  window.handleEditNa = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+    naEditingIndex = index;
+
+    if (editModalNaShortName) editModalNaShortName.value = item.shortName || item.code;
+    if (editModalNaInstitute) editModalNaInstitute.value = item.paymentInstitute || '';
+    if (editModalNaCurrency) editModalNaCurrency.value = item.currency || 'GBP';
+    if (editModalNaAccNumber) editModalNaAccNumber.value = item.accountNumber || '';
+    if (editModalNaDesc) editModalNaDesc.value = item.description || item.name || '';
+    if (editModalNaBalanceMethod) editModalNaBalanceMethod.value = item.balanceMethod || 'Detailed';
+    if (editModalNaAssocAcc) editModalNaAssocAcc.value = item.associatedCashAccount || '';
+    if (editModalNaVoucherType) editModalNaVoucherType.value = item.voucherType || '';
+    if (editModalNaVoucherTypeDesc) editModalNaVoucherTypeDesc.value = item.voucherTypeDesc || '';
+    if (editModalNaInstituteCode) editModalNaInstituteCode.value = item.instituteCode || '';
+    if (editModalNaOfficeCode) editModalNaOfficeCode.value = item.officeCode || '';
+    if (editModalNaType) editModalNaType.value = item.type || 'Asset';
+    if (editModalNaBalance) editModalNaBalance.value = item.balance || 'Debit';
+    if (editModalNaDefaultFlag) editModalNaDefaultFlag.checked = !!item.defaultFlag;
+    if (editModalNaIntlFlag) editModalNaIntlFlag.checked = !!item.intlCashAccount;
+    if (editModalNaStmtFlag) editModalNaStmtFlag.checked = !!item.statementNotEditable;
+    if (editModalAlert) editModalAlert.innerHTML = '';
+
+    if (editModalOverlay) editModalOverlay.classList.add('active');
+    setTimeout(() => { if (editModalNaInstitute) editModalNaInstitute.focus(); }, 50);
+  };
+
+  window.handleDeleteNa = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+
+    // Check if account is linked in Account Linking
+    const itemKey = item.shortName || item.code;
+    const linkedMappings = accountLinkingData.filter(x => x.accountCode === itemKey || x.accountCode === item.code);
+    let confirmMsg = `Are you sure you want to delete Account "${itemKey} - ${item.description || item.name}"?`;
+    if (linkedMappings.length > 0) {
+      confirmMsg = `Account "${itemKey}" is currently linked to ${linkedMappings.length} ledger(s) in Account Linking.\n\nDeleting this master account will also remove all associated ledger mappings.\n\nDo you wish to proceed?`;
+    }
+
+    if (confirm(confirmMsg)) {
+      const globalIdx = nominalAccountsData.findIndex(x => (x.shortName || x.code) === itemKey);
+      if (globalIdx !== -1) {
+        nominalAccountsData.splice(globalIdx, 1);
+        // Cascade delete from accountLinkingData
+        accountLinkingData = accountLinkingData.filter(x => x.accountCode !== itemKey && x.accountCode !== item.code);
+        naSelectedRowIndex = null;
+        renderTable();
+
+        if (typeof window.refreshAccountLinkingDropdowns === 'function') {
+          window.refreshAccountLinkingDropdowns();
+        }
+        if (typeof window.renderAccountLinkingTable === 'function') {
+          window.renderAccountLinkingTable();
+        }
+
+        showToast(`Account "${itemKey}" deleted successfully.`, 'success');
+      }
+    }
+  };
+
+  // Search & Filter listeners
+  if (btnSearch) {
+    btnSearch.addEventListener('click', () => {
+      naCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      naCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (currencyFilterSelect) {
+    currencyFilterSelect.addEventListener('change', () => {
+      naCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (defaultFlagFilterSelect) {
+    defaultFlagFilterSelect.addEventListener('change', () => {
+      naCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      if (currencyFilterSelect) currencyFilterSelect.value = '';
+      if (defaultFlagFilterSelect) defaultFlagFilterSelect.value = '';
+      naCurrentPage = 1;
+      naSelectedRowIndex = 0;
+      renderTable();
+      showToast('Filters reset.', 'info');
+    });
+  }
+
+  if (btnCollapse) {
+    btnCollapse.addEventListener('click', () => {
+      const icon = btnCollapse.querySelector('i');
+      if (gridViewport.style.display === 'none') {
+        gridViewport.style.display = 'block';
+        icon.className = 'fa-solid fa-chevron-up';
+      } else {
+        gridViewport.style.display = 'none';
+        icon.className = 'fa-solid fa-chevron-down';
+      }
+    });
+  }
+
+  // Add Dialog Handlers
+  function openAddModal() {
+    if (addForm) addForm.reset();
+    if (modalNaCurrency) modalNaCurrency.value = 'GBP';
+    if (modalNaBalanceMethod) modalNaBalanceMethod.value = 'Detailed';
+    if (modalNaType) modalNaType.value = 'Asset';
+    if (modalNaBalance) modalNaBalance.value = 'Debit';
+    if (addModalAlert) addModalAlert.innerHTML = '';
+    if (addModalOverlay) addModalOverlay.classList.add('active');
+    setTimeout(() => { if (modalNaShortName) modalNaShortName.focus(); }, 50);
+  }
+
+  function closeAddModal() {
+    if (addModalOverlay) addModalOverlay.classList.remove('active');
+  }
+
+  if (btnHeaderAdd) btnHeaderAdd.addEventListener('click', openAddModal);
+  if (btnAddRow) btnAddRow.addEventListener('click', openAddModal);
+  if (addModalCloseBtn) addModalCloseBtn.addEventListener('click', closeAddModal);
+  if (addModalCancelBtn) addModalCancelBtn.addEventListener('click', closeAddModal);
+
+  if (addForm) {
+    addForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const shortName = (modalNaShortName ? modalNaShortName.value : '').trim().toUpperCase();
+      const paymentInstitute = (modalNaInstitute ? modalNaInstitute.value : '').trim().toUpperCase();
+      const currency = (modalNaCurrency ? modalNaCurrency.value : 'GBP').trim();
+      const accountNumber = (modalNaAccNumber ? modalNaAccNumber.value : '').trim();
+      const description = (modalNaDesc ? modalNaDesc.value : '').trim();
+      const balanceMethod = (modalNaBalanceMethod ? modalNaBalanceMethod.value : 'Detailed').trim();
+      const associatedCashAccount = (modalNaAssocAcc ? modalNaAssocAcc.value : '').trim();
+      const voucherType = (modalNaVoucherType ? modalNaVoucherType.value : '').trim().toUpperCase();
+      const voucherTypeDesc = (modalNaVoucherTypeDesc ? modalNaVoucherTypeDesc.value : '').trim();
+      const instituteCode = (modalNaInstituteCode ? modalNaInstituteCode.value : '').trim();
+      const officeCode = (modalNaOfficeCode ? modalNaOfficeCode.value : '').trim();
+      const type = (modalNaType ? modalNaType.value : 'Asset').trim();
+      const balance = (modalNaBalance ? modalNaBalance.value : 'Debit').trim();
+      const defaultFlag = modalNaDefaultFlag ? modalNaDefaultFlag.checked : false;
+      const intlCashAccount = modalNaIntlFlag ? modalNaIntlFlag.checked : false;
+      const statementNotEditable = modalNaStmtFlag ? modalNaStmtFlag.checked : false;
+
+      if (!shortName || !paymentInstitute || !accountNumber || !description) {
+        if (addModalAlert) {
+          addModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Please fill in all mandatory fields (Short Name, Payment Institute, Account Number, Description).
+            </div>
+          `;
+        }
+        return;
+      }
+
+      // Check for duplicate Short Name
+      const exists = nominalAccountsData.some(x => (x.shortName || x.code || '').toUpperCase() === shortName);
+      if (exists) {
+        if (addModalAlert) {
+          addModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Short Name "${escapeHtml(shortName)}" already exists. Duplicate Short Names are not allowed.
+            </div>
+          `;
+        }
+        return;
+      }
+
+      const newRecord = {
+        shortName,
+        paymentInstitute,
+        currency,
+        accountNumber,
+        description,
+        defaultFlag,
+        intlCashAccount,
+        statementNotEditable,
+        associatedCashAccount,
+        balanceMethod,
+        voucherType,
+        voucherTypeDesc,
+        instituteCode,
+        officeCode,
+        code: shortName,
+        name: description,
+        type,
+        group: 'Cash & Cash Equivalents',
+        balance,
+        status: 'Active'
+      };
+
+      nominalAccountsData.unshift(newRecord);
+      naSelectedRowIndex = 0;
+      closeAddModal();
+      renderTable();
+
+      if (typeof window.refreshAccountLinkingDropdowns === 'function') {
+        window.refreshAccountLinkingDropdowns();
+      }
+
+      showToast(`Account "${shortName}" created successfully.`, 'success');
+    });
+  }
+
+  // Edit Dialog Handlers
+  function closeEditModal() {
+    if (editModalOverlay) editModalOverlay.classList.remove('active');
+    naEditingIndex = null;
+  }
+
+  if (editModalCloseBtn) editModalCloseBtn.addEventListener('click', closeEditModal);
+  if (editModalCancelBtn) editModalCancelBtn.addEventListener('click', closeEditModal);
+
+  if (editForm) {
+    editForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (naEditingIndex === null) return;
+      const currentItem = naCurrentDataset[naEditingIndex];
+      if (!currentItem) return;
+
+      const paymentInstitute = (editModalNaInstitute ? editModalNaInstitute.value : '').trim().toUpperCase();
+      const currency = (editModalNaCurrency ? editModalNaCurrency.value : 'GBP').trim();
+      const accountNumber = (editModalNaAccNumber ? editModalNaAccNumber.value : '').trim();
+      const description = (editModalNaDesc ? editModalNaDesc.value : '').trim();
+      const balanceMethod = (editModalNaBalanceMethod ? editModalNaBalanceMethod.value : 'Detailed').trim();
+      const associatedCashAccount = (editModalNaAssocAcc ? editModalNaAssocAcc.value : '').trim();
+      const voucherType = (editModalNaVoucherType ? editModalNaVoucherType.value : '').trim().toUpperCase();
+      const voucherTypeDesc = (editModalNaVoucherTypeDesc ? editModalNaVoucherTypeDesc.value : '').trim();
+      const instituteCode = (editModalNaInstituteCode ? editModalNaInstituteCode.value : '').trim();
+      const officeCode = (editModalNaOfficeCode ? editModalNaOfficeCode.value : '').trim();
+      const type = (editModalNaType ? editModalNaType.value : 'Asset').trim();
+      const balance = (editModalNaBalance ? editModalNaBalance.value : 'Debit').trim();
+      const defaultFlag = editModalNaDefaultFlag ? editModalNaDefaultFlag.checked : false;
+      const intlCashAccount = editModalNaIntlFlag ? editModalNaIntlFlag.checked : false;
+      const statementNotEditable = editModalNaStmtFlag ? editModalNaStmtFlag.checked : false;
+
+      if (!paymentInstitute || !accountNumber || !description) {
+        if (editModalAlert) {
+          editModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Payment Institute, Account Number, and Description are required.
+            </div>
+          `;
+        }
+        return;
+      }
+
+      const globalIdx = nominalAccountsData.findIndex(x => (x.shortName || x.code) === (currentItem.shortName || currentItem.code));
+      if (globalIdx !== -1) {
+        nominalAccountsData[globalIdx].paymentInstitute = paymentInstitute;
+        nominalAccountsData[globalIdx].currency = currency;
+        nominalAccountsData[globalIdx].accountNumber = accountNumber;
+        nominalAccountsData[globalIdx].description = description;
+        nominalAccountsData[globalIdx].name = description;
+        nominalAccountsData[globalIdx].balanceMethod = balanceMethod;
+        nominalAccountsData[globalIdx].associatedCashAccount = associatedCashAccount;
+        nominalAccountsData[globalIdx].voucherType = voucherType;
+        nominalAccountsData[globalIdx].voucherTypeDesc = voucherTypeDesc;
+        nominalAccountsData[globalIdx].instituteCode = instituteCode;
+        nominalAccountsData[globalIdx].officeCode = officeCode;
+        nominalAccountsData[globalIdx].type = type;
+        nominalAccountsData[globalIdx].balance = balance;
+        nominalAccountsData[globalIdx].defaultFlag = defaultFlag;
+        nominalAccountsData[globalIdx].intlCashAccount = intlCashAccount;
+        nominalAccountsData[globalIdx].statementNotEditable = statementNotEditable;
+      }
+
+      closeEditModal();
+      renderTable();
+
+      if (typeof window.refreshAccountLinkingDropdowns === 'function') {
+        window.refreshAccountLinkingDropdowns();
+      }
+      if (typeof window.renderAccountLinkingTable === 'function') {
+        window.renderAccountLinkingTable();
+      }
+
+      showToast(`Account "${currentItem.shortName || currentItem.code}" updated successfully.`, 'success');
+    });
+  }
+
+  // Edit selected button in footer
+  if (btnEditRow) {
+    btnEditRow.addEventListener('click', () => {
+      if (naSelectedRowIndex === null || !naCurrentDataset[naSelectedRowIndex]) {
+        showToast('Please select an Account to edit.', 'warning');
+        return;
+      }
+      window.handleEditNa(naSelectedRowIndex);
+    });
+  }
+
+  // Delete selected button in footer & toolbar
+  function deleteSelectedAccount() {
+    if (naSelectedRowIndex === null || !naCurrentDataset[naSelectedRowIndex]) {
+      showToast('Please select an Account to delete.', 'warning');
+      return;
+    }
+    window.handleDeleteNa(naSelectedRowIndex);
+  }
+
+  if (btnDeleteRow) btnDeleteRow.addEventListener('click', deleteSelectedAccount);
+
+  // Download CSV Handler
+  function exportToCsv() {
+    if (nominalAccountsData.length === 0) {
+      showToast('No records available to download.', 'warning');
+      return;
+    }
+    const headers = [
+      'Short Name',
+      'Payment Institute',
+      'Currency',
+      'Account Number',
+      'Description',
+      'Default Flag',
+      'International Cash Account',
+      'Statement Not Editable',
+      'Associated Cash Account',
+      'Balance Method',
+      'Voucher Type',
+      'Voucher Type Description',
+      'Institute Code',
+      'Office Code'
+    ];
+
+    const rows = nominalAccountsData.map(r => [
+      `"${(r.shortName || r.code || '').replace(/"/g, '""')}"`,
+      `"${(r.paymentInstitute || '').replace(/"/g, '""')}"`,
+      `"${r.currency || 'GBP'}"`,
+      `"${(r.accountNumber || '').replace(/"/g, '""')}"`,
+      `"${(r.description || r.name || '').replace(/"/g, '""')}"`,
+      `"${r.defaultFlag ? 'TRUE' : 'FALSE'}"`,
+      `"${r.intlCashAccount ? 'TRUE' : 'FALSE'}"`,
+      `"${r.statementNotEditable ? 'TRUE' : 'FALSE'}"`,
+      `"${(r.associatedCashAccount || '').replace(/"/g, '""')}"`,
+      `"${(r.balanceMethod || 'Detailed').replace(/"/g, '""')}"`,
+      `"${(r.voucherType || '').replace(/"/g, '""')}"`,
+      `"${(r.voucherTypeDesc || '').replace(/"/g, '""')}"`,
+      `"${(r.instituteCode || '').replace(/"/g, '""')}"`,
+      `"${(r.officeCode || '').replace(/"/g, '""')}"`
+    ]);
+
+    const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'Nominal_Accounts_Export.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('Nominal Accounts exported successfully.', 'success');
+  }
+
+  if (btnDownload) btnDownload.addEventListener('click', exportToCsv);
+
+  // View modal close handlers
+  if (viewModalCloseBtn) viewModalCloseBtn.addEventListener('click', () => viewModalOverlay?.classList.remove('active'));
+  if (viewModalOkBtn) viewModalOkBtn.addEventListener('click', () => viewModalOverlay?.classList.remove('active'));
+
+  // Pagination Handlers
+  if (pageSizeSelect) {
+    pageSizeSelect.addEventListener('change', () => {
+      naPageSize = parseInt(pageSizeSelect.value, 10);
+      naCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (btnFirst) btnFirst.addEventListener('click', () => { naCurrentPage = 1; renderTable(); });
+  if (btnPrev) btnPrev.addEventListener('click', () => { if (naCurrentPage > 1) { naCurrentPage--; renderTable(); } });
+  if (btnNext) btnNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(naCurrentDataset.length / naPageSize) || 1;
+    if (naCurrentPage < totalPages) { naCurrentPage++; renderTable(); }
+  });
+  if (btnLast) btnLast.addEventListener('click', () => {
+    naCurrentPage = Math.ceil(naCurrentDataset.length / naPageSize) || 1;
+    renderTable();
+  });
+
+  if (pageNumberInput) {
+    pageNumberInput.addEventListener('change', () => {
+      const p = parseInt(pageNumberInput.value, 10);
+      const totalPages = Math.ceil(naCurrentDataset.length / naPageSize) || 1;
+      if (!isNaN(p) && p >= 1 && p <= totalPages) {
+        naCurrentPage = p;
+      }
+      renderTable();
+    });
+  }
+
+  // Initial render
+  renderTable();
+}
+
+// =============================================================================
+// MODULE 11: ACCOUNT LINKING (MAPPING SCREEN)
+// =============================================================================
+function initAccountLinkingModule() {
+  // Master Header & Tabs
+  const postingTypeSelect = document.getElementById('alPostingTypeSelect');
+  const codePartNameInput = document.getElementById('alCodePartNameInput');
+  const controlTypeInput = document.getElementById('alControlTypeInput');
+  const defaultValueNoDetailsInput = document.getElementById('alDefaultValueNoDetailsInput');
+  const defaultValueNoCtInput = document.getElementById('alDefaultValueNoCtInput');
+  const validFromMasterInput = document.getElementById('alValidFromMasterInput');
+  const gridTitleText = document.getElementById('alGridTitleText');
+
+  // Posting Control Tabs
+  const tabAlDetails = document.getElementById('tabAlDetails');
+  const tabAlPostingControl = document.getElementById('tabAlPostingControl');
+  const tabAlSpec = document.getElementById('tabAlSpec');
+  const tabAlComb = document.getElementById('tabAlComb');
+
+  // Search & Filter Elements
+  const searchInput = document.getElementById('alSearchInput');
+  const accountFilterSelect = document.getElementById('alAccountFilterSelect');
+  const btnSearch = document.getElementById('btnAlSearch');
+  const btnReset = document.getElementById('btnAlReset');
+
+  // Grid Structure Elements
+  const btnHeaderAdd = document.getElementById('btnHeaderAddAl');
+  const btnCollapse = document.getElementById('btnCollapseAlGrid');
+  const gridViewport = document.getElementById('alGridViewport');
+  const tableBody = document.getElementById('alTableBody');
+  const btnAddRow = document.getElementById('btnAlAddRow');
+  const btnEditRow = document.getElementById('btnAlEditRow');
+  const btnDeleteRow = document.getElementById('btnAlDeleteRow');
+  const btnDownload = document.getElementById('btnAlDownload');
+
+  // Pagination Elements
+  const pageSizeSelect = document.getElementById('alPageSizeSelect');
+  const pageNumberInput = document.getElementById('alPageNumberInput');
+  const btnFirst = document.getElementById('btnAlFirstPage');
+  const btnPrev = document.getElementById('btnAlPrevPage');
+  const btnNext = document.getElementById('btnAlNextPage');
+  const btnLast = document.getElementById('btnAlLastPage');
+  const totalPagesText = document.getElementById('alTotalPagesText');
+  const recordStatusText = document.getElementById('alRecordStatusText');
+
+  // Add Modal Elements
+  const addModalOverlay = document.getElementById('addAlModalOverlay');
+  const addForm = document.getElementById('addAlForm');
+  const modalAlPostingType = document.getElementById('modalAlPostingType');
+  const modalAlValidFrom = document.getElementById('modalAlValidFrom');
+  const modalAlCustomerGroup = document.getElementById('modalAlCustomerGroup');
+  const modalAlControlTypeDesc = document.getElementById('modalAlControlTypeDesc');
+  const modalAlAccountSelect = document.getElementById('modalAlAccountSelect');
+  const modalAlCodePartDesc = document.getElementById('modalAlCodePartDesc');
+  const modalAlAccountPreview = document.getElementById('modalAlAccountPreview');
+  const previewNaCode = document.getElementById('previewNaCode');
+  const previewNaType = document.getElementById('previewNaType');
+  const previewNaName = document.getElementById('previewNaName');
+  const previewNaBalance = document.getElementById('previewNaBalance');
+  const modalAlSpecControlTyp = document.getElementById('modalAlSpecControlTyp');
+  const modalAlSpecControlTypDesc = document.getElementById('modalAlSpecControlTypDesc');
+  const modalAlSpecNoDetails = document.getElementById('modalAlSpecNoDetails');
+  const modalAlSpecNoCtValue = document.getElementById('modalAlSpecNoCtValue');
+  const modalAlStatus = document.getElementById('modalAlStatus');
+  const addModalAlert = document.getElementById('addAlModalAlert');
+  const addModalCloseBtn = document.getElementById('addAlModalCloseBtn');
+  const addModalCancelBtn = document.getElementById('addAlModalCancelBtn');
+
+  // Edit Modal Elements
+  const editModalOverlay = document.getElementById('editAlModalOverlay');
+  const editForm = document.getElementById('editAlForm');
+  const editModalAlPostingType = document.getElementById('editModalAlPostingType');
+  const editModalAlValidFrom = document.getElementById('editModalAlValidFrom');
+  const editModalAlCustomerGroup = document.getElementById('editModalAlCustomerGroup');
+  const editModalAlControlTypeDesc = document.getElementById('editModalAlControlTypeDesc');
+  const editModalAlAccountSelect = document.getElementById('editModalAlAccountSelect');
+  const editModalAlCodePartDesc = document.getElementById('editModalAlCodePartDesc');
+  const editModalAlAccountPreview = document.getElementById('editModalAlAccountPreview');
+  const editPreviewNaCode = document.getElementById('editPreviewNaCode');
+  const editPreviewNaType = document.getElementById('editPreviewNaType');
+  const editPreviewNaName = document.getElementById('editPreviewNaName');
+  const editPreviewNaBalance = document.getElementById('editPreviewNaBalance');
+  const editModalAlSpecControlTyp = document.getElementById('editModalAlSpecControlTyp');
+  const editModalAlSpecControlTypDesc = document.getElementById('editModalAlSpecControlTypDesc');
+  const editModalAlSpecNoDetails = document.getElementById('editModalAlSpecNoDetails');
+  const editModalAlSpecNoCtValue = document.getElementById('editModalAlSpecNoCtValue');
+  const editModalAlStatus = document.getElementById('editModalAlStatus');
+  const editModalAlert = document.getElementById('editAlModalAlert');
+  const editModalCloseBtn = document.getElementById('editAlModalCloseBtn');
+  const editModalCancelBtn = document.getElementById('editAlModalCancelBtn');
+
+  // View Modal Elements
+  const viewModalOverlay = document.getElementById('viewAlModalOverlay');
+  const viewModalCloseBtn = document.getElementById('viewAlModalCloseBtn');
+  const viewModalOkBtn = document.getElementById('viewAlModalOkBtn');
+  const viewModalAlPostingType = document.getElementById('viewModalAlPostingType');
+  const viewModalAlValidFrom = document.getElementById('viewModalAlValidFrom');
+  const viewModalAlCustomerGroup = document.getElementById('viewModalAlCustomerGroup');
+  const viewModalAlControlTypeDesc = document.getElementById('viewModalAlControlTypeDesc');
+  const viewModalAlAccount = document.getElementById('viewModalAlAccount');
+  const viewModalAlCodePartDesc = document.getElementById('viewModalAlCodePartDesc');
+  const viewModalAlSpecControlTyp = document.getElementById('viewModalAlSpecControlTyp');
+  const viewModalAlSpecControlTypDesc = document.getElementById('viewModalAlSpecControlTypDesc');
+  const viewModalAlSpecNoDetails = document.getElementById('viewModalAlSpecNoDetails');
+  const viewModalAlSpecNoCtValue = document.getElementById('viewModalAlSpecNoCtValue');
+  const viewModalAlStatus = document.getElementById('viewModalAlStatus');
+
+  // State variables
+  let alCurrentPage = 1;
+  let alPageSize = 1000;
+  let alCurrentDataset = [];
+  let alSelectedRowIndex = null;
+  let alEditingIndex = null;
+
+  // Master definitions mapping for Posting Types
+  const postingTypeDefinitions = {
+    'IP2': { codePart: 'Account', controlType: 'IC2', defNoDetails: '1100', defNoCt: '', validFrom: '01/07/2017', label: 'IP2 - Customer Claims, Invoice' },
+    'IP1': { codePart: 'Account', controlType: 'IC1', defNoDetails: '2000', defNoCt: '', validFrom: '01/01/2014', label: 'IP1 - Supplier Debts, Invoice' },
+    'IP3': { codePart: 'Account', controlType: 'IC3', defNoDetails: '1100', defNoCt: '', validFrom: '01/01/2014', label: 'IP3 - Tax Received, Invoice' },
+    'IP4': { codePart: 'Account', controlType: 'IC4', defNoDetails: '2000', defNoCt: '', validFrom: '01/01/2014', label: 'IP4 - Tax Disbursed, Invoice' },
+    'IP5': { codePart: 'Account', controlType: 'IC5', defNoDetails: '5100', defNoCt: '', validFrom: '01/01/2015', label: 'IP5 - Preliminary Cost' },
+    'IP17': { codePart: 'Account', controlType: 'IC17', defNoDetails: '1100', defNoCt: '', validFrom: '01/01/2016', label: 'IP17 - Customer Claims, Advance Inv' },
+    'ALL': { codePart: 'Account', controlType: 'ALL', defNoDetails: '-', defNoCt: '', validFrom: 'All Active Dates', label: 'All Posting Types' }
+  };
+
+  // Sync Master Header Fields
+  function syncMasterHeader() {
+    const selectedPt = postingTypeSelect ? postingTypeSelect.value : 'IP2';
+    const def = postingTypeDefinitions[selectedPt] || postingTypeDefinitions['IP2'];
+
+    if (codePartNameInput) codePartNameInput.value = def.codePart;
+    if (controlTypeInput) controlTypeInput.value = def.controlType;
+    if (defaultValueNoDetailsInput) defaultValueNoDetailsInput.value = def.defNoDetails;
+    if (defaultValueNoCtInput) defaultValueNoCtInput.value = def.defNoCt;
+    if (validFromMasterInput) validFromMasterInput.value = def.validFrom;
+    if (gridTitleText) {
+      gridTitleText.textContent = selectedPt === 'ALL'
+        ? `Account Linking to Ledger - [Posting Control Details: All Types]`
+        : `Account Linking to Ledger - [Posting Control Details: ${selectedPt}]`;
+    }
+  }
+
+  if (postingTypeSelect) {
+    postingTypeSelect.addEventListener('change', () => {
+      syncMasterHeader();
+      alCurrentPage = 1;
+      alSelectedRowIndex = null;
+      renderTable();
+    });
+  }
+
+  // Tabs Handler
+  const allTabs = [tabAlDetails, tabAlPostingControl, tabAlSpec, tabAlComb];
+  allTabs.forEach(tab => {
+    if (!tab) return;
+    tab.addEventListener('click', () => {
+      allTabs.forEach(t => {
+        if (!t) return;
+        t.style.background = '#eef5fb';
+        t.style.color = '#1e4566';
+        t.style.border = '1px solid #b8d2e8';
+        t.classList.remove('active');
+      });
+      tab.style.background = '#2b7faa';
+      tab.style.color = '#ffffff';
+      tab.style.border = '1px solid #165383';
+      tab.classList.add('active');
+      showToast(`Switched view to ${tab.textContent.trim()}.`, 'info');
+    });
+  });
+
+  // Populate dynamic dropdowns from nominalAccountsData
+  function populateDynamicDropdowns() {
+    const currentAccountFilterVal = accountFilterSelect ? accountFilterSelect.value : '';
+
+    if (accountFilterSelect) {
+      accountFilterSelect.innerHTML = '<option value="">All Accounts</option>';
+      nominalAccountsData.forEach(acc => {
+        const opt = document.createElement('option');
+        opt.value = acc.code;
+        opt.textContent = `${acc.code} - ${acc.name}`;
+        accountFilterSelect.appendChild(opt);
+      });
+      accountFilterSelect.value = currentAccountFilterVal;
+    }
+
+    if (modalAlAccountSelect) {
+      const currentAddVal = modalAlAccountSelect.value;
+      modalAlAccountSelect.innerHTML = '<option value="">-- Select Nominal Account --</option>';
+      nominalAccountsData.forEach(acc => {
+        const opt = document.createElement('option');
+        opt.value = acc.code;
+        opt.textContent = `${acc.code} - ${acc.name} (${acc.type})`;
+        modalAlAccountSelect.appendChild(opt);
+      });
+      modalAlAccountSelect.value = currentAddVal;
+    }
+
+    if (editModalAlAccountSelect) {
+      const currentEditVal = editModalAlAccountSelect.value;
+      editModalAlAccountSelect.innerHTML = '<option value="">-- Select Nominal Account --</option>';
+      nominalAccountsData.forEach(acc => {
+        const opt = document.createElement('option');
+        opt.value = acc.code;
+        opt.textContent = `${acc.code} - ${acc.name} (${acc.type})`;
+        editModalAlAccountSelect.appendChild(opt);
+      });
+      editModalAlAccountSelect.value = currentEditVal;
+    }
+  }
+
+  window.refreshAccountLinkingDropdowns = populateDynamicDropdowns;
+
+  // Dynamic preview helpers
+  function updateAddAccountPreview(accountCode) {
+    const acc = nominalAccountsData.find(x => x.code === accountCode);
+    if (!acc || !modalAlAccountPreview) {
+      if (modalAlAccountPreview) modalAlAccountPreview.style.display = 'none';
+      return;
+    }
+    if (previewNaCode) previewNaCode.innerHTML = `<span class="account-code-badge">${escapeHtml(acc.code)}</span>`;
+    if (previewNaType) {
+      const typeClass = `badge-type-${(acc.type || 'asset').toLowerCase()}`;
+      previewNaType.innerHTML = `<span class="badge-account-type ${typeClass}">${escapeHtml(acc.type)}</span>`;
+    }
+    if (previewNaName) previewNaName.textContent = acc.name;
+    if (previewNaBalance) {
+      const balClass = `badge-bal-${(acc.balance || 'debit').toLowerCase()}`;
+      previewNaBalance.innerHTML = `<span class="${balClass}">${escapeHtml(acc.balance)}</span>`;
+    }
+    modalAlAccountPreview.style.display = 'block';
+    modalAlAccountPreview.classList.add('active-selection');
+
+    if (modalAlCodePartDesc && !modalAlCodePartDesc.value) {
+      modalAlCodePartDesc.value = acc.name;
+    }
+  }
+
+  function updateEditAccountPreview(accountCode) {
+    const acc = nominalAccountsData.find(x => x.code === accountCode);
+    if (!acc || !editModalAlAccountPreview) {
+      if (editModalAlAccountPreview) editModalAlAccountPreview.style.display = 'none';
+      return;
+    }
+    if (editPreviewNaCode) editPreviewNaCode.innerHTML = `<span class="account-code-badge">${escapeHtml(acc.code)}</span>`;
+    if (editPreviewNaType) {
+      const typeClass = `badge-type-${(acc.type || 'asset').toLowerCase()}`;
+      editPreviewNaType.innerHTML = `<span class="badge-account-type ${typeClass}">${escapeHtml(acc.type)}</span>`;
+    }
+    if (editPreviewNaName) editPreviewNaName.textContent = acc.name;
+    if (editPreviewNaBalance) {
+      const balClass = `badge-bal-${(acc.balance || 'debit').toLowerCase()}`;
+      editPreviewNaBalance.innerHTML = `<span class="${balClass}">${escapeHtml(acc.balance)}</span>`;
+    }
+    editModalAlAccountPreview.style.display = 'block';
+    editModalAlAccountPreview.classList.add('active-selection');
+  }
+
+  if (modalAlAccountSelect) {
+    modalAlAccountSelect.addEventListener('change', () => updateAddAccountPreview(modalAlAccountSelect.value));
+  }
+  if (editModalAlAccountSelect) {
+    editModalAlAccountSelect.addEventListener('change', () => updateEditAccountPreview(editModalAlAccountSelect.value));
+  }
+
+  // Filter logic
+  function getFilteredRecords() {
+    const pt = postingTypeSelect ? postingTypeSelect.value : 'IP2';
+    const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+    const accFilter = accountFilterSelect ? accountFilterSelect.value : '';
+
+    return accountLinkingData.filter(item => {
+      const matchPt = pt === 'ALL' || item.postingType === pt;
+      const matchAcc = !accFilter || item.accountCode === accFilter;
+      const matchQuery = !query ||
+        (item.customerGroup && item.customerGroup.toLowerCase().includes(query)) ||
+        (item.controlTypeDesc && item.controlTypeDesc.toLowerCase().includes(query)) ||
+        (item.accountCode && item.accountCode.toLowerCase().includes(query)) ||
+        (item.codePartDesc && item.codePartDesc.toLowerCase().includes(query));
+
+      return matchPt && matchAcc && matchQuery;
+    });
+  }
+
+  // Table rendering with all 11 columns
+  function renderTable() {
+    alCurrentDataset = getFilteredRecords();
+    const totalRecords = alCurrentDataset.length;
+    const totalPages = Math.ceil(totalRecords / alPageSize) || 1;
+
+    if (alCurrentPage > totalPages) alCurrentPage = totalPages;
+    if (alCurrentPage < 1) alCurrentPage = 1;
+
+    if (pageNumberInput) pageNumberInput.value = alCurrentPage;
+    if (totalPagesText) totalPagesText.textContent = totalPages;
+
+    const startIndex = (alCurrentPage - 1) * alPageSize;
+    const endIndex = Math.min(startIndex + alPageSize, totalRecords);
+    const pageRows = alCurrentDataset.slice(startIndex, endIndex);
+
+    tableBody.innerHTML = '';
+
+    if (pageRows.length === 0) {
+      const emptyTr = document.createElement('tr');
+      emptyTr.innerHTML = `
+        <td colspan="11" style="text-align: center; color: #7f99b1; padding: 26px 8px;">
+          <i class="fa-solid fa-circle-exclamation" style="margin-right: 6px;"></i>No Posting Control / Account Linking rules found matching criteria.
+        </td>
+      `;
+      tableBody.appendChild(emptyTr);
+    } else {
+      pageRows.forEach((row, pageIdx) => {
+        const actualIndex = startIndex + pageIdx;
+        const srNo = actualIndex + 1;
+        const isSelected = alSelectedRowIndex === actualIndex;
+        const tr = document.createElement('tr');
+        tr.className = pageIdx % 2 === 0 ? 'row-even' : 'row-odd';
+        if (isSelected) tr.classList.add('selected');
+
+        tr.innerHTML = `
+          <td style="text-align: center; font-weight: 600; color: #4b6a84;">${srNo}</td>
+          <td style="font-weight: 700; color: #0000ee;">${escapeHtml(row.customerGroup)}</td>
+          <td style="color: #1e4566;">${escapeHtml(row.controlTypeDesc || '')}</td>
+          <td>
+            <span class="account-code-badge" style="font-weight: 700;">${escapeHtml(row.accountCode)}</span>
+          </td>
+          <td style="color: #1e4566; font-weight: 500;">${escapeHtml(row.codePartDesc || '')}</td>
+          <td style="color: #5c7b96;">${escapeHtml(row.specControlTyp || '-')}</td>
+          <td style="color: #5c7b96;">${escapeHtml(row.specControlTypDesc || '-')}</td>
+          <td style="color: #5c7b96;">${escapeHtml(row.specNoDetails || '-')}</td>
+          <td style="color: #5c7b96;">${escapeHtml(row.specNoCtValue || '-')}</td>
+          <td style="text-align: center; font-family: Consolas, monospace; color: #284c6b;">${escapeHtml(row.validFrom || '')}</td>
+          <td class="table-action-cell" style="text-align: center;">
+            <button type="button" class="btn-grid-action btn-edit-user" title="Edit Rule" onclick="event.stopPropagation(); window.handleEditAl(${actualIndex})">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button type="button" class="btn-grid-action btn-view-user" title="View Details" onclick="event.stopPropagation(); window.handleViewAl(${actualIndex})">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+            <button type="button" class="btn-grid-action btn-delete-user" title="Delete Rule" onclick="event.stopPropagation(); window.handleDeleteAl(${actualIndex})">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+
+        tr.addEventListener('click', () => {
+          document.querySelectorAll('#alTableBody tr').forEach(r => r.classList.remove('selected'));
+          tr.classList.add('selected');
+          alSelectedRowIndex = actualIndex;
+        });
+
+        tableBody.appendChild(tr);
+      });
+    }
+
+    // Pad empty rows up to 10
+    if (pageRows.length > 0 && pageRows.length < 10) {
+      for (let i = pageRows.length; i < 10; i++) {
+        const padTr = document.createElement('tr');
+        padTr.className = i % 2 === 0 ? 'row-even' : 'row-odd';
+        padTr.innerHTML = `
+          <td class="empty-cell">&nbsp;</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        `;
+        tableBody.appendChild(padTr);
+      }
+    }
+
+    if (recordStatusText) {
+      if (totalRecords === 0) {
+        recordStatusText.textContent = 'No records to view';
+      } else {
+        recordStatusText.textContent = `Displaying ${startIndex + 1} - ${endIndex} of ${totalRecords} records`;
+      }
+    }
+  }
+
+  window.renderAccountLinkingTable = renderTable;
+
+  // Window callbacks
+  window.handleViewAl = function(index) {
+    const item = alCurrentDataset[index];
+    if (!item) return;
+
+    if (viewModalAlPostingType) viewModalAlPostingType.textContent = item.postingType;
+    if (viewModalAlValidFrom) viewModalAlValidFrom.textContent = item.validFrom || '-';
+    if (viewModalAlCustomerGroup) viewModalAlCustomerGroup.textContent = item.customerGroup;
+    if (viewModalAlControlTypeDesc) viewModalAlControlTypeDesc.textContent = item.controlTypeDesc || '-';
+    if (viewModalAlAccount) {
+      viewModalAlAccount.innerHTML = `<span class="account-code-badge">${escapeHtml(item.accountCode)}</span>`;
+    }
+    if (viewModalAlCodePartDesc) viewModalAlCodePartDesc.textContent = item.codePartDesc || '-';
+    if (viewModalAlSpecControlTyp) viewModalAlSpecControlTyp.textContent = item.specControlTyp || '-';
+    if (viewModalAlSpecControlTypDesc) viewModalAlSpecControlTypDesc.textContent = item.specControlTypDesc || '-';
+    if (viewModalAlSpecNoDetails) viewModalAlSpecNoDetails.textContent = item.specNoDetails || '-';
+    if (viewModalAlSpecNoCtValue) viewModalAlSpecNoCtValue.textContent = item.specNoCtValue || '-';
+    if (viewModalAlStatus) {
+      viewModalAlStatus.innerHTML = item.status === 'Active'
+        ? `<span class="badge-default-yes"><i class="fa-solid fa-check"></i> Active</span>`
+        : `<span class="badge-default-no"><i class="fa-solid fa-ban"></i> Inactive</span>`;
+    }
+
+    if (viewModalOverlay) viewModalOverlay.classList.add('active');
+  };
+
+  window.handleEditAl = function(index) {
+    const item = alCurrentDataset[index];
+    if (!item) return;
+    alEditingIndex = index;
+
+    populateDynamicDropdowns();
+
+    if (editModalAlPostingType) editModalAlPostingType.value = item.postingType || 'IP2';
+    if (editModalAlValidFrom) editModalAlValidFrom.value = item.validFrom || '01/07/2017';
+    if (editModalAlCustomerGroup) editModalAlCustomerGroup.value = item.customerGroup || '';
+    if (editModalAlControlTypeDesc) editModalAlControlTypeDesc.value = item.controlTypeDesc || '';
+    if (editModalAlAccountSelect) editModalAlAccountSelect.value = item.accountCode || '';
+    if (editModalAlCodePartDesc) editModalAlCodePartDesc.value = item.codePartDesc || '';
+    if (editModalAlSpecControlTyp) editModalAlSpecControlTyp.value = item.specControlTyp || '';
+    if (editModalAlSpecControlTypDesc) editModalAlSpecControlTypDesc.value = item.specControlTypDesc || '';
+    if (editModalAlSpecNoDetails) editModalAlSpecNoDetails.value = item.specNoDetails || '';
+    if (editModalAlSpecNoCtValue) editModalAlSpecNoCtValue.value = item.specNoCtValue || '';
+    if (editModalAlStatus) editModalAlStatus.value = item.status || 'Active';
+    if (editModalAlert) editModalAlert.innerHTML = '';
+
+    updateEditAccountPreview(item.accountCode);
+
+    if (editModalOverlay) editModalOverlay.classList.add('active');
+  };
+
+  window.handleDeleteAl = function(index) {
+    const item = alCurrentDataset[index];
+    if (!item) return;
+
+    if (confirm(`Are you sure you want to delete Posting Control rule for Customer Group "${item.customerGroup}" (Account: ${item.accountCode})?`)) {
+      const globalIdx = accountLinkingData.findIndex(x => x.id === item.id || (x.customerGroup === item.customerGroup && x.postingType === item.postingType));
+      if (globalIdx !== -1) {
+        accountLinkingData.splice(globalIdx, 1);
+        alSelectedRowIndex = null;
+        renderTable();
+        showToast(`Rule for "${item.customerGroup}" removed successfully.`, 'success');
+      }
+    }
+  };
+
+  // Search & Reset listeners
+  if (btnSearch) {
+    btnSearch.addEventListener('click', () => {
+      alCurrentPage = 1;
+      alSelectedRowIndex = null;
+      renderTable();
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      alCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (accountFilterSelect) {
+    accountFilterSelect.addEventListener('change', () => {
+      alCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      if (accountFilterSelect) accountFilterSelect.value = '';
+      if (postingTypeSelect) postingTypeSelect.value = 'IP2';
+      syncMasterHeader();
+      alCurrentPage = 1;
+      alSelectedRowIndex = null;
+      renderTable();
+      showToast('Account Linking search & filters reset.', 'info');
+    });
+  }
+
+  // Collapse grid
+  if (btnCollapse && gridViewport) {
+    btnCollapse.addEventListener('click', () => {
+      const isHidden = gridViewport.style.display === 'none';
+      gridViewport.style.display = isHidden ? 'block' : 'none';
+      const icon = btnCollapse.querySelector('i');
+      if (icon) {
+        icon.className = isHidden ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+      }
+    });
+  }
+
+  // Add Dialog Handlers
+  function openAddModal() {
+    populateDynamicDropdowns();
+    if (addForm) addForm.reset();
+    const currentPt = postingTypeSelect ? postingTypeSelect.value : 'IP2';
+    if (modalAlPostingType) modalAlPostingType.value = currentPt === 'ALL' ? 'IP2' : currentPt;
+    if (modalAlValidFrom) modalAlValidFrom.value = (validFromMasterInput ? validFromMasterInput.value : '01/07/2017');
+    if (modalAlAccountPreview) modalAlAccountPreview.style.display = 'none';
+    if (modalAlStatus) modalAlStatus.value = 'Active';
+    if (addModalAlert) addModalAlert.innerHTML = '';
+    if (addModalOverlay) addModalOverlay.classList.add('active');
+    setTimeout(() => { if (modalAlCustomerGroup) modalAlCustomerGroup.focus(); }, 50);
+  }
+
+  function closeAddModal() {
+    if (addModalOverlay) addModalOverlay.classList.remove('active');
+  }
+
+  if (btnHeaderAdd) btnHeaderAdd.addEventListener('click', openAddModal);
+  if (btnAddRow) btnAddRow.addEventListener('click', openAddModal);
+  if (addModalCloseBtn) addModalCloseBtn.addEventListener('click', closeAddModal);
+  if (addModalCancelBtn) addModalCancelBtn.addEventListener('click', closeAddModal);
+
+  if (addForm) {
+    addForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const postingType = (modalAlPostingType ? modalAlPostingType.value : 'IP2').trim();
+      const validFrom = (modalAlValidFrom ? modalAlValidFrom.value : '01/07/2017').trim();
+      const customerGroup = (modalAlCustomerGroup ? modalAlCustomerGroup.value : '').trim().toUpperCase();
+      const controlTypeDesc = (modalAlControlTypeDesc ? modalAlControlTypeDesc.value : '').trim();
+      const accountCode = (modalAlAccountSelect ? modalAlAccountSelect.value : '').trim();
+      const codePartDesc = (modalAlCodePartDesc ? modalAlCodePartDesc.value : '').trim();
+      const specControlTyp = (modalAlSpecControlTyp ? modalAlSpecControlTyp.value : '').trim();
+      const specControlTypDesc = (modalAlSpecControlTypDesc ? modalAlSpecControlTypDesc.value : '').trim();
+      const specNoDetails = (modalAlSpecNoDetails ? modalAlSpecNoDetails.value : '').trim();
+      const specNoCtValue = (modalAlSpecNoCtValue ? modalAlSpecNoCtValue.value : '').trim();
+      const status = (modalAlStatus ? modalAlStatus.value : 'Active').trim();
+
+      if (!customerGroup || !controlTypeDesc || !accountCode) {
+        if (addModalAlert) {
+          addModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Customer Group, Control Type Description, and Account are mandatory.
+            </div>
+          `;
+        }
+        return;
+      }
+
+      // Duplicate prevention rule: Customer Group within same Posting Type must be unique
+      const isDuplicate = accountLinkingData.some(x => x.postingType === postingType && x.customerGroup.toUpperCase() === customerGroup);
+      if (isDuplicate) {
+        if (addModalAlert) {
+          addModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Rule for Customer Group "${escapeHtml(customerGroup)}" under Posting Type "${escapeHtml(postingType)}" already exists.
+            </div>
+          `;
+        }
+        return;
+      }
+
+      const newId = 'AL' + String(Date.now()).slice(-5);
+      accountLinkingData.push({
+        id: newId,
+        postingType,
+        codePartName: 'Account',
+        controlType: (postingTypeDefinitions[postingType] || {}).controlType || 'IC2',
+        customerGroup,
+        controlTypeDesc,
+        accountCode,
+        codePartDesc,
+        specControlTyp,
+        specControlTypDesc,
+        specNoDetails,
+        specNoCtValue,
+        validFrom,
+        status
+      });
+
+      closeAddModal();
+      renderTable();
+      showToast(`Rule for "${customerGroup}" linked to Account "${accountCode}" successfully.`, 'success');
+    });
+  }
+
+  // Edit Dialog Handlers
+  function closeEditModal() {
+    if (editModalOverlay) editModalOverlay.classList.remove('active');
+    alEditingIndex = null;
+  }
+
+  if (editModalCloseBtn) editModalCloseBtn.addEventListener('click', closeEditModal);
+  if (editModalCancelBtn) editModalCancelBtn.addEventListener('click', closeEditModal);
+
+  if (btnEditRow) {
+    btnEditRow.addEventListener('click', () => {
+      if (alSelectedRowIndex === null || !alCurrentDataset[alSelectedRowIndex]) {
+        showToast('Please select a Posting Control rule to edit.', 'warning');
+        return;
+      }
+      window.handleEditAl(alSelectedRowIndex);
+    });
+  }
+
+  if (editForm) {
+    editForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (alEditingIndex === null) return;
+      const currentItem = alCurrentDataset[alEditingIndex];
+      if (!currentItem) return;
+
+      const postingType = (editModalAlPostingType ? editModalAlPostingType.value : 'IP2').trim();
+      const validFrom = (editModalAlValidFrom ? editModalAlValidFrom.value : '01/07/2017').trim();
+      const customerGroup = (editModalAlCustomerGroup ? editModalAlCustomerGroup.value : '').trim().toUpperCase();
+      const controlTypeDesc = (editModalAlControlTypeDesc ? editModalAlControlTypeDesc.value : '').trim();
+      const accountCode = (editModalAlAccountSelect ? editModalAlAccountSelect.value : '').trim();
+      const codePartDesc = (editModalAlCodePartDesc ? editModalAlCodePartDesc.value : '').trim();
+      const specControlTyp = (editModalAlSpecControlTyp ? editModalAlSpecControlTyp.value : '').trim();
+      const specControlTypDesc = (editModalAlSpecControlTypDesc ? editModalAlSpecControlTypDesc.value : '').trim();
+      const specNoDetails = (editModalAlSpecNoDetails ? editModalAlSpecNoDetails.value : '').trim();
+      const specNoCtValue = (editModalAlSpecNoCtValue ? editModalAlSpecNoCtValue.value : '').trim();
+      const status = (editModalAlStatus ? editModalAlStatus.value : 'Active').trim();
+
+      if (!customerGroup || !controlTypeDesc || !accountCode) {
+        if (editModalAlert) {
+          editModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Customer Group, Control Type Description, and Account are mandatory.
+            </div>
+          `;
+        }
+        return;
+      }
+
+      const globalIdx = accountLinkingData.findIndex(x => x.id === currentItem.id || (x.customerGroup === currentItem.customerGroup && x.postingType === currentItem.postingType));
+
+      const isDuplicate = accountLinkingData.some((x, idx) => idx !== globalIdx && x.postingType === postingType && x.customerGroup.toUpperCase() === customerGroup);
+      if (isDuplicate) {
+        if (editModalAlert) {
+          editModalAlert.innerHTML = `
+            <div class="form-alert-box alert-error" style="margin-bottom: 10px; padding: 6px 10px; background: #fdf2f2; border: 1px solid #f0a3a3; border-radius: 3px; font-size: 11px; color: #a92020;">
+              <i class="fa-solid fa-circle-exclamation"></i> Rule for Customer Group "${escapeHtml(customerGroup)}" under Posting Type "${escapeHtml(postingType)}" already exists.
+            </div>
+          `;
+        }
+        return;
+      }
+
+      if (globalIdx !== -1) {
+        accountLinkingData[globalIdx].postingType = postingType;
+        accountLinkingData[globalIdx].validFrom = validFrom;
+        accountLinkingData[globalIdx].customerGroup = customerGroup;
+        accountLinkingData[globalIdx].controlTypeDesc = controlTypeDesc;
+        accountLinkingData[globalIdx].accountCode = accountCode;
+        accountLinkingData[globalIdx].codePartDesc = codePartDesc;
+        accountLinkingData[globalIdx].specControlTyp = specControlTyp;
+        accountLinkingData[globalIdx].specControlTypDesc = specControlTypDesc;
+        accountLinkingData[globalIdx].specNoDetails = specNoDetails;
+        accountLinkingData[globalIdx].specNoCtValue = specNoCtValue;
+        accountLinkingData[globalIdx].status = status;
+      }
+
+      closeEditModal();
+      renderTable();
+      showToast('Posting Control rule updated successfully.', 'success');
+    });
+  }
+
+  // Delete selected button in footer
+  if (btnDeleteRow) {
+    btnDeleteRow.addEventListener('click', () => {
+      if (alSelectedRowIndex === null || !alCurrentDataset[alSelectedRowIndex]) {
+        showToast('Please select a Posting Control rule to delete.', 'warning');
+        return;
+      }
+      window.handleDeleteAl(alSelectedRowIndex);
+    });
+  }
+
+  // Download CSV
+  if (btnDownload) {
+    btnDownload.addEventListener('click', () => {
+      if (alCurrentDataset.length === 0) {
+        showToast('No Posting Control records to download.', 'warning');
+        return;
+      }
+      const headers = ['Sr. No.', 'Posting Type', 'Customer Group', 'Control Type Description', 'Account', 'Code Part Description', 'Specification Control Type', 'Specification Control Type Desc', 'Specification No Details', 'Specification No CT Value', 'Valid From', 'Status'];
+      const rows = alCurrentDataset.map((r, idx) => {
+        return [
+          idx + 1,
+          `"${r.postingType}"`,
+          `"${(r.customerGroup || '').replace(/"/g, '""')}"`,
+          `"${(r.controlTypeDesc || '').replace(/"/g, '""')}"`,
+          `"${r.accountCode}"`,
+          `"${(r.codePartDesc || '').replace(/"/g, '""')}"`,
+          `"${(r.specControlTyp || '').replace(/"/g, '""')}"`,
+          `"${(r.specControlTypDesc || '').replace(/"/g, '""')}"`,
+          `"${(r.specNoDetails || '').replace(/"/g, '""')}"`,
+          `"${(r.specNoCtValue || '').replace(/"/g, '""')}"`,
+          `"${r.validFrom || ''}"`,
+          `"${r.status || ''}"`
+        ];
+      });
+
+      const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'Posting_Control_Details_Export.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Posting Control details exported successfully.', 'success');
+    });
+  }
+
+  // View modal close handlers
+  if (viewModalCloseBtn) viewModalCloseBtn.addEventListener('click', () => viewModalOverlay?.classList.remove('active'));
+  if (viewModalOkBtn) viewModalOkBtn.addEventListener('click', () => viewModalOverlay?.classList.remove('active'));
+
+  // Pagination Handlers
+  if (pageSizeSelect) {
+    pageSizeSelect.addEventListener('change', () => {
+      alPageSize = parseInt(pageSizeSelect.value, 10);
+      alCurrentPage = 1;
+      renderTable();
+    });
+  }
+
+  if (btnFirst) btnFirst.addEventListener('click', () => { alCurrentPage = 1; renderTable(); });
+  if (btnPrev) btnPrev.addEventListener('click', () => { if (alCurrentPage > 1) { alCurrentPage--; renderTable(); } });
+  if (btnNext) btnNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(alCurrentDataset.length / alPageSize) || 1;
+    if (alCurrentPage < totalPages) { alCurrentPage++; renderTable(); }
+  });
+  if (btnLast) btnLast.addEventListener('click', () => {
+    alCurrentPage = Math.ceil(alCurrentDataset.length / alPageSize) || 1;
+    renderTable();
+  });
+
+  if (pageNumberInput) {
+    pageNumberInput.addEventListener('change', () => {
+      const p = parseInt(pageNumberInput.value, 10);
+      const totalPages = Math.ceil(alCurrentDataset.length / alPageSize) || 1;
+      if (!isNaN(p) && p >= 1 && p <= totalPages) {
+        alCurrentPage = p;
+      }
+      renderTable();
+    });
+  }
+
+  // Initial render & sync
+  syncMasterHeader();
+  populateDynamicDropdowns();
   renderTable();
 }
 
