@@ -20,7 +20,8 @@ const userMaster = [
   { id: 'AUD004', name: 'David Miller' },
   { id: 'OPS005', name: 'Karen Patel' },
   { id: 'MGR006', name: 'Arthur Pendelton' },
-  { id: 'SYS007', name: 'James Wilson' }
+  { id: 'SYS007', name: 'James Wilson' },
+  { id: 'HIMPAT', name: 'Himanshu Patel' }
 ];
 
 // Accounting Periods Master (Pre-existing ERP Accounting Periods master)
@@ -82,6 +83,7 @@ let usersPerUserGroupData = [
 
 // Company Setup under Master Data Setup
 const companyMaster = [
+  { code: 'LAXMI01', name: 'Laxmico Enterprise Ltd' },
   { code: 'COMP01', name: 'Global Holdings Ltd' },
   { code: 'COMP02', name: 'Enterprise Finance Corp' },
   { code: 'COMP03', name: 'Pacific Trading Co' },
@@ -1520,6 +1522,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initUsersPerAuthorityClassModule();
   initNominalAccountModule();
   initAccountLinkingModule();
+  initAutomaticTaxProposalModule();
+  initVoucherEntryModule();
   initGlobalNavigation();
   initUserBadge();
 
@@ -1545,6 +1549,10 @@ document.addEventListener('DOMContentLoaded', () => {
     switchScreen('nominal-account');
   } else if (initialHash === '#account-linking') {
     switchScreen('account-linking');
+  } else if (initialHash === '#automatic-tax-proposal') {
+    switchScreen('automatic-tax-proposal');
+  } else if (initialHash === '#voucher-entry') {
+    switchScreen('voucher-entry');
   } else {
     switchScreen('query-voucher-types');
   }
@@ -3091,6 +3099,10 @@ function initGlobalNavigation() {
         switchScreen('nominal-account');
       } else if (href === '#account-linking') {
         switchScreen('account-linking');
+      } else if (href === '#automatic-tax-proposal') {
+        switchScreen('automatic-tax-proposal');
+      } else if (href === '#voucher-entry') {
+        switchScreen('voucher-entry');
       } else {
         const title = link.getAttribute('data-title') || link.textContent.trim();
         showToast(`Navigated to ${title} (Screen template ready).`, 'info');
@@ -3121,6 +3133,10 @@ function initGlobalNavigation() {
       switchScreen('nominal-account');
     } else if (window.location.hash === '#account-linking') {
       switchScreen('account-linking');
+    } else if (window.location.hash === '#automatic-tax-proposal') {
+      switchScreen('automatic-tax-proposal');
+    } else if (window.location.hash === '#voucher-entry') {
+      switchScreen('voucher-entry');
     } else {
       switchScreen('query-voucher-types');
     }
@@ -3140,6 +3156,8 @@ function switchScreen(screenId) {
   const screenUpac = document.getElementById('screenUsersPerAuthorityClass');
   const screenNa = document.getElementById('screenNominalAccount');
   const screenAl = document.getElementById('screenAccountLinking');
+  const screenAtp = document.getElementById('screenAutomaticTaxProposal');
+  const screenVe = document.getElementById('screenVoucherEntry');
   const breadcrumbContent = document.getElementById('breadcrumbContent');
 
   document.querySelectorAll('.sub-nav-item a').forEach(l => {
@@ -3160,6 +3178,8 @@ function switchScreen(screenId) {
   if (screenUpac) screenUpac.style.display = 'none';
   if (screenNa) screenNa.style.display = 'none';
   if (screenAl) screenAl.style.display = 'none';
+  if (screenAtp) screenAtp.style.display = 'none';
+  if (screenVe) screenVe.style.display = 'none';
 
   if (screenId === 'users-per-user-group') {
     if (screenUpug) screenUpug.style.display = 'flex';
@@ -3375,6 +3395,70 @@ function switchScreen(screenId) {
 
     document.title = 'Finance Enterprise - Account Linking';
     window.location.hash = '#account-linking';
+  } else if (screenId === 'automatic-tax-proposal') {
+    if (screenAtp) screenAtp.style.display = 'flex';
+
+    const atpLink = document.querySelector('a[href="#automatic-tax-proposal"]');
+    if (atpLink) {
+      atpLink.classList.remove('active-nav');
+      atpLink.classList.add('active-nav');
+      atpLink.parentElement.classList.add('selected');
+    }
+
+    const acctNode = document.getElementById('accountingRulesNode');
+    if (acctNode && !acctNode.classList.contains('expanded')) {
+      acctNode.classList.add('expanded');
+    }
+
+    // Set Welcome User ID to HIMPAT as shown in screenshot
+    const userIdDisplay = document.querySelector('.user-id');
+    if (userIdDisplay) userIdDisplay.textContent = 'HIMPAT';
+
+    breadcrumbContent.innerHTML = `
+      <a href="#" class="breadcrumb-home"><i class="fa-solid fa-house"></i></a>
+      <a href="#" class="breadcrumb-item">Accounting Rules</a>
+      <span class="breadcrumb-separator">&gt;</span>
+      <span class="breadcrumb-current">Automatic Tax Proposal</span>
+    `;
+
+    document.title = 'Finance Enterprise - Automatic Tax Proposal';
+    window.location.hash = '#automatic-tax-proposal';
+
+    if (typeof renderAtpTable === 'function') {
+      renderAtpTable();
+    }
+  } else if (screenId === 'voucher-entry') {
+    if (screenVe) screenVe.style.display = 'flex';
+
+    const veLink = document.querySelector('a[href="#voucher-entry"]');
+    if (veLink) {
+      veLink.classList.remove('active-nav');
+      veLink.classList.add('active-nav');
+      veLink.parentElement.classList.add('selected');
+    }
+
+    const glNode = document.getElementById('generalLedgerNode');
+    if (glNode && !glNode.classList.contains('expanded')) {
+      glNode.classList.add('expanded');
+    }
+
+    // Set Welcome User ID to HIMPAT as shown in screenshot
+    const userIdDisplay = document.querySelector('.user-id');
+    if (userIdDisplay) userIdDisplay.textContent = 'HIMPAT';
+
+    breadcrumbContent.innerHTML = `
+      <a href="#" class="breadcrumb-home"><i class="fa-solid fa-house"></i></a>
+      <span class="breadcrumb-item" style="color: #1e4566; font-size: 11px;">Finance Enterprise</span>
+      <span class="breadcrumb-separator">&gt;</span>
+      <span class="breadcrumb-current" style="color: #1e4566; font-size: 11px; font-weight: 700;">Voucher Entry</span>
+    `;
+
+    document.title = 'Finance Enterprise - Voucher Entry';
+    window.location.hash = '#voucher-entry';
+
+    if (typeof renderVeTable === 'function') {
+      renderVeTable();
+    }
   }
 }
 
@@ -7966,3 +8050,1683 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+// =============================================================================
+// MODULE: AUTOMATIC TAX PROPOSAL (ACCOUNTING RULES)
+// =============================================================================
+let taxProposalsData = [
+  {
+    proposalId: 549,
+    description: 'Laxmico Purchases Sep 2026',
+    creationDate: '15/10/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'PURCH',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'VAT18', description: 'Input VAT Standard Rate 18%', baseAmount: 145200.00, taxAmount: 26136.00, deductible: 26136.00, nonDeductible: 0.00 },
+      { taxCode: 'VAT05', description: 'Input VAT Reduced Rate 5%', baseAmount: 32500.00, taxAmount: 1625.00, deductible: 1625.00, nonDeductible: 0.00 },
+      { taxCode: 'WHT02', description: 'Withholding Tax Contracts 2%', baseAmount: 25000.00, taxAmount: 500.00, deductible: 0.00, nonDeductible: 500.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026001284',
+      yearPeriod: '2026 / 09',
+      date: '15/10/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2640', desc: 'Input Tax Domestic Purchases', debit: 27761.00, credit: 0.00 },
+        { account: '2650', desc: 'Tax Clearing Account', debit: 0.00, credit: 27761.00 }
+      ]
+    },
+    invoices: [
+      { series: 'PINV', no: '20260901', supplier: 'Bharat Industrial Supplies', date: '02/09/2026', curr: 'INR', net: 45000.00, tax: 8100.00, gross: 53100.00, status: 'Authorized' },
+      { series: 'PINV', no: '20260902', supplier: 'Laxmi Raw Material Corp', date: '08/09/2026', curr: 'INR', net: 100200.00, tax: 18036.00, gross: 118236.00, status: 'Authorized' },
+      { series: 'PINV', no: '20260903', supplier: 'Adani Energy Grid Ltd', date: '15/09/2026', curr: 'INR', net: 32500.00, tax: 1625.00, gross: 34125.00, status: 'Paid' },
+      { series: 'PINV', no: '20260904', supplier: 'Reliable Maintenance Ltd', date: '22/09/2026', curr: 'INR', net: 25000.00, tax: 500.00, gross: 25500.00, status: 'Authorized' }
+    ]
+  },
+  {
+    proposalId: 548,
+    description: 'Laxmico Sales - Sep 2026',
+    creationDate: '12/10/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'SALES',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'SVAT18', description: 'Output VAT Standard Rate 18%', baseAmount: 280000.00, taxAmount: 50400.00, deductible: 0.00, nonDeductible: 50400.00 },
+      { taxCode: 'SVAT05', description: 'Output VAT Reduced Rate 5%', baseAmount: 65000.00, taxAmount: 3250.00, deductible: 0.00, nonDeductible: 3250.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026001283',
+      yearPeriod: '2026 / 09',
+      date: '12/10/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2650', desc: 'Tax Clearing Account', debit: 53650.00, credit: 0.00 },
+        { account: '2610', desc: 'Output Tax Domestic Sales', debit: 0.00, credit: 53650.00 }
+      ]
+    },
+    invoices: [
+      { series: 'SINV', no: '20260950', supplier: 'Metro Logistics Retail', date: '05/09/2026', curr: 'INR', net: 180000.00, tax: 32400.00, gross: 212400.00, status: 'Authorized' },
+      { series: 'SINV', no: '20260951', supplier: 'Omkar Exports Pvt Ltd', date: '18/09/2026', curr: 'INR', net: 100000.00, tax: 18000.00, gross: 118000.00, status: 'Authorized' },
+      { series: 'SINV', no: '20260952', supplier: 'Shree Balaji Traders', date: '25/09/2026', curr: 'INR', net: 65000.00, tax: 3250.00, gross: 68250.00, status: 'Authorized' }
+    ]
+  },
+  {
+    proposalId: 547,
+    description: 'Laxmico Purchases Aug 2026',
+    creationDate: '11/09/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'PURCH',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'VAT18', description: 'Input VAT Standard Rate 18%', baseAmount: 132000.00, taxAmount: 23760.00, deductible: 23760.00, nonDeductible: 0.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026001150',
+      yearPeriod: '2026 / 08',
+      date: '11/09/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2640', desc: 'Input Tax Domestic Purchases', debit: 23760.00, credit: 0.00 },
+        { account: '2650', desc: 'Tax Clearing Account', debit: 0.00, credit: 23760.00 }
+      ]
+    },
+    invoices: [
+      { series: 'PINV', no: '20260810', supplier: 'Tata Steel Processing Ltd', date: '10/08/2026', curr: 'INR', net: 132000.00, tax: 23760.00, gross: 155760.00, status: 'Paid' }
+    ]
+  },
+  {
+    proposalId: 546,
+    description: 'Laxmico Sales - Aug 2026',
+    creationDate: '10/09/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'SALES',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'SVAT18', description: 'Output VAT Standard Rate 18%', baseAmount: 240000.00, taxAmount: 43200.00, deductible: 0.00, nonDeductible: 43200.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026001149',
+      yearPeriod: '2026 / 08',
+      date: '10/09/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2650', desc: 'Tax Clearing Account', debit: 43200.00, credit: 0.00 },
+        { account: '2610', desc: 'Output Tax Domestic Sales', debit: 0.00, credit: 43200.00 }
+      ]
+    },
+    invoices: [
+      { series: 'SINV', no: '20260830', supplier: 'Western Horizon Dist', date: '12/08/2026', curr: 'INR', net: 240000.00, tax: 43200.00, gross: 283200.00, status: 'Paid' }
+    ]
+  },
+  {
+    proposalId: 545,
+    description: 'Laxmico Purchases Jul 2026',
+    creationDate: '17/08/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'PURCH',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'VAT18', description: 'Input VAT Standard Rate 18%', baseAmount: 110000.00, taxAmount: 19800.00, deductible: 19800.00, nonDeductible: 0.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026000980',
+      yearPeriod: '2026 / 07',
+      date: '17/08/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2640', desc: 'Input Tax Domestic Purchases', debit: 19800.00, credit: 0.00 },
+        { account: '2650', desc: 'Tax Clearing Account', debit: 0.00, credit: 19800.00 }
+      ]
+    },
+    invoices: [
+      { series: 'PINV', no: '20260715', supplier: 'National Components Ltd', date: '14/07/2026', curr: 'INR', net: 110000.00, tax: 19800.00, gross: 129800.00, status: 'Paid' }
+    ]
+  },
+  {
+    proposalId: 544,
+    description: 'Laxmico Sales - Jul 2026',
+    creationDate: '11/08/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'SALES',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'SVAT18', description: 'Output VAT Standard Rate 18%', baseAmount: 215000.00, taxAmount: 38700.00, deductible: 0.00, nonDeductible: 38700.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026000979',
+      yearPeriod: '2026 / 07',
+      date: '11/08/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2650', desc: 'Tax Clearing Account', debit: 38700.00, credit: 0.00 },
+        { account: '2610', desc: 'Output Tax Domestic Sales', debit: 0.00, credit: 38700.00 }
+      ]
+    },
+    invoices: [
+      { series: 'SINV', no: '20260740', supplier: 'Sun Enterprises Ltd', date: '19/07/2026', curr: 'INR', net: 215000.00, tax: 38700.00, gross: 253700.00, status: 'Paid' }
+    ]
+  },
+  {
+    proposalId: 543,
+    description: 'Laxmico Purchases Jun 2026',
+    creationDate: '16/07/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'PURCH',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'VAT18', description: 'Input VAT Standard Rate 18%', baseAmount: 95000.00, taxAmount: 17100.00, deductible: 17100.00, nonDeductible: 0.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026000755',
+      yearPeriod: '2026 / 06',
+      date: '16/07/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2640', desc: 'Input Tax Domestic Purchases', debit: 17100.00, credit: 0.00 },
+        { account: '2650', desc: 'Tax Clearing Account', debit: 0.00, credit: 17100.00 }
+      ]
+    },
+    invoices: [
+      { series: 'PINV', no: '20260618', supplier: 'Universal Packaging Solution', date: '12/06/2026', curr: 'INR', net: 95000.00, tax: 17100.00, gross: 112100.00, status: 'Paid' }
+    ]
+  },
+  {
+    proposalId: 542,
+    description: 'Laxmico Sales - Jun 2026',
+    creationDate: '13/07/2026',
+    userId: 'HIMPAT',
+    acknowledgeDate: '',
+    taxReportDate: '',
+    proposalState: 'Created',
+    reportNo: 'SALES',
+    taxOfficeId: '846 G7498',
+    startPageNo: '',
+    prePayments: '',
+    error: '',
+    company: 'LAXMI01',
+    taxAmounts: [
+      { taxCode: 'SVAT18', description: 'Output VAT Standard Rate 18%', baseAmount: 198000.00, taxAmount: 35640.00, deductible: 0.00, nonDeductible: 35640.00 }
+    ],
+    voucherInfo: {
+      voucherType: 'TX',
+      voucherNo: 'TX2026000754',
+      yearPeriod: '2026 / 06',
+      date: '13/07/2026',
+      userGroup: 'TAX_ADMIN',
+      status: 'Updated',
+      rows: [
+        { account: '2650', desc: 'Tax Clearing Account', debit: 35640.00, credit: 0.00 },
+        { account: '2610', desc: 'Output Tax Domestic Sales', debit: 0.00, credit: 35640.00 }
+      ]
+    },
+    invoices: [
+      { series: 'SINV', no: '20260635', supplier: 'Apex Commercial Hub', date: '21/06/2026', curr: 'INR', net: 198000.00, tax: 35640.00, gross: 233640.00, status: 'Paid' }
+    ]
+  }
+];
+
+let atpSelectedCompany = 'LAXMI01';
+let atpCurrentDataset = [];
+let atpSelectedRowIndex = 0; // Select first row by default (549)
+let atpCurrentPage = 1;
+let atpPageSize = 1000;
+
+function renderAtpTable() {
+  const tableBody = document.getElementById('atpTableBody');
+  const recordStatusText = document.getElementById('atpRecordStatusText');
+  const pageNumberInput = document.getElementById('atpPageNumberInput');
+  const totalPagesText = document.getElementById('atpTotalPagesText');
+  const btnFirst = document.getElementById('btnAtpFirstPage');
+  const btnPrev = document.getElementById('btnAtpPrevPage');
+  const btnNext = document.getElementById('btnAtpNextPage');
+  const btnLast = document.getElementById('btnAtpLastPage');
+
+  if (!tableBody) return;
+  tableBody.innerHTML = '';
+
+  atpCurrentDataset = taxProposalsData.filter(p => !atpSelectedCompany || p.company === atpSelectedCompany);
+  const totalRecords = atpCurrentDataset.length;
+
+  if (totalRecords === 0) {
+    for (let i = 0; i < 8; i++) {
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'row-even' : 'row-odd';
+      tr.innerHTML = `
+        <td class="empty-cell" style="text-align: center; color: #7f99b0;">${i + 1}</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      `;
+      tableBody.appendChild(tr);
+    }
+    if (recordStatusText) recordStatusText.textContent = 'View 0 - 0 of 0';
+    if (pageNumberInput) pageNumberInput.value = '1';
+    if (totalPagesText) totalPagesText.textContent = '1';
+    return;
+  }
+
+  const totalPages = Math.ceil(totalRecords / atpPageSize) || 1;
+  if (totalPagesText) totalPagesText.textContent = totalPages;
+  if (pageNumberInput) pageNumberInput.value = atpCurrentPage;
+
+  const startIndex = (atpCurrentPage - 1) * atpPageSize;
+  const endIndex = Math.min(startIndex + atpPageSize, totalRecords);
+  const pageRows = atpCurrentDataset.slice(startIndex, endIndex);
+
+  pageRows.forEach((item, index) => {
+    const actualIndex = startIndex + index;
+    const srNo = actualIndex + 1;
+    const tr = document.createElement('tr');
+    tr.className = index % 2 === 0 ? 'row-even' : 'row-odd';
+    if (atpSelectedRowIndex === actualIndex) {
+      tr.classList.add('selected');
+    }
+
+    tr.innerHTML = `
+      <td style="text-align: center; font-weight: 600; color: #4b6a84; width: 38px;">${srNo}</td>
+      <td style="text-align: center; font-weight: 700; color: #164f78;">${escapeHtml(item.proposalId)}</td>
+      <td style="text-align: left; font-weight: 500;" title="${escapeHtml(item.description)}">${escapeHtml(item.description)}</td>
+      <td style="text-align: center; color: #204564;">${escapeHtml(item.creationDate)}</td>
+      <td style="text-align: center; font-weight: 700; color: #164f78;">${escapeHtml(item.userId)}</td>
+      <td style="text-align: center; color: #526c82;">${escapeHtml(item.acknowledgeDate || '')}</td>
+      <td style="text-align: center; color: #526c82;">${escapeHtml(item.taxReportDate || '')}</td>
+      <td style="text-align: center;">
+        <span style="background: ${item.proposalState === 'Acknowledged' ? '#d4edda' : '#e6f0fa'}; color: ${item.proposalState === 'Acknowledged' ? '#155724' : '#1b5a8c'}; padding: 2px 8px; border-radius: 3px; font-weight: 600; font-size: 10.5px; border: 1px solid ${item.proposalState === 'Acknowledged' ? '#c3e6cb' : '#c3d8ea'};">
+          ${escapeHtml(item.proposalState)}
+        </span>
+      </td>
+      <td style="text-align: center; font-weight: 700; color: #1b5a8c;">${escapeHtml(item.reportNo)}</td>
+      <td style="text-align: center; font-weight: 600;">${escapeHtml(item.taxOfficeId)}</td>
+      <td style="text-align: center;">${escapeHtml(item.startPageNo || '')}</td>
+      <td style="text-align: center;">${escapeHtml(item.prePayments || '')}</td>
+      <td style="text-align: center;">${escapeHtml(item.error || '')}</td>
+    `;
+
+    tr.addEventListener('click', () => {
+      document.querySelectorAll('#atpTableBody tr').forEach(r => r.classList.remove('selected'));
+      tr.classList.add('selected');
+      atpSelectedRowIndex = actualIndex;
+    });
+
+    tr.addEventListener('dblclick', () => {
+      atpSelectedRowIndex = actualIndex;
+      openAtpDetailsModal(item);
+    });
+
+    tableBody.appendChild(tr);
+  });
+
+  // Pad table up to 8 rows if needed
+  if (pageRows.length < 8) {
+    for (let i = pageRows.length; i < 8; i++) {
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'row-even' : 'row-odd';
+      tr.innerHTML = `
+        <td class="empty-cell" style="text-align: center; color: #7f99b0;">${i + 1}</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      `;
+      tableBody.appendChild(tr);
+    }
+  }
+
+  if (recordStatusText) {
+    recordStatusText.textContent = `View ${startIndex + 1} - ${endIndex} of ${totalRecords}`;
+  }
+  if (btnFirst) btnFirst.disabled = atpCurrentPage <= 1;
+  if (btnPrev) btnPrev.disabled = atpCurrentPage <= 1;
+  if (btnNext) btnNext.disabled = atpCurrentPage >= totalPages;
+  if (btnLast) btnLast.disabled = atpCurrentPage >= totalPages;
+}
+
+function getSelectedAtpProposal() {
+  if (atpCurrentDataset.length === 0) return null;
+  const index = (atpSelectedRowIndex !== null && atpSelectedRowIndex >= 0 && atpSelectedRowIndex < atpCurrentDataset.length)
+    ? atpSelectedRowIndex
+    : 0;
+  return atpCurrentDataset[index];
+}
+
+// 1. View Tax Amounts Modal
+function openAtpTaxAmountsModal() {
+  const proposal = getSelectedAtpProposal();
+  if (!proposal) {
+    showToast('Please select a Tax Proposal from the table first.', 'warning');
+    return;
+  }
+
+  const modal = document.getElementById('atpTaxModalOverlay');
+  const title = document.getElementById('atpTaxModalTitle');
+  const desc = document.getElementById('atpTaxModalPropDesc');
+  const company = document.getElementById('atpTaxModalCompany');
+  const report = document.getElementById('atpTaxModalReport');
+  const office = document.getElementById('atpTaxModalOffice');
+  const tbody = document.getElementById('atpTaxTableBody');
+  const totBase = document.getElementById('atpTaxTotalBase');
+  const totAmount = document.getElementById('atpTaxTotalAmount');
+  const totDeduct = document.getElementById('atpTaxTotalDeduct');
+  const totNonDeduct = document.getElementById('atpTaxTotalNonDeduct');
+
+  if (title) title.textContent = `Tax Amounts - Proposal [${proposal.proposalId}]`;
+  if (desc) desc.textContent = proposal.description;
+  if (company) company.textContent = proposal.company;
+  if (report) report.textContent = proposal.reportNo;
+  if (office) office.textContent = proposal.taxOfficeId;
+
+  if (tbody) {
+    tbody.innerHTML = '';
+    let sumBase = 0, sumAmount = 0, sumDeduct = 0, sumNonDeduct = 0;
+
+    const taxList = proposal.taxAmounts || [
+      { taxCode: 'VAT18', description: 'Standard Tax Rate 18%', baseAmount: 100000, taxAmount: 18000, deductible: 18000, nonDeductible: 0 }
+    ];
+
+    taxList.forEach((t, i) => {
+      sumBase += t.baseAmount;
+      sumAmount += t.taxAmount;
+      sumDeduct += t.deductible;
+      sumNonDeduct += t.nonDeductible;
+
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'row-even' : 'row-odd';
+      tr.innerHTML = `
+        <td style="font-weight: 700; color: #164f78;">${escapeHtml(t.taxCode)}</td>
+        <td>${escapeHtml(t.description)}</td>
+        <td style="text-align: right; font-weight: 600;">${t.baseAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; font-weight: 700; color: #164f78;">${t.taxAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; color: #1e7e34; font-weight: 600;">${t.deductible.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; color: #b21f2d; font-weight: 600;">${t.nonDeductible.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    if (totBase) totBase.textContent = sumBase.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    if (totAmount) totAmount.textContent = sumAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    if (totDeduct) totDeduct.textContent = sumDeduct.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    if (totNonDeduct) totNonDeduct.textContent = sumNonDeduct.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+  }
+
+  if (modal) modal.classList.add('active');
+}
+
+// 2. Voucher Info Modal
+function openAtpVoucherInfoModal() {
+  const proposal = getSelectedAtpProposal();
+  if (!proposal) {
+    showToast('Please select a Tax Proposal from the table first.', 'warning');
+    return;
+  }
+
+  const modal = document.getElementById('atpVoucherModalOverlay');
+  const title = document.getElementById('atpVoucherModalTitle');
+  const vType = document.getElementById('atpVoucherTypeDisplay');
+  const vNo = document.getElementById('atpVoucherNoDisplay');
+  const vPeriod = document.getElementById('atpVoucherPeriodDisplay');
+  const vDate = document.getElementById('atpVoucherDateDisplay');
+  const vGroup = document.getElementById('atpVoucherUserGroupDisplay');
+  const vStatus = document.getElementById('atpVoucherStatusDisplay');
+  const tbody = document.getElementById('atpVoucherTableBody');
+
+  const vInfo = proposal.voucherInfo || {
+    voucherType: 'TX',
+    voucherNo: `TX202600${proposal.proposalId}`,
+    yearPeriod: '2026 / 09',
+    date: proposal.creationDate,
+    userGroup: 'TAX_ADMIN',
+    status: 'Updated',
+    rows: [
+      { account: '2640', desc: 'Input Tax Domestic Purchases', debit: 25000.00, credit: 0.00 },
+      { account: '2650', desc: 'Tax Clearing Account', debit: 0.00, credit: 25000.00 }
+    ]
+  };
+
+  if (title) title.textContent = `Voucher Information - Proposal [${proposal.proposalId}]`;
+  if (vType) vType.textContent = vInfo.voucherType;
+  if (vNo) vNo.textContent = vInfo.voucherNo;
+  if (vPeriod) vPeriod.textContent = vInfo.yearPeriod;
+  if (vDate) vDate.textContent = vInfo.date;
+  if (vGroup) vGroup.textContent = vInfo.userGroup;
+  if (vStatus) vStatus.textContent = vInfo.status;
+
+  if (tbody) {
+    tbody.innerHTML = '';
+    vInfo.rows.forEach((r, idx) => {
+      const tr = document.createElement('tr');
+      tr.className = idx % 2 === 0 ? 'row-even' : 'row-odd';
+      tr.innerHTML = `
+        <td style="font-weight: 700; color: #164f78;">${escapeHtml(r.account)}</td>
+        <td>${escapeHtml(r.desc)}</td>
+        <td style="text-align: right; font-weight: 600; color: ${r.debit > 0 ? '#164f78' : '#7f99b0'};">${r.debit.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; font-weight: 600; color: ${r.credit > 0 ? '#164f78' : '#7f99b0'};">${r.credit.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  if (modal) modal.classList.add('active');
+}
+
+// 3. Invoice Info Modal
+function openAtpInvoiceInfoModal() {
+  const proposal = getSelectedAtpProposal();
+  if (!proposal) {
+    showToast('Please select a Tax Proposal from the table first.', 'warning');
+    return;
+  }
+
+  const modal = document.getElementById('atpInvoiceModalOverlay');
+  const title = document.getElementById('atpInvoiceModalTitle');
+  const count = document.getElementById('atpInvoiceCount');
+  const tbody = document.getElementById('atpInvoiceTableBody');
+
+  const invList = proposal.invoices || [
+    { series: 'PINV', no: '20260901', supplier: 'Laxmico Certified Supplies Ltd', date: '05/09/2026', curr: 'INR', net: 80000, tax: 14400, gross: 94400, status: 'Authorized' }
+  ];
+
+  if (title) title.textContent = `Associated Invoices - Proposal [${proposal.proposalId}]`;
+  if (count) count.textContent = invList.length;
+
+  if (tbody) {
+    tbody.innerHTML = '';
+    invList.forEach((inv, i) => {
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'row-even' : 'row-odd';
+      tr.innerHTML = `
+        <td style="text-align: center; font-weight: 700; color: #164f78;">${escapeHtml(inv.series)}</td>
+        <td style="font-weight: 700;">${escapeHtml(inv.no)}</td>
+        <td>${escapeHtml(inv.supplier)}</td>
+        <td style="text-align: center;">${escapeHtml(inv.date)}</td>
+        <td style="text-align: center; font-weight: 600;">${escapeHtml(inv.curr)}</td>
+        <td style="text-align: right;">${inv.net.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; font-weight: 700; color: #164f78;">${inv.tax.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; font-weight: 600;">${inv.gross.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: center;"><span class="badge" style="background: #eef6fc; color: #1c5d8e; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 600;">${escapeHtml(inv.status)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  if (modal) modal.classList.add('active');
+}
+
+// 4. Preliminary Report Modal
+function openAtpPreliminaryReportModal() {
+  const proposal = getSelectedAtpProposal();
+  if (!proposal) {
+    showToast('Please select a Tax Proposal from the table first.', 'warning');
+    return;
+  }
+
+  const modal = document.getElementById('atpReportModalOverlay');
+  const title = document.getElementById('atpReportModalTitle');
+  const propId = document.getElementById('atpReportPropId');
+  const propDesc = document.getElementById('atpReportPropDesc');
+  const repType = document.getElementById('atpReportType');
+  const runDate = document.getElementById('atpReportRunDate');
+  const totTax = document.getElementById('atpReportTotalTax');
+  const deduct = document.getElementById('atpReportDeductible');
+  const tbody = document.getElementById('atpReportTableBody');
+  const authStatus = document.getElementById('atpReportAuthStatus');
+
+  if (title) title.textContent = `Preliminary Tax Report - [${proposal.reportNo} / Proposal ${proposal.proposalId}]`;
+  if (propId) propId.textContent = proposal.proposalId;
+  if (propDesc) propDesc.textContent = proposal.description;
+  if (repType) repType.textContent = proposal.reportNo;
+  if (runDate) runDate.textContent = proposal.creationDate;
+  if (authStatus) authStatus.textContent = `${proposal.proposalState} (Office: ${proposal.taxOfficeId})`;
+
+  const taxList = proposal.taxAmounts || [
+    { taxCode: 'VAT18', description: 'Standard Tax Rate 18%', baseAmount: 100000, taxAmount: 18000, deductible: 18000 }
+  ];
+
+  let sumTax = 0, sumDeduct = 0;
+  if (tbody) {
+    tbody.innerHTML = '';
+    taxList.forEach((t, i) => {
+      sumTax += t.taxAmount;
+      sumDeduct += t.deductible;
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'row-even' : 'row-odd';
+      tr.innerHTML = `
+        <td style="font-weight: 700; color: #164f78;">${escapeHtml(t.taxCode)}</td>
+        <td>${escapeHtml(t.description)}</td>
+        <td style="text-align: right;">INR ${t.baseAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; font-weight: 700;">INR ${t.taxAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+        <td style="text-align: right; color: #1e7e34; font-weight: 600;">INR ${t.deductible.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  if (totTax) totTax.textContent = `INR ${sumTax.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`;
+  if (deduct) deduct.textContent = `INR ${sumDeduct.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`;
+
+  if (modal) modal.classList.add('active');
+}
+
+// 5. Details Modal
+function openAtpDetailsModal(proposal) {
+  if (!proposal) proposal = getSelectedAtpProposal();
+  if (!proposal) return;
+
+  const modal = document.getElementById('atpDetailsModalOverlay');
+  document.getElementById('viewAtpProposalId').textContent = proposal.proposalId;
+  document.getElementById('viewAtpCompany').textContent = proposal.company;
+  document.getElementById('viewAtpDescription').textContent = proposal.description;
+  document.getElementById('viewAtpCreationDate').textContent = proposal.creationDate;
+  document.getElementById('viewAtpUserId').textContent = proposal.userId;
+  document.getElementById('viewAtpState').textContent = proposal.proposalState;
+  document.getElementById('viewAtpReportNo').textContent = proposal.reportNo;
+  document.getElementById('viewAtpOffice').textContent = proposal.taxOfficeId;
+  document.getElementById('viewAtpAcknowledgeDate').textContent = proposal.acknowledgeDate || 'None (Unacknowledged)';
+
+  if (modal) modal.classList.add('active');
+}
+
+function exportAtpToCSV() {
+  if (!atpCurrentDataset || atpCurrentDataset.length === 0) {
+    showToast('No records to download.', 'warning');
+    return;
+  }
+
+  const headers = ['Sr. No.', 'Proposal ID', 'Description', 'Creation Date', 'User ID', 'Acknowledge Date', 'Tax Report Date', 'Proposal State', 'Report No', 'Tax Office ID'];
+  const rows = atpCurrentDataset.map((p, i) => [
+    i + 1,
+    `"${p.proposalId}"`,
+    `"${p.description.replace(/"/g, '""')}"`,
+    `"${p.creationDate}"`,
+    `"${p.userId}"`,
+    `"${p.acknowledgeDate || ''}"`,
+    `"${p.taxReportDate || ''}"`,
+    `"${p.proposalState}"`,
+    `"${p.reportNo}"`,
+    `"${p.taxOfficeId}"`
+  ]);
+
+  const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', `Automatic_Tax_Proposals_${atpSelectedCompany}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast(`Downloaded CSV for ${atpSelectedCompany} successfully.`, 'success');
+}
+
+function initAutomaticTaxProposalModule() {
+  const companySelect = document.getElementById('atpCompanySelect');
+  const btnSearch = document.getElementById('btnAtpSearch');
+  const btnCollapse = document.getElementById('btnCollapseAtpGrid');
+  const gridViewport = document.getElementById('atpGridViewport');
+
+  const btnAdd = document.getElementById('btnAtpAdd');
+  const btnDownload = document.getElementById('btnAtpDownload');
+  const btnDelete = document.getElementById('btnAtpDelete');
+  const btnViewDetails = document.getElementById('btnAtpViewDetails');
+
+  const btnFirst = document.getElementById('btnAtpFirstPage');
+  const btnPrev = document.getElementById('btnAtpPrevPage');
+  const btnNext = document.getElementById('btnAtpNextPage');
+  const btnLast = document.getElementById('btnAtpLastPage');
+  const pageSizeSelect = document.getElementById('atpPageSizeSelect');
+  const pageNumberInput = document.getElementById('atpPageNumberInput');
+
+  // Action Buttons
+  const btnViewTaxAmounts = document.getElementById('btnAtpViewTaxAmounts');
+  const btnVoucherInfo = document.getElementById('btnAtpVoucherInfo');
+  const btnInvoiceInfo = document.getElementById('btnAtpInvoiceInfo');
+  const btnPreliminaryReport = document.getElementById('btnAtpPreliminaryReport');
+
+  // Modals & Closes
+  const taxModalOverlay = document.getElementById('atpTaxModalOverlay');
+  const taxModalCloseBtn = document.getElementById('atpTaxModalCloseBtn');
+  const taxModalOkBtn = document.getElementById('atpTaxModalOkBtn');
+  const taxExportBtn = document.getElementById('atpTaxExportBtn');
+
+  const voucherModalOverlay = document.getElementById('atpVoucherModalOverlay');
+  const voucherModalCloseBtn = document.getElementById('atpVoucherModalCloseBtn');
+  const voucherModalOkBtn = document.getElementById('atpVoucherModalOkBtn');
+
+  const invoiceModalOverlay = document.getElementById('atpInvoiceModalOverlay');
+  const invoiceModalCloseBtn = document.getElementById('atpInvoiceModalCloseBtn');
+  const invoiceModalOkBtn = document.getElementById('atpInvoiceModalOkBtn');
+  const invoiceExportBtn = document.getElementById('atpInvoiceExportBtn');
+
+  const reportModalOverlay = document.getElementById('atpReportModalOverlay');
+  const reportModalCloseBtn = document.getElementById('atpReportModalCloseBtn');
+  const reportModalCloseBtn2 = document.getElementById('atpReportModalCloseBtn2');
+  const reportPrintBtn = document.getElementById('atpReportPrintBtn');
+  const reportAcknowledgeBtn = document.getElementById('atpReportAcknowledgeBtn');
+
+  const addModalOverlay = document.getElementById('atpAddModalOverlay');
+  const addModalCloseBtn = document.getElementById('atpAddModalCloseBtn');
+  const addModalCancelBtn = document.getElementById('atpAddModalCancelBtn');
+  const addForm = document.getElementById('atpAddForm');
+
+  const detailsModalOverlay = document.getElementById('atpDetailsModalOverlay');
+  const detailsModalCloseBtn = document.getElementById('atpDetailsModalCloseBtn');
+  const detailsModalOkBtn = document.getElementById('atpDetailsModalOkBtn');
+
+  // Search & Filter
+  if (companySelect) {
+    companySelect.value = atpSelectedCompany;
+    companySelect.addEventListener('change', () => {
+      atpSelectedCompany = companySelect.value;
+      atpCurrentPage = 1;
+      atpSelectedRowIndex = 0;
+      renderAtpTable();
+    });
+  }
+
+  if (btnSearch) {
+    btnSearch.addEventListener('click', () => {
+      atpSelectedCompany = companySelect?.value || 'LAXMI01';
+      atpCurrentPage = 1;
+      atpSelectedRowIndex = 0;
+      renderAtpTable();
+      showToast(`Loaded tax proposals for company ${atpSelectedCompany}.`, 'info');
+    });
+  }
+
+  // Grid Collapse
+  if (btnCollapse && gridViewport) {
+    btnCollapse.addEventListener('click', () => {
+      const isCollapsed = gridViewport.style.display === 'none';
+      gridViewport.style.display = isCollapsed ? 'block' : 'none';
+      btnCollapse.querySelector('i').className = isCollapsed ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+    });
+  }
+
+  const atpTaxOfficeNames = {
+    '846 G7498': 'Central Tax Office',
+    '846 G7499': 'South Regional Tax Office',
+    '845 G1200': 'North Regional Tax Office',
+    '840 G3310': 'West Regional Tax Office'
+  };
+
+  const modalAtpOfficeSelect = document.getElementById('modalAtpTaxOffice');
+  const modalAtpOfficeNameInput = document.getElementById('modalAtpTaxOfficeName');
+  if (modalAtpOfficeSelect && modalAtpOfficeNameInput) {
+    modalAtpOfficeSelect.addEventListener('change', () => {
+      modalAtpOfficeNameInput.value = atpTaxOfficeNames[modalAtpOfficeSelect.value] || 'Central Tax Office';
+    });
+  }
+
+  const modalAtpReportSelect = document.getElementById('modalAtpReport');
+  const modalAtpReportDescInput = document.getElementById('modalAtpReportDesc');
+  if (modalAtpReportSelect && modalAtpReportDescInput) {
+    modalAtpReportSelect.addEventListener('change', () => {
+      if (modalAtpReportSelect.value === 'SALES') {
+        modalAtpReportDescInput.value = 'Sales Tax Report';
+      } else {
+        modalAtpReportDescInput.value = 'Purchases Tax Report';
+      }
+    });
+  }
+
+  // Toolbar actions
+  if (btnAdd) {
+    btnAdd.addEventListener('click', () => {
+      const maxId = taxProposalsData.reduce((m, p) => Math.max(m, p.proposalId), 540);
+      const nextId = maxId + 1;
+
+      const propIdInput = document.getElementById('modalAtpProposalId');
+      const descInput = document.getElementById('modalAtpDescription');
+      const fromInput = document.getElementById('modalAtpFromDate');
+      const toInput = document.getElementById('modalAtpToDate');
+      const officeSelect = document.getElementById('modalAtpTaxOffice');
+      const officeNameInput = document.getElementById('modalAtpTaxOfficeName');
+      const reportSelect = document.getElementById('modalAtpReport');
+      const reportDescInput = document.getElementById('modalAtpReportDesc');
+
+      if (propIdInput) {
+        propIdInput.value = nextId; // Manual input enabled, defaulted to next sequential ID
+      }
+      if (descInput) descInput.value = '';
+      if (fromInput) fromInput.value = '';
+      if (toInput) toInput.value = '';
+      if (officeSelect) officeSelect.value = '846 G7498';
+      if (officeNameInput) officeNameInput.value = atpTaxOfficeNames['846 G7498'] || 'Central Tax Office';
+      if (reportSelect) reportSelect.value = 'PURCH';
+      if (reportDescInput) reportDescInput.value = 'Purchases Tax Report';
+
+      const alertDiv = document.getElementById('atpAddAlert');
+      if (alertDiv) alertDiv.innerHTML = '';
+      if (addModalOverlay) addModalOverlay.classList.add('active');
+    });
+  }
+
+  // Date Calendar Picker Bindings for Load Tax Proposal popup
+  const btnFromCal = document.getElementById('btnAtpFromDateCal');
+  const fromNative = document.getElementById('modalAtpFromDateNative');
+  const fromInput = document.getElementById('modalAtpFromDate');
+
+  if (btnFromCal && fromNative && fromInput) {
+    btnFromCal.addEventListener('click', () => {
+      if (typeof fromNative.showPicker === 'function') {
+        fromNative.showPicker();
+      } else {
+        fromNative.focus();
+      }
+    });
+    fromNative.addEventListener('change', () => {
+      if (fromNative.value) {
+        const parts = fromNative.value.split('-');
+        fromInput.value = `${parts[2]}/${parts[1]}/${parts[0]}`;
+      }
+    });
+  }
+
+  const btnToCal = document.getElementById('btnAtpToDateCal');
+  const toNative = document.getElementById('modalAtpToDateNative');
+  const toInput = document.getElementById('modalAtpToDate');
+
+  if (btnToCal && toNative && toInput) {
+    btnToCal.addEventListener('click', () => {
+      if (typeof toNative.showPicker === 'function') {
+        toNative.showPicker();
+      } else {
+        toNative.focus();
+      }
+    });
+    toNative.addEventListener('change', () => {
+      if (toNative.value) {
+        const parts = toNative.value.split('-');
+        toInput.value = `${parts[2]}/${parts[1]}/${parts[0]}`;
+      }
+    });
+  }
+
+  if (btnDownload) btnDownload.addEventListener('click', exportAtpToCSV);
+
+  if (btnDelete) {
+    btnDelete.addEventListener('click', () => {
+      const proposal = getSelectedAtpProposal();
+      if (!proposal) {
+        showToast('Please select a Tax Proposal to delete.', 'warning');
+        return;
+      }
+      if (confirm(`Are you sure you want to delete Tax Proposal ${proposal.proposalId} (${proposal.description})?`)) {
+        taxProposalsData = taxProposalsData.filter(p => p.proposalId !== proposal.proposalId);
+        atpSelectedRowIndex = 0;
+        renderAtpTable();
+        showToast(`Tax Proposal ${proposal.proposalId} has been deleted.`, 'success');
+      }
+    });
+  }
+
+  if (btnViewDetails) {
+    btnViewDetails.addEventListener('click', () => {
+      const proposal = getSelectedAtpProposal();
+      if (!proposal) {
+        showToast('Please select a Tax Proposal to view details.', 'warning');
+        return;
+      }
+      openAtpDetailsModal(proposal);
+    });
+  }
+
+  // Four bottom action buttons
+  if (btnViewTaxAmounts) btnViewTaxAmounts.addEventListener('click', openAtpTaxAmountsModal);
+  if (btnVoucherInfo) btnVoucherInfo.addEventListener('click', openAtpVoucherInfoModal);
+  if (btnInvoiceInfo) btnInvoiceInfo.addEventListener('click', openAtpInvoiceInfoModal);
+  if (btnPreliminaryReport) btnPreliminaryReport.addEventListener('click', openAtpPreliminaryReportModal);
+
+  // Modal Closures
+  if (taxModalCloseBtn) taxModalCloseBtn.addEventListener('click', () => taxModalOverlay?.classList.remove('active'));
+  if (taxModalOkBtn) taxModalOkBtn.addEventListener('click', () => taxModalOverlay?.classList.remove('active'));
+  if (taxExportBtn) {
+    taxExportBtn.addEventListener('click', () => {
+      const prop = getSelectedAtpProposal();
+      if (!prop) return;
+      const headers = ['Tax Code', 'Tax Description', 'Tax Base Amount', 'Tax Amount', 'Deductible Tax', 'Non-Deductible Tax'];
+      const rows = (prop.taxAmounts || []).map(t => [
+        `"${t.taxCode}"`, `"${t.description}"`, t.baseAmount, t.taxAmount, t.deductible, t.nonDeductible
+      ]);
+      const csv = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const a = document.createElement('a');
+      a.href = encodeURI(csv);
+      a.download = `Tax_Amounts_Proposal_${prop.proposalId}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast('Tax amounts exported to CSV.', 'success');
+    });
+  }
+
+  if (voucherModalCloseBtn) voucherModalCloseBtn.addEventListener('click', () => voucherModalOverlay?.classList.remove('active'));
+  if (voucherModalOkBtn) voucherModalOkBtn.addEventListener('click', () => voucherModalOverlay?.classList.remove('active'));
+
+  if (invoiceModalCloseBtn) invoiceModalCloseBtn.addEventListener('click', () => invoiceModalOverlay?.classList.remove('active'));
+  if (invoiceModalOkBtn) invoiceModalOkBtn.addEventListener('click', () => invoiceModalOverlay?.classList.remove('active'));
+  if (invoiceExportBtn) {
+    invoiceExportBtn.addEventListener('click', () => {
+      const prop = getSelectedAtpProposal();
+      if (!prop) return;
+      const headers = ['Series', 'Invoice No', 'Supplier/Customer', 'Date', 'Currency', 'Net Amount', 'Tax Amount', 'Gross Amount', 'Status'];
+      const rows = (prop.invoices || []).map(inv => [
+        `"${inv.series}"`, `"${inv.no}"`, `"${inv.supplier}"`, `"${inv.date}"`, `"${inv.curr}"`, inv.net, inv.tax, inv.gross, `"${inv.status}"`
+      ]);
+      const csv = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const a = document.createElement('a');
+      a.href = encodeURI(csv);
+      a.download = `Invoices_Proposal_${prop.proposalId}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast('Invoices exported to CSV.', 'success');
+    });
+  }
+
+  if (reportModalCloseBtn) reportModalCloseBtn.addEventListener('click', () => reportModalOverlay?.classList.remove('active'));
+  if (reportModalCloseBtn2) reportModalCloseBtn2.addEventListener('click', () => reportModalOverlay?.classList.remove('active'));
+  if (reportPrintBtn) {
+    reportPrintBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+  if (reportAcknowledgeBtn) {
+    reportAcknowledgeBtn.addEventListener('click', () => {
+      const prop = getSelectedAtpProposal();
+      if (!prop) return;
+      prop.proposalState = 'Acknowledged';
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      prop.acknowledgeDate = `${dd}/${mm}/${yyyy}`;
+      renderAtpTable();
+      reportModalOverlay?.classList.remove('active');
+      showToast(`Tax Proposal ${prop.proposalId} has been successfully acknowledged on ${prop.acknowledgeDate}.`, 'success');
+    });
+  }
+
+  if (addModalCloseBtn) addModalCloseBtn.addEventListener('click', () => addModalOverlay?.classList.remove('active'));
+  if (addModalCancelBtn) addModalCancelBtn.addEventListener('click', () => addModalOverlay?.classList.remove('active'));
+
+  if (addForm) {
+    addForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const propIdInput = document.getElementById('modalAtpProposalId');
+      const descInput = document.getElementById('modalAtpDescription');
+      const fromInput = document.getElementById('modalAtpFromDate');
+      const toInput = document.getElementById('modalAtpToDate');
+      const officeSelect = document.getElementById('modalAtpTaxOffice');
+      const officeNameInput = document.getElementById('modalAtpTaxOfficeName');
+      const reportSelect = document.getElementById('modalAtpReport');
+
+      const rawPropId = propIdInput?.value.trim();
+      const enteredId = parseInt(rawPropId, 10);
+      if (!rawPropId || isNaN(enteredId) || enteredId <= 0) {
+        showToast('Please enter a valid positive numeric Proposal ID.', 'warning');
+        propIdInput?.focus();
+        return;
+      }
+
+      if (taxProposalsData.some(p => p.proposalId === enteredId)) {
+        showToast(`Proposal ID ${enteredId} already exists. Please enter a unique Proposal ID.`, 'error');
+        propIdInput?.focus();
+        return;
+      }
+
+      if (!descInput?.value.trim()) {
+        showToast('Please provide a Proposal Description.', 'warning');
+        descInput?.focus();
+        return;
+      }
+
+      const selectedReport = reportSelect?.value || 'PURCH';
+      const selectedOffice = officeSelect?.value || '846 G7498';
+      const selectedOfficeName = officeNameInput?.value.trim() || 'Central Tax Office';
+      const isSales = selectedReport === 'SALES';
+
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      const creationDate = `${dd}/${mm}/${yyyy}`;
+
+      const newProposal = {
+        proposalId: enteredId,
+        description: descInput.value.trim(),
+        creationDate: creationDate,
+        userId: 'HIMPAT',
+        acknowledgeDate: '',
+        taxReportDate: '',
+        proposalState: 'Created',
+        reportNo: selectedReport,
+        taxOfficeId: selectedOffice,
+        taxOfficeName: selectedOfficeName,
+        startPageNo: '',
+        prePayments: '',
+        error: '',
+        company: atpSelectedCompany || 'LAXMI01',
+        taxAmounts: isSales ? [
+          { taxCode: 'OUT18', description: 'Output Tax Sales 18%', baseAmount: 200000.00, taxAmount: 36000.00, deductible: 0.00, nonDeductible: 0.00 }
+        ] : [
+          { taxCode: 'VAT18', description: 'Standard VAT 18%', baseAmount: 150000.00, taxAmount: 27000.00, deductible: 27000.00, nonDeductible: 0.00 }
+        ],
+        voucherInfo: {
+          voucherType: 'TX',
+          voucherNo: `TX202600${enteredId}`,
+          yearPeriod: '2026 / 10',
+          date: creationDate,
+          userGroup: 'TAX_ADMIN',
+          status: 'Updated',
+          rows: isSales ? [
+            { account: '2610', desc: 'Output Tax Domestic Sales', debit: 0.00, credit: 36000.00 },
+            { account: '2650', desc: 'Tax Clearing Account', debit: 36000.00, credit: 0.00 }
+          ] : [
+            { account: '2640', desc: 'Input Tax Domestic Purchases', debit: 27000.00, credit: 0.00 },
+            { account: '2650', desc: 'Tax Clearing Account', debit: 0.00, credit: 27000.00 }
+          ]
+        },
+        invoices: [
+          {
+            series: isSales ? 'SINV' : 'PINV',
+            no: `20261001`,
+            supplier: isSales ? 'Global Distribution Corp' : 'Laxmico Direct Partner Ltd',
+            date: creationDate,
+            curr: 'INR',
+            net: isSales ? 200000.00 : 150000.00,
+            tax: isSales ? 36000.00 : 27000.00,
+            gross: isSales ? 236000.00 : 177000.00,
+            status: 'Authorized'
+          }
+        ]
+      };
+
+      taxProposalsData.unshift(newProposal);
+      atpSelectedRowIndex = 0;
+      atpCurrentPage = 1;
+      renderAtpTable();
+      addModalOverlay?.classList.remove('active');
+      showToast(`Tax Proposal ${enteredId} created successfully.`, 'success');
+    });
+  }
+
+  if (detailsModalCloseBtn) detailsModalCloseBtn.addEventListener('click', () => detailsModalOverlay?.classList.remove('active'));
+  if (detailsModalOkBtn) detailsModalOkBtn.addEventListener('click', () => detailsModalOverlay?.classList.remove('active'));
+
+  // Pagination
+  if (pageSizeSelect) {
+    pageSizeSelect.addEventListener('change', () => {
+      atpPageSize = parseInt(pageSizeSelect.value, 10);
+      atpCurrentPage = 1;
+      renderAtpTable();
+    });
+  }
+
+  if (btnFirst) btnFirst.addEventListener('click', () => { atpCurrentPage = 1; renderAtpTable(); });
+  if (btnPrev) btnPrev.addEventListener('click', () => { if (atpCurrentPage > 1) { atpCurrentPage--; renderAtpTable(); } });
+  if (btnNext) btnNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(atpCurrentDataset.length / atpPageSize) || 1;
+    if (atpCurrentPage < totalPages) { atpCurrentPage++; renderAtpTable(); }
+  });
+  if (btnLast) btnLast.addEventListener('click', () => {
+    atpCurrentPage = Math.ceil(atpCurrentDataset.length / atpPageSize) || 1;
+    renderAtpTable();
+  });
+
+  if (pageNumberInput) {
+    pageNumberInput.addEventListener('change', () => {
+      const p = parseInt(pageNumberInput.value, 10);
+      const totalPages = Math.ceil(atpCurrentDataset.length / atpPageSize) || 1;
+      if (!isNaN(p) && p >= 1 && p <= totalPages) {
+        atpCurrentPage = p;
+      }
+      renderAtpTable();
+    });
+  }
+
+  // Initial render
+  renderAtpTable();
+}
+
+// =============================================================================
+// MODULE: VOUCHER ENTRY (GENERAL LEDGER)
+// =============================================================================
+let voucherRowsData = [
+  {
+    accountNo: '2008',
+    accountDesc: 'Gowrie HSBC Current GBP Account',
+    costCenter: '',
+    taxCode: '',
+    currencyCode: 'GBP',
+    currencyRate: 1,
+    currencyDebit: null,
+    currencyCredit: 419075.00,
+    currencyAmount: -419075.00,
+    debitAmount: null,
+    creditAmount: 419075.00,
+    amount: -419075.00,
+    noteText: 'GLax Euro 7369 Purchase from GBP 1591',
+    conversionFee: 1,
+    selected: false
+  }
+];
+
+let veSearchFilter = '';
+let veCurrentPage = 1;
+let vePageSize = 1000;
+
+const veAccountDirectory = {
+  '2008': 'Gowrie HSBC Current GBP Account',
+  '2010': 'Gowrie HSBC Current Euro',
+  '2310': 'Hire Purchase Creditors',
+  '7950': 'Fines & Interest',
+  '1200': 'Bank Current Account',
+  '2640': 'Input Tax Domestic Purchases',
+  '2650': 'Tax Clearing Account',
+  '2610': 'Output Tax Domestic Sales',
+  '4000': 'Sales Revenue Domestic',
+  '5000': 'Cost of Goods Sold',
+  '6000': 'Salaries and Wages',
+  '7000': 'Rent and Utilities'
+};
+
+function formatVeNumber(val) {
+  if (val === null || val === undefined || isNaN(val) || val === '') return '';
+  const num = Number(val);
+  return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function renderVeTable() {
+  const tbody = document.getElementById('veTableBody');
+  const viewCount = document.getElementById('veViewCount');
+  const totalPagesSpan = document.getElementById('veTotalPages');
+  const pageInput = document.getElementById('vePageInput');
+
+  if (!tbody) return;
+
+  let filtered = voucherRowsData;
+  if (veSearchFilter) {
+    const q = veSearchFilter.toLowerCase();
+    filtered = voucherRowsData.filter(r =>
+      (r.accountNo && r.accountNo.toLowerCase().includes(q)) ||
+      (r.accountDesc && r.accountDesc.toLowerCase().includes(q)) ||
+      (r.costCenter && r.costCenter.toLowerCase().includes(q)) ||
+      (r.taxCode && r.taxCode.toLowerCase().includes(q)) ||
+      (r.noteText && r.noteText.toLowerCase().includes(q))
+    );
+  }
+
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / vePageSize) || 1;
+  if (veCurrentPage > totalPages) veCurrentPage = totalPages;
+  if (veCurrentPage < 1) veCurrentPage = 1;
+
+  const startIdx = (veCurrentPage - 1) * vePageSize;
+  const endIdx = Math.min(startIdx + vePageSize, total);
+  const pageRows = filtered.slice(startIdx, endIdx);
+
+  tbody.innerHTML = '';
+
+  if (pageRows.length === 0) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td colspan="15" style="text-align: center; padding: 18px; color: #6e8fa9; font-style: italic;">No voucher rows to display.</td>';
+    tbody.appendChild(tr);
+  } else {
+    pageRows.forEach((row, i) => {
+      const globalIdx = startIdx + i;
+      const tr = document.createElement('tr');
+      tr.style.backgroundColor = (i % 2 === 0) ? '#f2f6fa' : '#ffffff';
+      tr.style.height = '24px';
+      tr.style.borderBottom = '1px solid #d4e2ed';
+
+      const cDebVal = row.currencyDebit !== null && row.currencyDebit !== undefined && row.currencyDebit !== '' ? (typeof row.currencyDebit === 'number' ? row.currencyDebit.toFixed(2) : row.currencyDebit) : '';
+      const cCrdVal = row.currencyCredit !== null && row.currencyCredit !== undefined && row.currencyCredit !== '' ? (typeof row.currencyCredit === 'number' ? row.currencyCredit.toFixed(2) : row.currencyCredit) : '';
+      const rateVal = row.currencyRate !== null && row.currencyRate !== undefined && row.currencyRate !== '' ? row.currencyRate : '1';
+
+      tr.innerHTML = `
+        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 4px; white-space: nowrap;">
+          <span style="display: inline-block; width: 14px; text-align: right; margin-right: 4px; color: #1e4566; font-size: 11px;">${globalIdx + 1}</span>
+          <input type="checkbox" class="ve-row-checkbox" data-index="${globalIdx}" ${row.selected ? 'checked' : ''} style="cursor: pointer; vertical-align: middle;">
+        </td>
+        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-acct" data-idx="${globalIdx}" value="${escapeHtml(row.accountNo || '')}" style="font-weight: 700; color: #164f78;">
+        </td>
+        <td style="text-align: left; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
+          <span class="ve-cell-desc-${globalIdx}">${escapeHtml(row.accountDesc || '')}</span>
+        </td>
+        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-cost" data-idx="${globalIdx}" value="${escapeHtml(row.costCenter || '')}" style="text-align: center;">
+        </td>
+        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-tax" data-idx="${globalIdx}" value="${escapeHtml(row.taxCode || '')}" style="text-align: center;">
+        </td>
+        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566; font-weight: 600;">${escapeHtml(row.currencyCode || 'GBP')}</td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="number" step="any" class="ve-cell-input ve-input-rate" data-idx="${globalIdx}" value="${rateVal}" style="text-align: right;">
+        </td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-cdebit" data-idx="${globalIdx}" value="${cDebVal}" style="text-align: right;">
+        </td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-ccredit" data-idx="${globalIdx}" value="${cCrdVal}" style="text-align: right;">
+        </td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
+          <span class="ve-cell-curramt-${globalIdx}">${formatVeNumber(row.currencyAmount)}</span>
+        </td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
+          <span class="ve-cell-debamt-${globalIdx}">${formatVeNumber(row.debitAmount)}</span>
+        </td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
+          <span class="ve-cell-crdamt-${globalIdx}">${formatVeNumber(row.creditAmount)}</span>
+        </td>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; font-weight: 600; color: #1e4566;">
+          <span class="ve-cell-totamt-${globalIdx}">${formatVeNumber(row.amount)}</span>
+        </td>
+        <td style="text-align: left; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">${escapeHtml(row.noteText || '')}</td>
+        <td style="text-align: center; padding: 2px 6px; color: #1e4566;">${row.conversionFee !== null && row.conversionFee !== undefined ? row.conversionFee : 1}</td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Bind individual checkbox events
+  tbody.querySelectorAll('.ve-row-checkbox').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-index'), 10);
+      if (voucherRowsData[idx]) {
+        voucherRowsData[idx].selected = e.target.checked;
+      }
+      updateVeSelectAllState();
+    });
+  });
+
+  // Bind manual cell inputs: Account No
+  tbody.querySelectorAll('.ve-input-acct').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      const r = voucherRowsData[idx];
+      if (r) {
+        r.accountNo = e.target.value.trim();
+        if (veAccountDirectory[r.accountNo]) {
+          r.accountDesc = veAccountDirectory[r.accountNo];
+          const descSpan = tbody.querySelector(`.ve-cell-desc-${idx}`);
+          if (descSpan) descSpan.textContent = r.accountDesc;
+        }
+      }
+    });
+  });
+
+  // Bind manual cell inputs: Cost Center
+  tbody.querySelectorAll('.ve-input-cost').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (voucherRowsData[idx]) {
+        voucherRowsData[idx].costCenter = e.target.value.trim();
+      }
+    });
+  });
+
+  // Bind manual cell inputs: Tax Code
+  tbody.querySelectorAll('.ve-input-tax').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (voucherRowsData[idx]) {
+        voucherRowsData[idx].taxCode = e.target.value.trim();
+      }
+    });
+  });
+
+  // Live recalculate amounts on Rate, Debit, Credit manual changes
+  function updateRowAmounts(idx) {
+    const r = voucherRowsData[idx];
+    if (!r) return;
+
+    const rateInp = tbody.querySelector(`.ve-input-rate[data-idx="${idx}"]`);
+    const debitInp = tbody.querySelector(`.ve-input-cdebit[data-idx="${idx}"]`);
+    const creditInp = tbody.querySelector(`.ve-input-ccredit[data-idx="${idx}"]`);
+
+    const rateVal = parseFloat(rateInp?.value);
+    const rate = (!isNaN(rateVal) && rateVal > 0) ? rateVal : 1;
+    r.currencyRate = rate;
+
+    const dStr = (debitInp?.value || '').replace(/,/g, '').trim();
+    const cStr = (creditInp?.value || '').replace(/,/g, '').trim();
+
+    const dVal = parseFloat(dStr);
+    const cVal = parseFloat(cStr);
+
+    const hasDebit = !isNaN(dVal) && dVal > 0;
+    const hasCredit = !isNaN(cVal) && cVal > 0;
+
+    r.currencyDebit = hasDebit ? dVal : null;
+    r.currencyCredit = hasCredit ? cVal : null;
+
+    if (hasDebit && hasCredit) {
+      r.currencyAmount = dVal - cVal;
+      r.debitAmount = dVal * rate;
+      r.creditAmount = cVal * rate;
+      r.amount = r.debitAmount - r.creditAmount;
+    } else if (hasDebit) {
+      r.currencyAmount = dVal;
+      r.debitAmount = dVal * rate;
+      r.creditAmount = null;
+      r.amount = r.debitAmount;
+    } else if (hasCredit) {
+      r.currencyAmount = -cVal;
+      r.debitAmount = null;
+      r.creditAmount = cVal * rate;
+      r.amount = -r.creditAmount;
+    } else {
+      r.currencyAmount = null;
+      r.debitAmount = null;
+      r.creditAmount = null;
+      r.amount = null;
+    }
+
+    const curSpan = tbody.querySelector(`.ve-cell-curramt-${idx}`);
+    const debSpan = tbody.querySelector(`.ve-cell-debamt-${idx}`);
+    const crdSpan = tbody.querySelector(`.ve-cell-crdamt-${idx}`);
+    const totSpan = tbody.querySelector(`.ve-cell-totamt-${idx}`);
+
+    if (curSpan) curSpan.textContent = formatVeNumber(r.currencyAmount);
+    if (debSpan) debSpan.textContent = formatVeNumber(r.debitAmount);
+    if (crdSpan) crdSpan.textContent = formatVeNumber(r.creditAmount);
+    if (totSpan) totSpan.textContent = formatVeNumber(r.amount);
+  }
+
+  tbody.querySelectorAll('.ve-input-rate, .ve-input-cdebit, .ve-input-ccredit').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      updateRowAmounts(idx);
+    });
+  });
+
+  if (viewCount) {
+    if (total === 0) {
+      viewCount.textContent = 'View 0 - 0 of 0';
+    } else {
+      viewCount.textContent = `View ${startIdx + 1} - ${endIdx} of ${total}`;
+    }
+  }
+
+  if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
+  if (pageInput) pageInput.value = veCurrentPage;
+  updateVeSelectAllState();
+}
+
+function updateVeSelectAllState() {
+  const selectAll = document.getElementById('veSelectAllCheckbox');
+  if (!selectAll) return;
+  if (voucherRowsData.length === 0) {
+    selectAll.checked = false;
+    selectAll.indeterminate = false;
+    return;
+  }
+  const selectedCount = voucherRowsData.filter(r => r.selected).length;
+  selectAll.checked = selectedCount === voucherRowsData.length;
+  selectAll.indeterminate = selectedCount > 0 && selectedCount < voucherRowsData.length;
+}
+
+function initVoucherEntryModule() {
+  const lineAccountNo = document.getElementById('veLineAccountNo');
+  const lineAccountDesc = document.getElementById('veLineAccountDesc');
+  const lineCostCenter = document.getElementById('veLineCostCenter');
+  const lineTaxCode = document.getElementById('veLineTaxCode');
+  const lineCurrency = document.getElementById('veLineCurrency');
+  const lineDebit = document.getElementById('veLineDebitAmount');
+  const lineCredit = document.getElementById('veLineCreditAmount');
+  const lineNote = document.getElementById('veLineNoteText');
+
+  const btnAdd = document.getElementById('btnVeAddLine');
+  const btnSearch = document.getElementById('btnVeSearchLine');
+  const btnDelete = document.getElementById('btnVeDeleteRow');
+  const btnDownload = document.getElementById('btnVeDownload');
+  const btnNewEntry = document.getElementById('btnVeNewEntry');
+  const btnSave = document.getElementById('btnVeSave');
+
+  const selectAll = document.getElementById('veSelectAllCheckbox');
+  const btnFirst = document.getElementById('btnVeFirst');
+  const btnPrev = document.getElementById('btnVePrev');
+  const btnNext = document.getElementById('btnVeNext');
+  const btnLast = document.getElementById('btnVeLast');
+  const pageInput = document.getElementById('vePageInput');
+  const pageSizeSelect = document.getElementById('vePageSizeSelect');
+
+  // Voucher Date Calendar Selection
+  const veDateInput = document.getElementById('veVoucherDate');
+  const veDateNative = document.getElementById('veVoucherDateNative');
+  const btnVeDateCal = document.getElementById('btnVeVoucherDateCal');
+
+  function openVeDatePicker() {
+    if (veDateNative) {
+      if (veDateInput && veDateInput.value) {
+        const parts = veDateInput.value.split(/[-/]/);
+        if (parts.length === 3 && parts[2].length === 4) {
+          veDateNative.value = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+        }
+      }
+      if (typeof veDateNative.showPicker === 'function') {
+        veDateNative.showPicker();
+      } else {
+        veDateNative.focus();
+      }
+    }
+  }
+
+  if (btnVeDateCal) btnVeDateCal.addEventListener('click', openVeDatePicker);
+  if (veDateInput) {
+    veDateInput.addEventListener('click', openVeDatePicker);
+  }
+  if (veDateNative && veDateInput) {
+    veDateNative.addEventListener('change', () => {
+      if (veDateNative.value) {
+        const parts = veDateNative.value.split('-');
+        veDateInput.value = `${parts[2]}-${parts[1]}-${parts[0]}`;
+      }
+    });
+  }
+
+  // Auto-fill account description when account number is entered
+  if (lineAccountNo && lineAccountDesc) {
+    lineAccountNo.addEventListener('input', () => {
+      const code = lineAccountNo.value.trim();
+      if (veAccountDirectory[code]) {
+        lineAccountDesc.value = veAccountDirectory[code];
+      }
+    });
+  }
+
+  // Select all checkbox
+  if (selectAll) {
+    selectAll.addEventListener('change', () => {
+      const isChecked = selectAll.checked;
+      voucherRowsData.forEach(r => { r.selected = isChecked; });
+      renderVeTable();
+    });
+  }
+
+  // Add line item
+  if (btnAdd) {
+    btnAdd.addEventListener('click', () => {
+      const acctNo = lineAccountNo?.value.trim();
+      const acctDesc = lineAccountDesc?.value.trim() || veAccountDirectory[acctNo] || 'General Account';
+      const costCenter = lineCostCenter?.value.trim() || '';
+      const taxCode = lineTaxCode?.value.trim() || '';
+      const currency = lineCurrency?.value || 'GBP';
+      const debitRaw = parseFloat(lineDebit?.value);
+      const creditRaw = parseFloat(lineCredit?.value);
+      const note = lineNote?.value.trim() || '';
+
+      if (!acctNo) {
+        showToast('Please enter an Account Number.', 'warning');
+        lineAccountNo?.focus();
+        return;
+      }
+
+      const hasDebit = !isNaN(debitRaw) && debitRaw > 0;
+      const hasCredit = !isNaN(creditRaw) && creditRaw > 0;
+
+      if (!hasDebit && !hasCredit) {
+        showToast('Please enter a Debit Amount or Credit Amount.', 'warning');
+        lineDebit?.focus();
+        return;
+      }
+
+      const debit = hasDebit ? debitRaw : null;
+      const credit = hasCredit ? creditRaw : null;
+      const rate = 1;
+
+      let curAmt = null;
+      let debAmt = null;
+      let crdAmt = null;
+      let totAmt = null;
+
+      if (hasDebit && hasCredit) {
+        curAmt = debit - credit;
+        debAmt = debit * rate;
+        crdAmt = credit * rate;
+        totAmt = debAmt - crdAmt;
+      } else if (hasDebit) {
+        curAmt = debit;
+        debAmt = debit * rate;
+        crdAmt = null;
+        totAmt = debAmt;
+      } else if (hasCredit) {
+        curAmt = -credit;
+        debAmt = null;
+        crdAmt = credit * rate;
+        totAmt = -crdAmt;
+      }
+
+      const newRow = {
+        accountNo: acctNo,
+        accountDesc: acctDesc,
+        costCenter: costCenter,
+        taxCode: taxCode,
+        currencyCode: currency,
+        currencyRate: rate,
+        currencyDebit: debit,
+        currencyCredit: credit,
+        currencyAmount: curAmt,
+        debitAmount: debAmt,
+        creditAmount: crdAmt,
+        amount: totAmt,
+        noteText: note,
+        conversionFee: 1,
+        selected: false
+      };
+
+      voucherRowsData.push(newRow);
+      renderVeTable();
+      showToast(`Voucher row for account ${acctNo} added.`, 'success');
+
+      // Clear entry inputs
+      if (lineAccountNo) lineAccountNo.value = '';
+      if (lineAccountDesc) lineAccountDesc.value = '';
+      if (lineCostCenter) lineCostCenter.value = '';
+      if (lineDebit) lineDebit.value = '';
+      if (lineCredit) lineCredit.value = '';
+      if (lineNote) lineNote.value = '';
+      lineAccountNo?.focus();
+    });
+  }
+
+  // Search Line button
+  if (btnSearch) {
+    btnSearch.addEventListener('click', () => {
+      const q = lineAccountNo?.value.trim() || lineNote?.value.trim();
+      veSearchFilter = q;
+      veCurrentPage = 1;
+      renderVeTable();
+      if (q) {
+        showToast(`Filtered rows by "${q}".`, 'info');
+      } else {
+        showToast('Filter cleared, displaying all rows.', 'info');
+      }
+    });
+  }
+
+  // Delete selected rows
+  if (btnDelete) {
+    btnDelete.addEventListener('click', () => {
+      const selectedRows = voucherRowsData.filter(r => r.selected);
+      if (selectedRows.length === 0) {
+        showToast('Please select at least one row checkbox to delete.', 'warning');
+        return;
+      }
+      if (confirm(`Are you sure you want to delete ${selectedRows.length} selected row(s)?`)) {
+        voucherRowsData = voucherRowsData.filter(r => !r.selected);
+        renderVeTable();
+        showToast(`${selectedRows.length} row(s) deleted.`, 'success');
+      }
+    });
+  }
+
+  // Download CSV
+  if (btnDownload) {
+    btnDownload.addEventListener('click', () => {
+      if (voucherRowsData.length === 0) {
+        showToast('No voucher rows to export.', 'warning');
+        return;
+      }
+      const vNo = document.getElementById('veVoucherNo')?.value || '2126100034';
+      const headers = ['Line', 'Account No', 'Account Desc', 'Cost Center', 'Tax Code', 'Currency Code', 'Currency Rate', 'Currency Debit', 'Currency Credit', 'Currency Amount', 'Debit Amount', 'Credit Amount', 'Amount', 'Note Text', 'Conversion Fee'];
+      const rows = voucherRowsData.map((r, idx) => [
+        idx + 1,
+        `"${r.accountNo}"`,
+        `"${r.accountDesc}"`,
+        `"${r.costCenter || ''}"`,
+        `"${r.taxCode || ''}"`,
+        `"${r.currencyCode}"`,
+        r.currencyRate,
+        r.currencyDebit || '',
+        r.currencyCredit || '',
+        r.currencyAmount || '',
+        r.debitAmount || '',
+        r.creditAmount || '',
+        r.amount || '',
+        `"${r.noteText || ''}"`,
+        r.conversionFee
+      ]);
+      const csv = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const a = document.createElement('a');
+      a.href = encodeURI(csv);
+      a.download = `Voucher_${vNo}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(`Exported Voucher ${vNo} rows to CSV.`, 'success');
+    });
+  }
+
+  // New Entry
+  if (btnNewEntry) {
+    btnNewEntry.addEventListener('click', () => {
+      const vNoInput = document.getElementById('veVoucherNo');
+      if (vNoInput) {
+        const cur = parseInt(vNoInput.value, 10);
+        vNoInput.value = !isNaN(cur) ? (cur + 1) : 2126100035;
+      }
+      const vDateInput = document.getElementById('veVoucherDate');
+      if (vDateInput) {
+        const now = new Date();
+        const dd = String(now.getDate()).padStart(2, '0');
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const yyyy = now.getFullYear();
+        vDateInput.value = `${dd}-${mm}-${yyyy}`;
+      }
+      voucherRowsData = [];
+      veSearchFilter = '';
+      veCurrentPage = 1;
+      renderVeTable();
+      showToast('New voucher entry initialized. Ready for transactions.', 'info');
+    });
+  }
+
+  // Save
+  if (btnSave) {
+    btnSave.addEventListener('click', () => {
+      const vNo = document.getElementById('veVoucherNo')?.value || '2126100034';
+      const totalDebits = voucherRowsData.reduce((acc, r) => acc + (parseFloat(r.debitAmount) || 0), 0);
+      const totalCredits = voucherRowsData.reduce((acc, r) => acc + (parseFloat(r.creditAmount) || 0), 0);
+
+      const diff = Math.abs(totalDebits - totalCredits);
+      if (diff > 0.01) {
+        showToast(`Voucher is out of balance! Debits: ${formatVeNumber(totalDebits)}, Credits: ${formatVeNumber(totalCredits)}. Difference: ${formatVeNumber(diff)}`, 'warning');
+      } else {
+        showToast(`Voucher ${vNo} is balanced and successfully saved. Total: ${formatVeNumber(totalDebits)} GBP.`, 'success');
+      }
+    });
+  }
+
+  // Pagination controls
+  if (btnFirst) btnFirst.addEventListener('click', () => { veCurrentPage = 1; renderVeTable(); });
+  if (btnPrev) btnPrev.addEventListener('click', () => { if (veCurrentPage > 1) { veCurrentPage--; renderVeTable(); } });
+  if (btnNext) btnNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(voucherRowsData.length / vePageSize) || 1;
+    if (veCurrentPage < totalPages) { veCurrentPage++; renderVeTable(); }
+  });
+  if (btnLast) btnLast.addEventListener('click', () => {
+    veCurrentPage = Math.ceil(voucherRowsData.length / vePageSize) || 1;
+    renderVeTable();
+  });
+  if (pageInput) {
+    pageInput.addEventListener('change', () => {
+      const p = parseInt(pageInput.value, 10);
+      const totalPages = Math.ceil(voucherRowsData.length / vePageSize) || 1;
+      if (!isNaN(p) && p >= 1 && p <= totalPages) {
+        veCurrentPage = p;
+      }
+      renderVeTable();
+    });
+  }
+  if (pageSizeSelect) {
+    pageSizeSelect.addEventListener('change', () => {
+      vePageSize = parseInt(pageSizeSelect.value, 10);
+      veCurrentPage = 1;
+      renderVeTable();
+    });
+  }
+
+  // Initial render
+  renderVeTable();
+}
+

@@ -96,12 +96,21 @@
               <i class="fa-solid fa-chevron-down nav-arrow"></i>
             </div>
           </li>
-          <li class="nav-node">
-            <div class="nav-item">
-              <span class="nav-icon"><i class="fa-solid fa-globe"></i></span>
+          <li class="nav-node" id="generalLedgerNode">
+            <div class="nav-item" id="generalLedgerToggle">
+              <span class="nav-icon"><i class="fa-solid fa-book"></i></span>
               <span class="nav-label">General Ledger</span>
               <i class="fa-solid fa-chevron-down nav-arrow"></i>
             </div>
+            <ul class="sub-nav-tree">
+              <li class="sub-nav-item"><a href="#voucher-entry" data-section="General Ledger" data-title="Voucher Entry" class="active-nav">Voucher Entry</a></li>
+              <li class="sub-nav-item"><a href="#query-voucher-rows" title="Query Voucher Rows - GL">Query Voucher Rows - GL</a></li>
+              <li class="sub-nav-item"><a href="#balance-analysis" title="Balance Analysis">Balance Analysis</a></li>
+              <li class="sub-nav-item"><a href="#start-updating-routine" title="Start Updating Routine">Start Updating Routine</a></li>
+              <li class="sub-nav-item"><a href="#bank-reconciliation" title="Bank Reconciliation">Bank Reconciliation</a></li>
+              <li class="sub-nav-item"><a href="#general-ledger-report" title="General Ledger Report">General Ledger Report</a></li>
+              <li class="sub-nav-item"><a href="#voucher-summary" title="Voucher Summary">Voucher Summary</a></li>
+            </ul>
           </li>
           <li class="nav-node">
             <div class="nav-item">
@@ -139,15 +148,18 @@
               <i class="fa-solid fa-chevron-down nav-arrow"></i>
             </div>
             <ul class="sub-nav-tree">
-              <li class="sub-nav-item"><a href="#currency-rates" class="menu-discarded" title="Discarded">Currency Rates</a></li>
-              <li class="sub-nav-item"><a href="#tax-codes" class="menu-discarded" title="Discarded">Tax Codes</a></li>
-              <li class="sub-nav-item"><a href="#cost-center" class="menu-discarded" title="Discarded">Cost Center</a></li>
-              <li class="sub-nav-item"><a href="#account-groups" class="menu-discarded" title="Discarded">Account Groups</a></li>
-              <li class="sub-nav-item"><a href="#accounts" class="menu-discarded" title="Discarded">Accounts</a></li>
+              <li class="sub-nav-item"><a href="#currency-rates">Currency Rates</a></li>
+              <li class="sub-nav-item"><a href="#tax-codes">Tax Codes</a></li>
+              <li class="sub-nav-item"><a href="#cost-center">Cost Center</a></li>
+              <li class="sub-nav-item"><a href="#account-groups">Account Groups</a></li>
+              <li class="sub-nav-item"><a href="#accounts">Accounts</a></li>
+              <li class="sub-nav-item"><a href="#payment-terms" data-section="Accounting Rules" data-title="Payment Terms">Payment Terms</a></li>
+              <li class="sub-nav-item"><a href="#voucher-series" data-section="Accounting Rules" data-title="Voucher Series per Voucher Type">Voucher Series per Voucher Type</a></li>
+              <li class="sub-nav-item"><a href="#user-groups-per-period" data-section="Accounting Rules" data-title="User Groups per Voucher Series">User Groups per Voucher Series</a></li>
+              <li class="sub-nav-item"><a href="#account-linking" data-section="Accounting Rules" data-title="Posting Control">Posting Control</a></li>
+              <li class="sub-nav-item"><a href="#tax-proposal-details" data-section="Accounting Rules" data-title="Tax Proposal Details">Tax Proposal Details</a></li>
+              <li class="sub-nav-item"><a href="#automatic-tax-proposal" data-section="Accounting Rules" data-title="Automatic Tax Proposal" class="active-nav">Automatic Tax Proposal</a></li>
               <li class="sub-nav-item"><a href="#nominal-account" data-section="Accounting Rules" data-title="Nominal Account">Nominal Account</a></li>
-              <li class="sub-nav-item"><a href="#nominal-account" data-section="Accounting Rules" data-title="Cash Accounts" class="menu-discarded" title="Discarded">Cash Accounts</a></li>
-              <li class="sub-nav-item"><a href="#account-linking" data-section="Accounting Rules" data-title="Account Linking">Account Linking</a></li>
-              <li class="sub-nav-item"><a href="#payment-terms" data-section="" data-title="Payment Terms" class="menu-discarded" title="Discarded">Payment Terms</a></li>
               
               <!-- User Data Section -->
               <li class="sub-nav-group expanded" id="userDataGroup">
@@ -157,13 +169,13 @@
                   <i class="fa-solid fa-chevron-down sub-group-arrow"></i>
                 </div>
                 <ul class="nested-sub-nav-tree">
-                  <li class="sub-nav-item"><a href="#user-per-company" data-section="User Data" data-title="Users Per Company" class="menu-discarded" title="Discarded">Users Per Company</a></li>
-                  <li class="sub-nav-item"><a href="#user-groups" data-section="User Data" data-title="User Groups" class="menu-discarded" title="Discarded">User Groups</a></li>
-                  <li class="sub-nav-item"><a href="#users-per-user-group" data-section="User Data" data-title="Users Per User Group" class="menu-discarded" title="Discarded">Users Per User Group</a></li>
+                  <li class="sub-nav-item"><a href="#user-per-company" data-section="User Data" data-title="Users Per Company">Users Per Company</a></li>
+                  <li class="sub-nav-item"><a href="#user-groups" data-section="User Data" data-title="User Groups">User Groups</a></li>
+                  <li class="sub-nav-item"><a href="#users-per-user-group" data-section="User Data" data-title="Users Per User Group">Users Per User Group</a></li>
                   <li class="sub-nav-item"><a href="#define-voucher-type" data-section="User Data" data-title="Define Voucher Type">Define Voucher Type</a></li>
-                  <li class="sub-nav-item"><a href="#voucher-series-per-voucher-type" data-section="User Data" data-title="Voucher Series Per Voucher Type" class="menu-discarded" title="Discarded">Voucher Series Per Voucher Type</a></li>
+                  <li class="sub-nav-item"><a href="#voucher-series-per-voucher-type" data-section="User Data" data-title="Voucher Series Per Voucher Type">Voucher Series Per Voucher Type</a></li>
                   <li class="sub-nav-item"><a href="#query-voucher-types" data-section="User Data" data-title="Query Voucher Types">Query Voucher Types</a></li>
-                  <li class="sub-nav-item"><a href="#accounting-periods-user" data-section="User Data" data-title="Accounting Periods" class="menu-discarded" title="Discarded">Accounting Periods</a></li>
+                  <li class="sub-nav-item"><a href="#accounting-periods-user" data-section="User Data" data-title="Accounting Periods">Accounting Periods</a></li>
                 </ul>
               </li>
 
@@ -175,16 +187,16 @@
                   <i class="fa-solid fa-chevron-down sub-group-arrow"></i>
                 </div>
                 <ul class="nested-sub-nav-tree">
-                  <li class="sub-nav-item"><a href="#authority-classes" data-section="Authority" data-title="Authority Classes" class="menu-discarded" title="Discarded">Authority Classes</a></li>
-                  <li class="sub-nav-item"><a href="#authority-combinations" data-section="Authority" data-title="Authority Combinations" class="menu-discarded" title="Discarded">Authority Combinations</a></li>
-                  <li class="sub-nav-item"><a href="#users-per-authority-class" data-section="Authority" data-title="Users per Authority Class" class="menu-discarded" title="Discarded">Users per Authority Class</a></li>
+                  <li class="sub-nav-item"><a href="#authority-classes" data-section="Authority" data-title="Authority Classes">Authority Classes</a></li>
+                  <li class="sub-nav-item"><a href="#authority-combinations" data-section="Authority" data-title="Authority Combinations">Authority Combinations</a></li>
+                  <li class="sub-nav-item"><a href="#users-per-authority-class" data-section="Authority" data-title="Users per Authority Class">Users per Authority Class</a></li>
                 </ul>
               </li>
 
-              <li class="sub-nav-item"><a href="#user-groups-per-period" data-section="" data-title="User Groups per Period" class="menu-discarded" title="Discarded">User Groups per Period</a></li>
-              <li class="sub-nav-item"><a href="#accounting-periods" data-section="" data-title="Accounting Periods" class="menu-discarded" title="Discarded">Accounting Periods</a></li>
-              <li class="sub-nav-item"><a href="#accounting-years" data-section="" data-title="Accounting Years" class="menu-discarded" title="Discarded">Accounting Years</a></li>
-              <li class="sub-nav-item"><a href="#voucher-series" data-section="" data-title="Voucher Series per Voucher Type" class="menu-discarded" title="Discarded">Voucher Series per Voucher Type</a></li>
+              <li class="sub-nav-item"><a href="#user-groups-per-period" data-section="" data-title="User Groups per Period">User Groups per Period</a></li>
+              <li class="sub-nav-item"><a href="#accounting-periods" data-section="" data-title="Accounting Periods">Accounting Periods</a></li>
+              <li class="sub-nav-item"><a href="#accounting-years" data-section="" data-title="Accounting Years">Accounting Years</a></li>
+              <li class="sub-nav-item"><a href="#voucher-series" data-section="" data-title="Voucher Series per Voucher Type">Voucher Series per Voucher Type</a></li>
             </ul>
           </li>
         </ul>
@@ -1709,6 +1721,422 @@
               </div>
             </footer>
           </section>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN: AUTOMATIC TAX PROPOSAL                                    -->
+        <!-- ================================================================= -->
+        <div id="screenAutomaticTaxProposal" class="erp-screen" style="display: none;">
+          <!-- Filter Card -->
+          <section class="filter-card">
+            <div class="filter-row" style="align-items: center; gap: 8px;">
+              <div class="filter-group" style="width: auto;">
+                <div class="filter-label-btn" style="min-width: 90px; text-align: left; padding-left: 10px;">Company</div>
+                <div class="filter-select-wrapper">
+                  <select id="atpCompanySelect" class="filter-select" style="min-width: 240px;" aria-label="Company Code">
+                    <option value="LAXMI01" selected>LAXMI01</option>
+                    <option value="COMP01">COMP01</option>
+                    <option value="COMP02">COMP02</option>
+                    <option value="COMP03">COMP03</option>
+                    <option value="COMP04">COMP04</option>
+                    <option value="COMP05">COMP05</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter-actions" style="margin-left: 10px;">
+                <button type="button" class="btn-search" id="btnAtpSearch" title="Search / Refresh Tax Proposals">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span>Search</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Automatic Tax Proposal Grid Card -->
+          <section class="grid-card" id="atpGridCard">
+            <!-- Grid Header Bar -->
+            <div class="grid-card-header" id="atpGridCardHeader">
+              <div class="grid-title">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Automatic Tax Proposal</span>
+              </div>
+              <div class="grid-header-actions">
+                <button type="button" class="grid-collapse-btn" id="btnCollapseAtpGrid" title="Toggle section">
+                  <i class="fa-solid fa-chevron-up"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Viewport Table -->
+            <div class="grid-viewport" id="atpGridViewport" style="overflow-x: auto;">
+              <table class="enterprise-table" id="atpTable">
+                <thead>
+                  <tr>
+                    <th style="width: 38px; text-align: center;"></th>
+                    <th style="min-width: 95px; text-align: center;">Proposal ID</th>
+                    <th style="min-width: 190px; text-align: left;">Description</th>
+                    <th style="min-width: 105px; text-align: center;">Creation Date</th>
+                    <th style="min-width: 85px; text-align: center;">User ID</th>
+                    <th style="min-width: 120px; text-align: center;">Acknowledge Date</th>
+                    <th style="min-width: 110px; text-align: center;">Tax Report Date</th>
+                    <th style="min-width: 105px; text-align: center;">Proposal State</th>
+                    <th style="min-width: 90px; text-align: center;">Report No</th>
+                    <th style="min-width: 110px; text-align: center;">Tax Office ID</th>
+                    <th style="min-width: 95px; text-align: center;">Start Page No</th>
+                    <th style="min-width: 95px; text-align: center;">Pre Payments</th>
+                    <th style="min-width: 70px; text-align: center;">Error</th>
+                  </tr>
+                </thead>
+                <tbody id="atpTableBody">
+                  <!-- Populated dynamically via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Toolbar & Pagination -->
+            <footer class="grid-footer">
+              <div class="footer-left-actions">
+                <button type="button" class="grid-tool-btn" id="btnAtpAdd" title="Create New Tax Proposal">
+                  <i class="fa-solid fa-circle-plus"></i>
+                  <span>Add</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnAtpDownload" title="Download Tax Proposals (CSV)">
+                  <i class="fa-solid fa-download"></i>
+                  <span>Download</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnAtpDelete" title="Delete Selected Tax Proposal">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Delete</span>
+                </button>
+                <button type="button" class="grid-tool-btn" id="btnAtpViewDetails" title="View Proposal Details">
+                  <i class="fa-solid fa-eye"></i>
+                  <span>View Details</span>
+                </button>
+              </div>
+
+              <div class="footer-center-pagination">
+                <button type="button" class="page-nav-btn" id="btnAtpFirstPage" title="First Page">&lt;&lt;</button>
+                <button type="button" class="page-nav-btn" id="btnAtpPrevPage" title="Previous Page">&lt;</button>
+                <span class="page-label">Page</span>
+                <input type="text" id="atpPageNumberInput" class="page-num-input" value="1">
+                <span class="page-label">of <span id="atpTotalPagesText">2</span></span>
+                <button type="button" class="page-nav-btn" id="btnAtpNextPage" title="Next Page">&gt;</button>
+                <button type="button" class="page-nav-btn" id="btnAtpLastPage" title="Last Page">&gt;&gt;</button>
+                <div class="page-size-wrapper">
+                  <select id="atpPageSizeSelect" class="page-size-select">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="1000" selected>1000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="footer-right-status">
+                <span id="atpRecordStatusText">View 1 - 300 of 530</span>
+              </div>
+            </footer>
+          </section>
+
+          <!-- Action Buttons Bar immediately below Grid Card (Matching Screenshot!) -->
+          <div class="atp-bottom-actions-bar">
+            <button type="button" class="atp-action-btn atp-btn-tax" id="btnAtpViewTaxAmounts" title="View Tax Amounts Breakdown for Selected Proposal">
+              <i class="fa-solid fa-user"></i>
+              <span>View Tax Amounts</span>
+            </button>
+            <button type="button" class="atp-action-btn atp-btn-voucher" id="btnAtpVoucherInfo" title="View General Ledger Voucher Information">
+              <i class="fa-solid fa-gear"></i>
+              <span>Voucher Info</span>
+            </button>
+            <button type="button" class="atp-action-btn atp-btn-invoice" id="btnAtpInvoiceInfo" title="View Underlying Invoices Included in Proposal">
+              <i class="fa-regular fa-file-lines"></i>
+              <span>Invoice Info</span>
+            </button>
+            <button type="button" class="atp-action-btn atp-btn-report" id="btnAtpPreliminaryReport" title="Generate and Preview Preliminary Tax Report">
+              <i class="fa-solid fa-print"></i>
+              <span>Preliminary Report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- SCREEN: VOUCHER ENTRY                                             -->
+        <!-- ================================================================= -->
+        <div id="screenVoucherEntry" class="erp-screen" style="display: none; flex-direction: column; gap: 6px; background: #ffffff; border: 1px solid #89b4ce; border-radius: 2px; padding: 6px 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+
+          <!-- Voucher Header Details Card (3 Columns) -->
+          <div class="ve-header-card" style="background: #ffffff; border: 1px solid #89b4ce; border-radius: 2px; padding: 5px 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px 14px;">
+              
+              <!-- Column 1 -->
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 105px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Company</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <select id="veCompany" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none; background: #ffffff; cursor: pointer;">
+                      <option value="GLAX01" selected>GLAX01</option>
+                      <option value="LAXMI01">LAXMI01</option>
+                      <option value="LAXMI02">LAXMI02</option>
+                      <option value="BHUVAN01">BHUVAN01</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 105px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Voucher Type</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <select id="veVoucherType" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none; background: #ffffff; cursor: pointer;">
+                      <option value="Q" selected>Q</option>
+                      <option value="M">M</option>
+                      <option value="TX">TX</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="K">K</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 105px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Amount Method</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <select id="veAmountMethod" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none; background: #ffffff; cursor: pointer;">
+                      <option value="Net Amount Entry" selected>Net Amount Entry</option>
+                      <option value="Gross Amount Entry">Gross Amount Entry</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 2 -->
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; position: relative;">
+                  <div style="width: 105px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Voucher Date</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%; display: flex; align-items: center;">
+                    <input type="text" id="veVoucherDate" value="26-10-2026" placeholder="DD-MM-YYYY" style="flex: 1; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none; cursor: pointer;">
+                    <input type="date" id="veVoucherDateNative" style="position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0;">
+                    <button type="button" id="btnVeVoucherDateCal" style="border: none; background: transparent; padding: 0 5px; color: #206294; cursor: pointer; font-size: 11px; height: 100%; display: flex; align-items: center;" title="Select date from calendar">
+                      <i class="fa-regular fa-calendar-days"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 105px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Voucher No.</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <input type="text" id="veVoucherNo" value="2126100034" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; font-weight: 700; outline: none;">
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 105px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">User Group</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <select id="veUserGroup" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none; background: #ffffff; cursor: pointer;">
+                      <option value="AC" selected>AC</option>
+                      <option value="ADMIN">ADMIN</option>
+                      <option value="TAX_ADMIN">TAX_ADMIN</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 3 -->
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 115px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Accounting Period</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%; display: flex; align-items: center; gap: 4px; padding: 0 2px;">
+                    <input type="text" id="veAccountingYear" value="2026" style="width: 50%; height: 18px; border: 1px solid #c0d8e8; font-size: 11px; padding: 0 4px; color: #1e4566; outline: none; text-align: center;">
+                    <input type="text" id="veAccountingPeriod" value="10" style="width: 50%; height: 18px; border: 1px solid #c0d8e8; font-size: 11px; padding: 0 4px; color: #1e4566; outline: none; text-align: center;">
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 115px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Voucher Status</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <select id="veVoucherStatus" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; font-weight: 600; outline: none; background: #ffffff; cursor: pointer;">
+                      <option value="Approved" selected>Approved</option>
+                      <option value="Awaiting Approval">Awaiting Approval</option>
+                      <option value="Updated">Updated</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px;">
+                  <div style="width: 115px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Header Notes</div>
+                  <div style="flex: 1; background: #ffffff; height: 100%;">
+                    <input type="text" id="veHeaderNotes" placeholder="" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none;">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Middle Quick Line Entry Form -->
+          <div class="ve-entry-strip" style="background: #ffffff; border: 1px solid #89b4ce; border-radius: 3px; padding: 6px 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 4px;">
+            <!-- Row 1 -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <!-- Account -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 1.8;">
+                <div style="width: 85px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Account</div>
+                <div style="display: flex; flex: 1; background: #ffffff; height: 100%;">
+                  <input type="text" id="veLineAccountNo" value="2010" style="width: 75px; height: 100%; border: none; border-right: 1px solid #c0d8e8; font-size: 11px; padding: 0 5px; font-weight: 700; color: #164f78; outline: none;">
+                  <input type="text" id="veLineAccountDesc" value="Gowrie HSBC Current Euro" style="flex: 1; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none;">
+                </div>
+              </div>
+
+              <!-- Cost Center -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 0.9;">
+                <div style="width: 85px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Cost Center</div>
+                <div style="flex: 1; background: #ffffff; height: 100%;">
+                  <input type="text" id="veLineCostCenter" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none;">
+                </div>
+              </div>
+
+              <!-- Tax Code -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 0.9;">
+                <div style="width: 75px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Tax Code</div>
+                <div style="flex: 1; background: #ffffff; height: 100%;">
+                  <select id="veLineTaxCode" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 4px; color: #1e4566; outline: none; background: #ffffff; cursor: pointer;">
+                    <option value="" selected></option>
+                    <option value="SUK-11">SUK-11</option>
+                    <option value="SUK-12">SUK-12</option>
+                    <option value="VAT18">VAT18</option>
+                    <option value="VAT05">VAT05</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Currency -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 0.8;">
+                <div style="width: 75px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Currency</div>
+                <div style="flex: 1; background: #ffffff; height: 100%;">
+                  <select id="veLineCurrency" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 4px; color: #1e4566; font-weight: 700; outline: none; background: #ffffff; cursor: pointer;">
+                    <option value="GBP" selected>GBP</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="INR">INR</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Button: + Add -->
+              <button type="button" id="btnVeAddLine" style="width: 95px; height: 22px; background: linear-gradient(180deg, #1fa5db 0%, #1072a8 100%); color: #ffffff; border: 1px solid #0d5b88; border-radius: 3px; font-size: 11px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.15);">
+                <i class="fa-solid fa-plus" style="font-size: 10px;"></i> Add
+              </button>
+            </div>
+
+            <!-- Row 2 -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <!-- Debit Amount -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 1.1;">
+                <div style="width: 95px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Debit Amount</div>
+                <div style="flex: 1; background: #ffffff; height: 100%;">
+                  <input type="number" step="0.01" id="veLineDebitAmount" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; text-align: right; outline: none;">
+                </div>
+              </div>
+
+              <!-- Credit Amount -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 1.1;">
+                <div style="width: 95px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Credit Amount</div>
+                <div style="flex: 1; background: #ffffff; height: 100%;">
+                  <input type="number" step="0.01" id="veLineCreditAmount" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; text-align: right; outline: none;">
+                </div>
+              </div>
+
+              <!-- Note Text -->
+              <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 2.2;">
+                <div style="width: 75px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Note Text</div>
+                <div style="flex: 1; background: #ffffff; height: 100%;">
+                  <input type="text" id="veLineNoteText" value="GLax Euro 7369 Purchase from GBP 1591" placeholder="" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; outline: none;">
+                </div>
+              </div>
+
+              <!-- Button: Search -->
+              <button type="button" id="btnVeSearchLine" style="width: 95px; height: 22px; background: linear-gradient(180deg, #1fa5db 0%, #1072a8 100%); color: #ffffff; border: 1px solid #0d5b88; border-radius: 3px; font-size: 11px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.15);">
+                <i class="fa-solid fa-magnifying-glass" style="font-size: 10px;"></i> Search
+              </button>
+            </div>
+          </div>
+
+          <!-- Voucher Rows Grid / Table -->
+          <div class="ve-grid-container" style="background: #ffffff; border: 1px solid #89b4ce; border-radius: 3px; overflow: hidden; display: flex; flex-direction: column;">
+            <div class="ve-table-scroll" style="overflow-x: auto; max-height: 480px;">
+              <table id="veTable" style="width: 100%; min-width: 1350px; border-collapse: collapse; font-size: 11px;">
+                <thead>
+                  <tr style="background: linear-gradient(180deg, #3782ae 0%, #206294 100%); color: #ffffff; height: 26px; border-bottom: 1px solid #144971;">
+                    <th style="width: 44px; padding: 3px 4px; text-align: center; border-right: 1px solid #4a92bd;">
+                      <input type="checkbox" id="veSelectAllCheckbox" style="cursor: pointer;">
+                    </th>
+                    <th style="width: 80px; padding: 3px 6px; text-align: center; border-right: 1px solid #4a92bd; white-space: nowrap;">Account No</th>
+                    <th style="width: 180px; padding: 3px 6px; text-align: left; border-right: 1px solid #4a92bd; white-space: nowrap;">Account Desc</th>
+                    <th style="width: 80px; padding: 3px 6px; text-align: center; border-right: 1px solid #4a92bd; white-space: nowrap;">Cost Center</th>
+                    <th style="width: 75px; padding: 3px 6px; text-align: center; border-right: 1px solid #4a92bd; white-space: nowrap;">Tax Code</th>
+                    <th style="width: 85px; padding: 3px 6px; text-align: center; border-right: 1px solid #4a92bd; white-space: nowrap;">Currency Code</th>
+                    <th style="width: 80px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Currency Rate</th>
+                    <th style="width: 95px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Currency Debit</th>
+                    <th style="width: 95px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Currency Credit</th>
+                    <th style="width: 95px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Currency Amou</th>
+                    <th style="width: 95px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Debit Amount</th>
+                    <th style="width: 95px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Credit Amount</th>
+                    <th style="width: 95px; padding: 3px 6px; text-align: right; border-right: 1px solid #4a92bd; white-space: nowrap;">Amount</th>
+                    <th style="width: 220px; padding: 3px 6px; text-align: left; border-right: 1px solid #4a92bd; white-space: nowrap;">Note Text</th>
+                    <th style="width: 85px; padding: 3px 6px; text-align: center; white-space: nowrap;">Conversion Fee</th>
+                  </tr>
+                </thead>
+                <tbody id="veTableBody">
+                  <!-- Rows populated dynamically by app.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Grid Footer Bar: Delete / Download | Pagination | View Count -->
+            <div style="background: #e9f2f8; border-top: 1px solid #b3d1ea; padding: 4px 10px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #205075;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <button type="button" id="btnVeDeleteRow" style="background: transparent; border: none; color: #205075; font-size: 11px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px;">
+                  <i class="fa-solid fa-xmark" style="color: #205075;"></i> Delete
+                </button>
+                <button type="button" id="btnVeDownload" style="background: transparent; border: none; color: #205075; font-size: 11px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px;">
+                  <i class="fa-solid fa-download" style="color: #205075;"></i> Download
+                </button>
+              </div>
+
+              <!-- Pagination -->
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <button type="button" id="btnVeFirst" style="background: #ffffff; border: 1px solid #a4c4da; width: 22px; height: 20px; border-radius: 2px; cursor: pointer; font-size: 10px; color: #1e4566;">&lt;&lt;</button>
+                <button type="button" id="btnVePrev" style="background: #ffffff; border: 1px solid #a4c4da; width: 22px; height: 20px; border-radius: 2px; cursor: pointer; font-size: 10px; color: #1e4566;">&lt;</button>
+                <span style="font-size: 11px; color: #1e4566; margin: 0 2px;">Page</span>
+                <input type="number" id="vePageInput" value="1" min="1" style="width: 32px; height: 20px; border: 1px solid #a4c4da; text-align: center; font-size: 11px; padding: 0;">
+                <span style="font-size: 11px; color: #1e4566; margin: 0 2px;">of <span id="veTotalPages">1</span></span>
+                <button type="button" id="btnVeNext" style="background: #ffffff; border: 1px solid #a4c4da; width: 22px; height: 20px; border-radius: 2px; cursor: pointer; font-size: 10px; color: #1e4566;">&gt;</button>
+                <button type="button" id="btnVeLast" style="background: #ffffff; border: 1px solid #a4c4da; width: 22px; height: 20px; border-radius: 2px; cursor: pointer; font-size: 10px; color: #1e4566;">&gt;&gt;</button>
+                <select id="vePageSizeSelect" style="height: 20px; border: 1px solid #a4c4da; font-size: 11px; margin-left: 6px; padding: 0 4px; color: #1e4566; cursor: pointer; background: #ffffff;">
+                  <option value="1000" selected>1000</option>
+                  <option value="100">100</option>
+                  <option value="50">50</option>
+                  <option value="25">25</option>
+                </select>
+              </div>
+
+              <!-- View Count -->
+              <div id="veViewCount" style="font-weight: 600; color: #205075;">
+                View 1 - 3 of 3
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons: New Entry & Save -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 80px; padding: 8px 0; margin-top: 4px;">
+            <button type="button" id="btnVeNewEntry" style="background: linear-gradient(180deg, #f7ab3b 0%, #db8014 100%); color: #ffffff; border: 1px solid #ba6a08; font-size: 11px; font-weight: 700; padding: 5px 20px; border-radius: 3px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+              <i class="fa-regular fa-comment-dots"></i> New Entry
+            </button>
+            <button type="button" id="btnVeSave" style="background: linear-gradient(180deg, #1b6da5 0%, #114c77 100%); color: #ffffff; border: 1px solid #0a3350; font-size: 11px; font-weight: 700; padding: 5px 22px; border-radius: 3px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+              <i class="fa-solid fa-floppy-disk"></i> Save
+            </button>
+          </div>
+
         </div>
       </main>
     </div>
@@ -3425,6 +3853,425 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-cancel-modal" id="viewAlModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ATP VIEW TAX AMOUNTS                                       -->
+  <!-- ================================================================= -->
+  <div class="modal-overlay" id="atpTaxModalOverlay">
+    <div class="modal-dialog" style="max-width: 820px; width: 95%;">
+      <div class="modal-header" style="background: linear-gradient(180deg, #1f6fa8 0%, #15456b 100%);">
+        <div class="modal-title" style="color: #ffffff;">
+          <i class="fa-solid fa-coins"></i> <span id="atpTaxModalTitle">Tax Amounts - Proposal [549]</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="atpTaxModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 16px;">
+        <div style="background: #eef5fb; border: 1px solid #c2d8ea; border-radius: 4px; padding: 10px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: #164f78;" id="atpTaxModalPropDesc">Laxmico Purchases Sep 2026</div>
+            <div style="font-size: 11px; color: #496d88;">Company: <strong id="atpTaxModalCompany">LAXMI01</strong> | Report: <strong id="atpTaxModalReport">PURCH</strong> | Office: <strong id="atpTaxModalOffice">846 G7498</strong></div>
+          </div>
+          <span class="badge" style="background: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 4px 10px; border-radius: 3px; font-weight: 700; font-size: 11px;">
+            <i class="fa-solid fa-circle-check"></i> Balanced Calculation
+          </span>
+        </div>
+
+        <div style="border: 1px solid #b8cbdb; border-radius: 3px; overflow: hidden; max-height: 320px; overflow-y: auto;">
+          <table class="enterprise-table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="min-width: 90px; text-align: left;">Tax Code</th>
+                <th style="min-width: 220px; text-align: left;">Tax Description</th>
+                <th style="min-width: 120px; text-align: right;">Tax Base Amount</th>
+                <th style="min-width: 110px; text-align: right;">Tax Amount</th>
+                <th style="min-width: 120px; text-align: right;">Deductible Tax</th>
+                <th style="min-width: 130px; text-align: right;">Non-Deductible Tax</th>
+              </tr>
+            </thead>
+            <tbody id="atpTaxTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+            <tfoot style="background: #e4edf5; font-weight: 700; border-top: 2px solid #9bb7cf;">
+              <tr>
+                <td colspan="2" style="text-align: right; padding: 6px 10px; color: #164f78;">Total:</td>
+                <td id="atpTaxTotalBase" style="text-align: right; padding: 6px 10px; color: #164f78;">-</td>
+                <td id="atpTaxTotalAmount" style="text-align: right; padding: 6px 10px; color: #164f78;">-</td>
+                <td id="atpTaxTotalDeduct" style="text-align: right; padding: 6px 10px; color: #1e7e34;">-</td>
+                <td id="atpTaxTotalNonDeduct" style="text-align: right; padding: 6px 10px; color: #b21f2d;">-</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between;">
+        <button type="button" class="btn-cancel-modal" id="atpTaxExportBtn"><i class="fa-solid fa-download"></i> Export Tax CSV</button>
+        <button type="button" class="btn-cancel-modal" id="atpTaxModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ATP VOUCHER INFO                                           -->
+  <!-- ================================================================= -->
+  <div class="modal-overlay" id="atpVoucherModalOverlay">
+    <div class="modal-dialog" style="max-width: 780px; width: 95%;">
+      <div class="modal-header" style="background: linear-gradient(180deg, #2b9bb8 0%, #1a6f85 100%);">
+        <div class="modal-title" style="color: #ffffff;">
+          <i class="fa-solid fa-gear"></i> <span id="atpVoucherModalTitle">Voucher Information - Proposal [549]</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="atpVoucherModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 16px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 14px;">
+          <div style="background: #f4f8fc; border: 1px solid #c9dbe9; border-radius: 4px; padding: 8px 10px;">
+            <div style="font-size: 10.5px; color: #587994; text-transform: uppercase; font-weight: 600;">Voucher Type</div>
+            <div style="font-size: 13px; font-weight: 700; color: #194467;" id="atpVoucherTypeDisplay">TX</div>
+          </div>
+          <div style="background: #f4f8fc; border: 1px solid #c9dbe9; border-radius: 4px; padding: 8px 10px;">
+            <div style="font-size: 10.5px; color: #587994; text-transform: uppercase; font-weight: 600;">Voucher No</div>
+            <div style="font-size: 13px; font-weight: 700; color: #194467;" id="atpVoucherNoDisplay">TX2026001284</div>
+          </div>
+          <div style="background: #f4f8fc; border: 1px solid #c9dbe9; border-radius: 4px; padding: 8px 10px;">
+            <div style="font-size: 10.5px; color: #587994; text-transform: uppercase; font-weight: 600;">Year / Period</div>
+            <div style="font-size: 13px; font-weight: 700; color: #194467;" id="atpVoucherPeriodDisplay">2026 / 09</div>
+          </div>
+          <div style="background: #f4f8fc; border: 1px solid #c9dbe9; border-radius: 4px; padding: 8px 10px;">
+            <div style="font-size: 10.5px; color: #587994; text-transform: uppercase; font-weight: 600;">Voucher Date</div>
+            <div style="font-size: 13px; font-weight: 700; color: #194467;" id="atpVoucherDateDisplay">15/10/2026</div>
+          </div>
+          <div style="background: #f4f8fc; border: 1px solid #c9dbe9; border-radius: 4px; padding: 8px 10px;">
+            <div style="font-size: 10.5px; color: #587994; text-transform: uppercase; font-weight: 600;">User Group</div>
+            <div style="font-size: 13px; font-weight: 700; color: #194467;" id="atpVoucherUserGroupDisplay">TAX_ADMIN</div>
+          </div>
+          <div style="background: #f4f8fc; border: 1px solid #c9dbe9; border-radius: 4px; padding: 8px 10px;">
+            <div style="font-size: 10.5px; color: #587994; text-transform: uppercase; font-weight: 600;">Status</div>
+            <div style="font-size: 13px; font-weight: 700; color: #1e7e34;" id="atpVoucherStatusDisplay">Updated</div>
+          </div>
+        </div>
+
+        <div style="border: 1px solid #b8cbdb; border-radius: 3px; overflow: hidden;">
+          <table class="enterprise-table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="min-width: 90px; text-align: left;">Account</th>
+                <th style="min-width: 250px; text-align: left;">Description</th>
+                <th style="min-width: 130px; text-align: right;">Debit (INR)</th>
+                <th style="min-width: 130px; text-align: right;">Credit (INR)</th>
+              </tr>
+            </thead>
+            <tbody id="atpVoucherTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="atpVoucherModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ATP INVOICE INFO                                           -->
+  <!-- ================================================================= -->
+  <div class="modal-overlay" id="atpInvoiceModalOverlay">
+    <div class="modal-dialog" style="max-width: 900px; width: 95%;">
+      <div class="modal-header" style="background: linear-gradient(180deg, #49a850 0%, #308036 100%);">
+        <div class="modal-title" style="color: #ffffff;">
+          <i class="fa-regular fa-file-lines"></i> <span id="atpInvoiceModalTitle">Associated Invoices - Proposal [549]</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="atpInvoiceModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+          <div style="font-size: 12px; color: #204564; font-weight: 600;">
+            Invoices included in this Tax Calculation (<span id="atpInvoiceCount">0</span> invoices):
+          </div>
+          <button type="button" class="btn-cancel-modal" id="atpInvoiceExportBtn" style="padding: 3px 10px; font-size: 11px;">
+            <i class="fa-solid fa-download"></i> Export Invoices CSV
+          </button>
+        </div>
+
+        <div style="border: 1px solid #b8cbdb; border-radius: 3px; max-height: 340px; overflow-y: auto;">
+          <table class="enterprise-table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="min-width: 70px; text-align: center;">Series</th>
+                <th style="min-width: 90px; text-align: left;">Invoice No</th>
+                <th style="min-width: 200px; text-align: left;">Supplier / Customer Name</th>
+                <th style="min-width: 95px; text-align: center;">Invoice Date</th>
+                <th style="min-width: 60px; text-align: center;">Curr</th>
+                <th style="min-width: 110px; text-align: right;">Net Amount</th>
+                <th style="min-width: 100px; text-align: right;">Tax Amount</th>
+                <th style="min-width: 110px; text-align: right;">Gross Amount</th>
+                <th style="min-width: 90px; text-align: center;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="atpInvoiceTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="atpInvoiceModalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: ATP PRELIMINARY REPORT                                     -->
+  <!-- ================================================================= -->
+  <div class="modal-overlay" id="atpReportModalOverlay">
+    <div class="modal-dialog" style="max-width: 860px; width: 95%;">
+      <div class="modal-header" style="background: linear-gradient(180deg, #e5931e 0%, #bf7306 100%);">
+        <div class="modal-title" style="color: #ffffff;">
+          <i class="fa-solid fa-print"></i> <span id="atpReportModalTitle">Preliminary Tax Report - [PURCH]</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="atpReportModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 16px;">
+        <div class="atp-report-sheet" id="atpReportPrintArea">
+          <div class="atp-report-header">
+            <div>
+              <div style="font-size: 16px; font-weight: 800; color: #164f78; letter-spacing: 0.5px;">FINANCE ENTERPRISE - TAX REPORT</div>
+              <div style="font-size: 13px; font-weight: 700; color: #2c587a; margin-top: 2px;">LAXMI ENTERPRISE LTD (LAXMI01)</div>
+              <div style="font-size: 11px; color: #57778e; margin-top: 2px;">Tax Jurisdiction Office: <strong>846 G7498</strong></div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge" style="background: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 4px 10px; border-radius: 3px; font-weight: 700; font-size: 11px;">
+                PRELIMINARY VERIFICATION
+              </span>
+              <div style="font-size: 11px; color: #57778e; margin-top: 4px;">Run Date: <span id="atpReportRunDate">15/10/2026</span></div>
+              <div style="font-size: 11px; color: #57778e;">Run By: <strong>HIMPAT</strong></div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px;">
+            <div style="background: #f7fafc; border: 1px solid #d3e1ec; border-radius: 4px; padding: 10px;">
+              <div style="font-size: 10.5px; color: #587994; text-transform: uppercase;">Proposal ID</div>
+              <div style="font-size: 15px; font-weight: 800; color: #164f78;" id="atpReportPropId">549</div>
+              <div style="font-size: 11px; color: #496d88; margin-top: 2px;" id="atpReportPropDesc">Laxmico Purchases Sep 2026</div>
+            </div>
+            <div style="background: #f7fafc; border: 1px solid #d3e1ec; border-radius: 4px; padding: 10px;">
+              <div style="font-size: 10.5px; color: #587994; text-transform: uppercase;">Report Type</div>
+              <div style="font-size: 15px; font-weight: 800; color: #164f78;" id="atpReportType">PURCH</div>
+              <div style="font-size: 11px; color: #496d88; margin-top: 2px;">Input Tax on Purchases</div>
+            </div>
+            <div style="background: #f7fafc; border: 1px solid #d3e1ec; border-radius: 4px; padding: 10px;">
+              <div style="font-size: 10.5px; color: #587994; text-transform: uppercase;">Total Tax Calculated</div>
+              <div style="font-size: 15px; font-weight: 800; color: #1e7e34;" id="atpReportTotalTax">INR 28,261.00</div>
+              <div style="font-size: 11px; color: #496d88; margin-top: 2px;">Deductible: <span id="atpReportDeductible">INR 27,761.00</span></div>
+            </div>
+          </div>
+
+          <div style="border: 1px solid #b8cbdb; border-radius: 3px; overflow: hidden; margin-bottom: 14px;">
+            <table class="enterprise-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th style="min-width: 80px; text-align: left;">Code</th>
+                  <th style="min-width: 200px; text-align: left;">Tax Category</th>
+                  <th style="min-width: 110px; text-align: right;">Base Amount</th>
+                  <th style="min-width: 110px; text-align: right;">Tax Amount</th>
+                  <th style="min-width: 110px; text-align: right;">Deductible</th>
+                </tr>
+              </thead>
+              <tbody id="atpReportTableBody">
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div style="background: #f8f9fa; border: 1px solid #e2e8f0; border-radius: 3px; padding: 8px 12px; font-size: 11px; color: #526c82; display: flex; justify-content: space-between;">
+            <div>Authorization Status: <strong id="atpReportAuthStatus" style="color: #164f78;">Created (Awaiting Tax Office Submission)</strong></div>
+            <div>Official Signature: _______________________</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between;">
+        <button type="button" class="btn-cancel-modal" id="atpReportPrintBtn"><i class="fa-solid fa-print"></i> Print Report</button>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn-save-modal" id="atpReportAcknowledgeBtn" style="background: linear-gradient(180deg, #2b9bb8 0%, #1a6f85 100%);"><i class="fa-solid fa-check-double"></i> Acknowledge Proposal</button>
+          <button type="button" class="btn-cancel-modal" id="atpReportModalCloseBtn2">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: LOAD TAX PROPOSAL (POPUP FROM ADD BUTTON)                  -->
+  <!-- ================================================================= -->
+  <div class="modal-overlay" id="atpAddModalOverlay">
+    <div class="modal-dialog" style="max-width: 440px; width: 95%; border: 1px solid #146e9d; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.35);">
+      <div class="modal-header" style="background: linear-gradient(180deg, #1fa5db 0%, #0d79b0 100%); border-bottom: 1px solid #08557e; height: 32px; padding: 0 10px; display: flex; align-items: center; justify-content: space-between;">
+        <div class="modal-title" style="color: #ffffff; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+          Load Tax Proposal
+        </div>
+        <button type="button" class="modal-close-btn" id="atpAddModalCloseBtn" style="color: #ffffff; font-size: 16px; opacity: 0.9; cursor: pointer; background: transparent; border: none; padding: 0 4px;">&times;</button>
+      </div>
+      <form id="atpAddForm">
+        <div class="modal-body" style="padding: 10px; background: #ffffff;">
+          <div id="atpAddAlert"></div>
+
+          <table class="load-tax-proposal-table" style="width: 100%; border-collapse: collapse; border: 1px solid #89b4ce;">
+            <tbody>
+              <tr>
+                <td style="width: 110px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  Proposal ID
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <input type="number" id="modalAtpProposalId" min="1" step="1" placeholder="e.g. 550" style="width: 100%; height: 21px; border: 1px solid #a4c4da; background: #ffffff; font-size: 11px; padding: 2px 5px; font-weight: 700; color: #164f78; outline: none;" required>
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  Description
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <input type="text" id="modalAtpDescription" required placeholder="" style="width: 100%; height: 21px; border: 1px solid #a4c4da; font-size: 11px; padding: 2px 5px; color: #1e4566;">
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  From Date
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 21px; background: #ffffff;">
+                    <input type="text" id="modalAtpFromDate" placeholder="Date ..." style="flex: 1; border: none; height: 19px; font-size: 11px; padding: 2px 5px; color: #1e4566; outline: none;">
+                    <input type="date" id="modalAtpFromDateNative" style="position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0;">
+                    <button type="button" id="btnAtpFromDateCal" style="border: none; background: transparent; padding: 0 5px; color: #437d9f; cursor: pointer; font-size: 11px;" title="Select date">
+                      <i class="fa-regular fa-calendar-days"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  To Date
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 21px; background: #ffffff;">
+                    <input type="text" id="modalAtpToDate" placeholder="Date ..." style="flex: 1; border: none; height: 19px; font-size: 11px; padding: 2px 5px; color: #1e4566; outline: none;">
+                    <input type="date" id="modalAtpToDateNative" style="position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0;">
+                    <button type="button" id="btnAtpToDateCal" style="border: none; background: transparent; padding: 0 5px; color: #437d9f; cursor: pointer; font-size: 11px;" title="Select date">
+                      <i class="fa-regular fa-calendar-days"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  Tax Office
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <select id="modalAtpTaxOffice" style="width: 100%; height: 21px; border: 1px solid #a4c4da; font-size: 11px; padding: 0 4px; color: #1e4566; background: #ffffff; outline: none; cursor: pointer;">
+                    <option value="846 G7498" selected>846 G7498</option>
+                    <option value="846 G7499">846 G7499</option>
+                    <option value="845 G1200">845 G1200</option>
+                    <option value="840 G3310">840 G3310</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  Name
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <input type="text" id="modalAtpTaxOfficeName" value="Central Tax Office" placeholder="Tax Office Name" style="width: 100%; height: 21px; border: 1px solid #a4c4da; font-size: 11px; padding: 2px 5px; color: #1e4566; background: #ffffff; outline: none;">
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  Report
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <select id="modalAtpReport" style="width: 100%; height: 21px; border: 1px solid #a4c4da; font-size: 11px; padding: 0 4px; color: #1e4566; font-weight: 700; background: #ffffff; outline: none; cursor: pointer;">
+                    <option value="PURCH" selected>PURCH</option>
+                    <option value="SALES">SALES</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td style="background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 4px 8px; border: 1px solid #64a6bd; user-select: none;">
+                  Description
+                </td>
+                <td style="padding: 2px 4px; border: 1px solid #c0d8e8; background: #ffffff;">
+                  <input type="text" id="modalAtpReportDesc" value="Purchases Tax Report" style="width: 100%; height: 21px; border: 1px solid #a4c4da; font-size: 11px; padding: 2px 5px; color: #1e4566;" readonly>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer" style="padding: 8px 12px; background: #f3f7fa; border-top: 1px solid #c8d9e6; display: flex; justify-content: flex-end; gap: 6px;">
+          <button type="submit" id="atpAddModalSaveBtn" style="background: linear-gradient(180deg, #1b6da5 0%, #114c77 100%); color: #ffffff; border: 1px solid #0a3350; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 3px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);">
+            <i class="fa-solid fa-check"></i>
+            <span>Add</span>
+          </button>
+          <button type="button" id="atpAddModalCancelBtn" style="background: linear-gradient(180deg, #d33c3c 0%, #9e1a1a 100%); color: #ffffff; border: 1px solid #731313; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 3px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);">
+            <i class="fa-solid fa-ban"></i>
+            <span>Cancel</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL: VIEW PROPOSAL DETAILS                                      -->
+  <!-- ================================================================= -->
+  <div class="modal-overlay" id="atpDetailsModalOverlay">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-eye"></i> Tax Proposal Details
+        </div>
+        <button type="button" class="modal-close-btn" id="atpDetailsModalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 16px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12px;">
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Proposal ID:</span>
+            <div id="viewAtpProposalId" style="font-size: 13px; font-weight: 800; color: #164f78; margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Company Code:</span>
+            <div id="viewAtpCompany" style="font-size: 12px; color: #284c6b; margin-top: 2px;">LAXMI01</div>
+          </div>
+          <div style="grid-column: span 2;">
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Description:</span>
+            <div id="viewAtpDescription" style="font-size: 13px; font-weight: 600; color: #1e4566; margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Creation Date:</span>
+            <div id="viewAtpCreationDate" style="font-size: 12px; color: #284c6b; margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">User ID:</span>
+            <div id="viewAtpUserId" style="font-size: 12px; font-weight: 700; color: #164f78; margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Proposal State:</span>
+            <div id="viewAtpState" style="margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Report No:</span>
+            <div id="viewAtpReportNo" style="font-size: 12px; font-weight: 700; color: #164f78; margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Tax Office ID:</span>
+            <div id="viewAtpOffice" style="font-size: 12px; color: #284c6b; margin-top: 2px;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Acknowledge Date:</span>
+            <div id="viewAtpAcknowledgeDate" style="font-size: 12px; color: #284c6b; margin-top: 2px;">None</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel-modal" id="atpDetailsModalOkBtn">Close</button>
       </div>
     </div>
   </div>
