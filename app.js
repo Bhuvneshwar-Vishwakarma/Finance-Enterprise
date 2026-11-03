@@ -9239,17 +9239,19 @@ function renderVeTable() {
       const cDebVal = row.currencyDebit !== null && row.currencyDebit !== undefined && row.currencyDebit !== '' ? (typeof row.currencyDebit === 'number' ? row.currencyDebit.toFixed(2) : row.currencyDebit) : '';
       const cCrdVal = row.currencyCredit !== null && row.currencyCredit !== undefined && row.currencyCredit !== '' ? (typeof row.currencyCredit === 'number' ? row.currencyCredit.toFixed(2) : row.currencyCredit) : '';
       const rateVal = row.currencyRate !== null && row.currencyRate !== undefined && row.currencyRate !== '' ? row.currencyRate : '1';
+      const cAmtVal = row.currencyAmount !== null && row.currencyAmount !== undefined && row.currencyAmount !== '' ? (typeof row.currencyAmount === 'number' ? row.currencyAmount.toFixed(2) : row.currencyAmount) : '';
+      const amtVal = row.amount !== null && row.amount !== undefined && row.amount !== '' ? (typeof row.amount === 'number' ? row.amount.toFixed(2) : row.amount) : '';
 
       tr.innerHTML = `
         <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 4px; white-space: nowrap;">
           <span style="display: inline-block; width: 14px; text-align: right; margin-right: 4px; color: #1e4566; font-size: 11px;">${globalIdx + 1}</span>
-          <input type="checkbox" class="ve-row-checkbox" data-index="${globalIdx}" ${row.selected ? 'checked' : ''} style="cursor: pointer; vertical-align: middle;">
+          <input type="checkbox" class="ve-row-checkbox" data-index="${globalIdx}" ${row.selected ? 'checked' : ''} style="cursor: pointer; vertical-align: middle;" tabindex="-1">
         </td>
         <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
-          <input type="text" class="ve-cell-input ve-input-acct" data-idx="${globalIdx}" value="${escapeHtml(row.accountNo || '')}" style="font-weight: 700; color: #164f78;">
+          <input type="text" class="ve-cell-input ve-input-acct" data-idx="${globalIdx}" value="${escapeHtml(row.accountNo || '')}" style="font-weight: 700; color: #164f78; text-align: center;">
         </td>
-        <td style="text-align: left; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
-          <span class="ve-cell-desc-${globalIdx}">${escapeHtml(row.accountDesc || '')}</span>
+        <td style="text-align: left; border-right: 1px solid #d4e2ed; padding: 2px 3px; color: #1e4566;">
+          <input type="text" class="ve-cell-input ve-input-desc" data-idx="${globalIdx}" value="${escapeHtml(row.accountDesc || '')}" style="text-align: left; color: #1e4566;">
         </td>
         <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
           <input type="text" class="ve-cell-input ve-input-cost" data-idx="${globalIdx}" value="${escapeHtml(row.costCenter || '')}" style="text-align: center;">
@@ -9267,8 +9269,8 @@ function renderVeTable() {
         <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
           <input type="text" class="ve-cell-input ve-input-ccredit" data-idx="${globalIdx}" value="${cCrdVal}" style="text-align: right;">
         </td>
-        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
-          <span class="ve-cell-curramt-${globalIdx}">${formatVeNumber(row.currencyAmount)}</span>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-curramt" data-idx="${globalIdx}" value="${cAmtVal}" style="text-align: right; color: #1e4566;">
         </td>
         <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
           <span class="ve-cell-debamt-${globalIdx}">${formatVeNumber(row.debitAmount)}</span>
@@ -9276,10 +9278,12 @@ function renderVeTable() {
         <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">
           <span class="ve-cell-crdamt-${globalIdx}">${formatVeNumber(row.creditAmount)}</span>
         </td>
-        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 6px; font-weight: 600; color: #1e4566;">
-          <span class="ve-cell-totamt-${globalIdx}">${formatVeNumber(row.amount)}</span>
+        <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-totamt" data-idx="${globalIdx}" value="${amtVal}" style="text-align: right; font-weight: 600; color: #1e4566;">
         </td>
-        <td style="text-align: left; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566;">${escapeHtml(row.noteText || '')}</td>
+        <td style="text-align: left; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-note" data-idx="${globalIdx}" value="${escapeHtml(row.noteText || '')}" style="text-align: left; color: #1e4566;">
+        </td>
         <td style="text-align: center; padding: 2px 6px; color: #1e4566;">${row.conversionFee !== null && row.conversionFee !== undefined ? row.conversionFee : 1}</td>
       `;
 
@@ -9307,9 +9311,19 @@ function renderVeTable() {
         r.accountNo = e.target.value.trim();
         if (veAccountDirectory[r.accountNo]) {
           r.accountDesc = veAccountDirectory[r.accountNo];
-          const descSpan = tbody.querySelector(`.ve-cell-desc-${idx}`);
-          if (descSpan) descSpan.textContent = r.accountDesc;
+          const descInp = tbody.querySelector(`.ve-input-desc[data-idx="${idx}"]`);
+          if (descInp) descInp.value = r.accountDesc;
         }
+      }
+    });
+  });
+
+  // Bind manual cell inputs: Account Desc
+  tbody.querySelectorAll('.ve-input-desc').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (voucherRowsData[idx]) {
+        voucherRowsData[idx].accountDesc = e.target.value;
       }
     });
   });
@@ -9334,14 +9348,38 @@ function renderVeTable() {
     });
   });
 
-  // Live recalculate amounts on Rate, Debit, Credit manual changes
-  function updateRowAmounts(idx) {
+  // Bind manual cell inputs: Note Text + Tab key navigation to add new row
+  tbody.querySelectorAll('.ve-input-note').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (voucherRowsData[idx]) {
+        voucherRowsData[idx].noteText = e.target.value;
+      }
+    });
+
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab' && !e.shiftKey) {
+        const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+        if (idx === voucherRowsData.length - 1) {
+          e.preventDefault();
+          addEmptyVoucherRow();
+        }
+      }
+    });
+  });
+
+  // Helper calculation functions
+  function updateRowAmountsFromDebitCredit(idx) {
     const r = voucherRowsData[idx];
     if (!r) return;
 
     const rateInp = tbody.querySelector(`.ve-input-rate[data-idx="${idx}"]`);
     const debitInp = tbody.querySelector(`.ve-input-cdebit[data-idx="${idx}"]`);
     const creditInp = tbody.querySelector(`.ve-input-ccredit[data-idx="${idx}"]`);
+    const curramtInp = tbody.querySelector(`.ve-input-curramt[data-idx="${idx}"]`);
+    const totamtInp = tbody.querySelector(`.ve-input-totamt[data-idx="${idx}"]`);
+    const debSpan = tbody.querySelector(`.ve-cell-debamt-${idx}`);
+    const crdSpan = tbody.querySelector(`.ve-cell-crdamt-${idx}`);
 
     const rateVal = parseFloat(rateInp?.value);
     const rate = (!isNaN(rateVal) && rateVal > 0) ? rateVal : 1;
@@ -9353,8 +9391,8 @@ function renderVeTable() {
     const dVal = parseFloat(dStr);
     const cVal = parseFloat(cStr);
 
-    const hasDebit = !isNaN(dVal) && dVal > 0;
-    const hasCredit = !isNaN(cVal) && cVal > 0;
+    const hasDebit = !isNaN(dVal) && dVal !== 0;
+    const hasCredit = !isNaN(cVal) && cVal !== 0;
 
     r.currencyDebit = hasDebit ? dVal : null;
     r.currencyCredit = hasCredit ? cVal : null;
@@ -9381,21 +9419,196 @@ function renderVeTable() {
       r.amount = null;
     }
 
-    const curSpan = tbody.querySelector(`.ve-cell-curramt-${idx}`);
-    const debSpan = tbody.querySelector(`.ve-cell-debamt-${idx}`);
-    const crdSpan = tbody.querySelector(`.ve-cell-crdamt-${idx}`);
-    const totSpan = tbody.querySelector(`.ve-cell-totamt-${idx}`);
-
-    if (curSpan) curSpan.textContent = formatVeNumber(r.currencyAmount);
+    if (curramtInp) curramtInp.value = r.currencyAmount !== null ? r.currencyAmount.toFixed(2) : '';
+    if (totamtInp) totamtInp.value = r.amount !== null ? r.amount.toFixed(2) : '';
     if (debSpan) debSpan.textContent = formatVeNumber(r.debitAmount);
     if (crdSpan) crdSpan.textContent = formatVeNumber(r.creditAmount);
-    if (totSpan) totSpan.textContent = formatVeNumber(r.amount);
   }
 
-  tbody.querySelectorAll('.ve-input-rate, .ve-input-cdebit, .ve-input-ccredit').forEach(inp => {
+  function updateRowAmountsFromCurrencyAmount(idx) {
+    const r = voucherRowsData[idx];
+    if (!r) return;
+
+    const rateInp = tbody.querySelector(`.ve-input-rate[data-idx="${idx}"]`);
+    const debitInp = tbody.querySelector(`.ve-input-cdebit[data-idx="${idx}"]`);
+    const creditInp = tbody.querySelector(`.ve-input-ccredit[data-idx="${idx}"]`);
+    const curramtInp = tbody.querySelector(`.ve-input-curramt[data-idx="${idx}"]`);
+    const totamtInp = tbody.querySelector(`.ve-input-totamt[data-idx="${idx}"]`);
+    const debSpan = tbody.querySelector(`.ve-cell-debamt-${idx}`);
+    const crdSpan = tbody.querySelector(`.ve-cell-crdamt-${idx}`);
+
+    const rateVal = parseFloat(rateInp?.value);
+    const rate = (!isNaN(rateVal) && rateVal > 0) ? rateVal : 1;
+    r.currencyRate = rate;
+
+    const caStr = (curramtInp?.value || '').replace(/,/g, '').trim();
+    const caVal = parseFloat(caStr);
+
+    if (!isNaN(caVal)) {
+      r.currencyAmount = caVal;
+      r.amount = caVal * rate;
+      if (totamtInp) totamtInp.value = r.amount.toFixed(2);
+
+      if (caVal > 0) {
+        r.currencyDebit = caVal;
+        r.currencyCredit = null;
+        r.debitAmount = caVal * rate;
+        r.creditAmount = null;
+        if (debitInp) debitInp.value = caVal.toFixed(2);
+        if (creditInp) creditInp.value = '';
+      } else if (caVal < 0) {
+        r.currencyDebit = null;
+        r.currencyCredit = Math.abs(caVal);
+        r.debitAmount = null;
+        r.creditAmount = Math.abs(caVal) * rate;
+        if (debitInp) debitInp.value = '';
+        if (creditInp) creditInp.value = Math.abs(caVal).toFixed(2);
+      } else {
+        r.currencyDebit = 0;
+        r.currencyCredit = null;
+        r.debitAmount = 0;
+        r.creditAmount = null;
+        if (debitInp) debitInp.value = '0.00';
+        if (creditInp) creditInp.value = '';
+      }
+    } else {
+      r.currencyAmount = null;
+      r.amount = null;
+      r.currencyDebit = null;
+      r.currencyCredit = null;
+      r.debitAmount = null;
+      r.creditAmount = null;
+      if (totamtInp) totamtInp.value = '';
+      if (debitInp) debitInp.value = '';
+      if (creditInp) creditInp.value = '';
+    }
+
+    if (debSpan) debSpan.textContent = formatVeNumber(r.debitAmount);
+    if (crdSpan) crdSpan.textContent = formatVeNumber(r.creditAmount);
+  }
+
+  function updateRowAmountsFromTotalAmount(idx) {
+    const r = voucherRowsData[idx];
+    if (!r) return;
+
+    const rateInp = tbody.querySelector(`.ve-input-rate[data-idx="${idx}"]`);
+    const debitInp = tbody.querySelector(`.ve-input-cdebit[data-idx="${idx}"]`);
+    const creditInp = tbody.querySelector(`.ve-input-ccredit[data-idx="${idx}"]`);
+    const curramtInp = tbody.querySelector(`.ve-input-curramt[data-idx="${idx}"]`);
+    const totamtInp = tbody.querySelector(`.ve-input-totamt[data-idx="${idx}"]`);
+    const debSpan = tbody.querySelector(`.ve-cell-debamt-${idx}`);
+    const crdSpan = tbody.querySelector(`.ve-cell-crdamt-${idx}`);
+
+    const rateVal = parseFloat(rateInp?.value);
+    const rate = (!isNaN(rateVal) && rateVal > 0) ? rateVal : 1;
+    r.currencyRate = rate;
+
+    const aStr = (totamtInp?.value || '').replace(/,/g, '').trim();
+    const aVal = parseFloat(aStr);
+
+    if (!isNaN(aVal)) {
+      r.amount = aVal;
+      r.currencyAmount = rate > 0 ? (aVal / rate) : aVal;
+      if (curramtInp) curramtInp.value = r.currencyAmount.toFixed(2);
+
+      if (aVal > 0) {
+        r.debitAmount = aVal;
+        r.creditAmount = null;
+        r.currencyDebit = r.currencyAmount;
+        r.currencyCredit = null;
+        if (debitInp) debitInp.value = r.currencyDebit.toFixed(2);
+        if (creditInp) creditInp.value = '';
+      } else if (aVal < 0) {
+        r.debitAmount = null;
+        r.creditAmount = Math.abs(aVal);
+        r.currencyDebit = null;
+        r.currencyCredit = Math.abs(r.currencyAmount);
+        if (debitInp) debitInp.value = '';
+        if (creditInp) creditInp.value = r.currencyCredit.toFixed(2);
+      } else {
+        r.debitAmount = 0;
+        r.creditAmount = null;
+        r.currencyDebit = 0;
+        r.currencyCredit = null;
+        if (debitInp) debitInp.value = '0.00';
+        if (creditInp) creditInp.value = '';
+      }
+    } else {
+      r.amount = null;
+      r.currencyAmount = null;
+      r.debitAmount = null;
+      r.creditAmount = null;
+      r.currencyDebit = null;
+      r.currencyCredit = null;
+      if (curramtInp) curramtInp.value = '';
+      if (debitInp) debitInp.value = '';
+      if (creditInp) creditInp.value = '';
+    }
+
+    if (debSpan) debSpan.textContent = formatVeNumber(r.debitAmount);
+    if (crdSpan) crdSpan.textContent = formatVeNumber(r.creditAmount);
+  }
+
+  // Rate input
+  tbody.querySelectorAll('.ve-input-rate').forEach(inp => {
     inp.addEventListener('input', (e) => {
       const idx = parseInt(e.target.getAttribute('data-idx'), 10);
-      updateRowAmounts(idx);
+      updateRowAmountsFromDebitCredit(idx);
+    });
+  });
+
+  // Currency Debit input
+  tbody.querySelectorAll('.ve-input-cdebit').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      const creditInp = tbody.querySelector(`.ve-input-ccredit[data-idx="${idx}"]`);
+      if (e.target.value.trim() && creditInp && creditInp.value.trim()) {
+        creditInp.value = '';
+        if (voucherRowsData[idx]) voucherRowsData[idx].currencyCredit = null;
+      }
+      updateRowAmountsFromDebitCredit(idx);
+    });
+  });
+
+  // Currency Credit input
+  tbody.querySelectorAll('.ve-input-ccredit').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      const debitInp = tbody.querySelector(`.ve-input-cdebit[data-idx="${idx}"]`);
+      if (e.target.value.trim() && debitInp && debitInp.value.trim()) {
+        debitInp.value = '';
+        if (voucherRowsData[idx]) voucherRowsData[idx].currencyDebit = null;
+      }
+      updateRowAmountsFromDebitCredit(idx);
+    });
+  });
+
+  // Currency Amount input
+  tbody.querySelectorAll('.ve-input-curramt').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      updateRowAmountsFromCurrencyAmount(idx);
+    });
+  });
+
+  // Total Amount input
+  tbody.querySelectorAll('.ve-input-totamt').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      updateRowAmountsFromTotalAmount(idx);
+    });
+  });
+
+  // Format on blur
+  tbody.querySelectorAll('.ve-input-rate, .ve-input-cdebit, .ve-input-ccredit, .ve-input-curramt, .ve-input-totamt').forEach(inp => {
+    inp.addEventListener('blur', (e) => {
+      const raw = (e.target.value || '').replace(/,/g, '').trim();
+      if (raw !== '') {
+        const num = parseFloat(raw);
+        if (!isNaN(num)) {
+          e.target.value = num.toFixed(2);
+        }
+      }
     });
   });
 
@@ -9410,6 +9623,46 @@ function renderVeTable() {
   if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
   if (pageInput) pageInput.value = veCurrentPage;
   updateVeSelectAllState();
+}
+
+function addEmptyVoucherRow() {
+  const defaultCurr = document.getElementById('veLineCurrency')?.value || 'GBP';
+  const newRow = {
+    accountNo: '',
+    accountDesc: '',
+    costCenter: '',
+    taxCode: '',
+    currencyCode: defaultCurr,
+    currencyRate: 1,
+    currencyDebit: null,
+    currencyCredit: null,
+    currencyAmount: null,
+    debitAmount: null,
+    creditAmount: null,
+    amount: null,
+    noteText: '',
+    conversionFee: 1,
+    selected: false
+  };
+  voucherRowsData.push(newRow);
+
+  if (veSearchFilter) {
+    veSearchFilter = '';
+  }
+
+  const totalPages = Math.ceil(voucherRowsData.length / vePageSize) || 1;
+  veCurrentPage = totalPages;
+
+  renderVeTable();
+
+  const newIdx = voucherRowsData.length - 1;
+  setTimeout(() => {
+    const firstInput = document.querySelector(`.ve-input-acct[data-idx="${newIdx}"]`);
+    if (firstInput) {
+      firstInput.focus();
+      firstInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, 15);
 }
 
 function updateVeSelectAllState() {
@@ -9436,6 +9689,7 @@ function initVoucherEntryModule() {
   const lineNote = document.getElementById('veLineNoteText');
 
   const btnAdd = document.getElementById('btnVeAddLine');
+  const btnAddRow = document.getElementById('btnVeAddRow');
   const btnSearch = document.getElementById('btnVeSearchLine');
   const btnDelete = document.getElementById('btnVeDeleteRow');
   const btnDownload = document.getElementById('btnVeDownload');
@@ -9601,6 +9855,14 @@ function initVoucherEntryModule() {
       } else {
         showToast('Filter cleared, displaying all rows.', 'info');
       }
+    });
+  }
+
+  // Add new empty row directly in table
+  if (btnAddRow) {
+    btnAddRow.addEventListener('click', () => {
+      addEmptyVoucherRow();
+      showToast('New voucher line added. Enter details or navigate with Tab.', 'info');
     });
   }
 
