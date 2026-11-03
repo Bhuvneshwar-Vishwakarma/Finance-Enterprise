@@ -2013,12 +2013,17 @@
               <div style="display: flex; align-items: center; border: 1px solid #a4c4da; height: 22px; flex: 0.8;">
                 <div style="width: 75px; background: #2f8ba7; color: #ffffff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-right: 1px solid #64a6bd; height: 100%; display: flex; align-items: center; user-select: none;">Currency</div>
                 <div style="flex: 1; background: #ffffff; height: 100%;">
-                  <select id="veLineCurrency" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 4px; color: #1e4566; font-weight: 700; outline: none; background: #ffffff; cursor: pointer;">
-                    <option value="GBP" selected>GBP</option>
+                  <input type="text" id="veLineCurrency" list="veCurrencyList" value="GBP" placeholder="GBP" style="width: 100%; height: 100%; border: none; font-size: 11px; padding: 0 5px; color: #1e4566; font-weight: 700; outline: none; background: #ffffff; text-transform: uppercase;">
+                  <datalist id="veCurrencyList">
+                    <option value="GBP">GBP</option>
                     <option value="EUR">EUR</option>
                     <option value="USD">USD</option>
                     <option value="INR">INR</option>
-                  </select>
+                    <option value="CAD">CAD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="JPY">JPY</option>
+                  </datalist>
                 </div>
               </div>
 

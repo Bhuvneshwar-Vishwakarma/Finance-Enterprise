@@ -9259,7 +9259,9 @@ function renderVeTable() {
         <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
           <input type="text" class="ve-cell-input ve-input-tax" data-idx="${globalIdx}" value="${escapeHtml(row.taxCode || '')}" style="text-align: center;">
         </td>
-        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 6px; color: #1e4566; font-weight: 600;">${escapeHtml(row.currencyCode || 'GBP')}</td>
+        <td style="text-align: center; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
+          <input type="text" class="ve-cell-input ve-input-currcode" data-idx="${globalIdx}" value="${escapeHtml(row.currencyCode || 'GBP')}" style="text-align: center; font-weight: 600; color: #1e4566; text-transform: uppercase;">
+        </td>
         <td style="text-align: right; border-right: 1px solid #d4e2ed; padding: 2px 3px;">
           <input type="number" step="any" class="ve-cell-input ve-input-rate" data-idx="${globalIdx}" value="${rateVal}" style="text-align: right;">
         </td>
@@ -9344,6 +9346,16 @@ function renderVeTable() {
       const idx = parseInt(e.target.getAttribute('data-idx'), 10);
       if (voucherRowsData[idx]) {
         voucherRowsData[idx].taxCode = e.target.value.trim();
+      }
+    });
+  });
+
+  // Bind manual cell inputs: Currency Code
+  tbody.querySelectorAll('.ve-input-currcode').forEach(inp => {
+    inp.addEventListener('input', (e) => {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (voucherRowsData[idx]) {
+        voucherRowsData[idx].currencyCode = e.target.value.trim().toUpperCase();
       }
     });
   });
@@ -9626,7 +9638,7 @@ function renderVeTable() {
 }
 
 function addEmptyVoucherRow() {
-  const defaultCurr = document.getElementById('veLineCurrency')?.value || 'GBP';
+  const defaultCurr = (document.getElementById('veLineCurrency')?.value || 'GBP').trim().toUpperCase() || 'GBP';
   const newRow = {
     accountNo: '',
     accountDesc: '',
@@ -9764,7 +9776,7 @@ function initVoucherEntryModule() {
       const acctDesc = lineAccountDesc?.value.trim() || veAccountDirectory[acctNo] || 'General Account';
       const costCenter = lineCostCenter?.value.trim() || '';
       const taxCode = lineTaxCode?.value.trim() || '';
-      const currency = lineCurrency?.value || 'GBP';
+      const currency = (lineCurrency?.value || 'GBP').trim().toUpperCase() || 'GBP';
       const debitRaw = parseFloat(lineDebit?.value);
       const creditRaw = parseFloat(lineCredit?.value);
       const note = lineNote?.value.trim() || '';
