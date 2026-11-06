@@ -1464,6 +1464,10 @@
                     <th style="min-width: 140px; text-align: left;">Voucher Type Desc</th>
                     <th style="width: 90px; text-align: left;">Institute Code</th>
                     <th style="width: 90px; text-align: left;">Office Code</th>
+                    <th style="min-width: 100px; text-align: left;">Lockbox No</th>
+                    <th style="min-width: 130px; text-align: center;">Reconciliation<br>Start Date</th>
+                    <th style="min-width: 130px; text-align: left;">Cash Account<br>Type</th>
+                    <th style="width: 110px; text-align: center;">Payment Receipt<br>At Payment</th>
                     <th style="width: 110px; text-align: center;">Action</th>
                   </tr>
                 </thead>
@@ -3292,6 +3296,27 @@
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <div class="form-group">
+              <label for="modalNaLockboxNo">Lockbox No</label>
+              <input type="text" id="modalNaLockboxNo" placeholder="Optional lockbox number">
+            </div>
+
+            <div class="form-group">
+              <label for="modalNaReconcilDate">Reconciliation Start Date</label>
+              <input type="date" id="modalNaReconcilDate">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+              <label for="modalNaCashAccType">Cash Account Type</label>
+              <select id="modalNaCashAccType">
+                <option value="None" selected>None</option>
+                <option value="Other Deposit">Other Deposit</option>
+                <option value="Current Deposit">Current Deposit</option>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="modalNaType">Account Type</label>
               <select id="modalNaType">
                 <option value="Asset" selected>Asset</option>
@@ -3301,7 +3326,9 @@
                 <option value="Equity">Equity</option>
               </select>
             </div>
+          </div>
 
+          <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
             <div class="form-group">
               <label for="modalNaBalance">Normal Balance</label>
               <select id="modalNaBalance">
@@ -3321,6 +3348,9 @@
             </label>
             <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 11px; font-weight: 600; color: #1e4566;">
               <input type="checkbox" id="modalNaStmtFlag"> Statement Not Editable
+            </label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 11px; font-weight: 600; color: #1e4566;">
+              <input type="checkbox" id="modalNaReceiptAtPayment"> Payment Receipt At Payment
             </label>
           </div>
         </div>
@@ -3427,6 +3457,27 @@
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <div class="form-group">
+              <label for="editModalNaLockboxNo">Lockbox No</label>
+              <input type="text" id="editModalNaLockboxNo" placeholder="Optional lockbox number">
+            </div>
+
+            <div class="form-group">
+              <label for="editModalNaReconcilDate">Reconciliation Start Date</label>
+              <input type="date" id="editModalNaReconcilDate">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group">
+              <label for="editModalNaCashAccType">Cash Account Type</label>
+              <select id="editModalNaCashAccType">
+                <option value="None">None</option>
+                <option value="Other Deposit">Other Deposit</option>
+                <option value="Current Deposit">Current Deposit</option>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="editModalNaType">Account Type</label>
               <select id="editModalNaType">
                 <option value="Asset">Asset</option>
@@ -3436,7 +3487,9 @@
                 <option value="Equity">Equity</option>
               </select>
             </div>
+          </div>
 
+          <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
             <div class="form-group">
               <label for="editModalNaBalance">Normal Balance</label>
               <select id="editModalNaBalance">
@@ -3456,6 +3509,9 @@
             </label>
             <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 11px; font-weight: 600; color: #1e4566;">
               <input type="checkbox" id="editModalNaStmtFlag"> Statement Not Editable
+            </label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 11px; font-weight: 600; color: #1e4566;">
+              <input type="checkbox" id="editModalNaReceiptAtPayment"> Payment Receipt At Payment
             </label>
           </div>
         </div>
@@ -3524,6 +3580,18 @@
             <div>
               <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Office Code:</span>
               <div id="viewModalNaOfficeCode" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Lockbox No:</span>
+              <div id="viewModalNaLockboxNo" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Reconciliation Start Date:</span>
+              <div id="viewModalNaReconcilDate" style="font-size: 12px; color: #284c6b; margin-top: 2px;"></div>
+            </div>
+            <div>
+              <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Cash Account Type:</span>
+              <div id="viewModalNaCashAccType" style="font-size: 12px; color: #0c395c; font-weight: 600; margin-top: 2px;"></div>
             </div>
             <div style="grid-column: span 2;">
               <span style="font-size: 11px; font-weight: 700; color: #1e4566;">Account Flags:</span>

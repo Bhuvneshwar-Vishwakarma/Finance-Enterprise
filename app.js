@@ -172,6 +172,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'BAD DEBTS',
     name: 'BAD DEBTS',
     type: 'Expense',
@@ -194,6 +198,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'CAPITAL ON TAP (CC)',
     name: 'CAPITAL ON TAP (CC) 9563',
     type: 'Asset',
@@ -216,6 +224,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'Other Deposit',
+    paymentReceiptAtPayment: false,
     code: 'CASH-HY',
     name: 'Cash Account - HY',
     type: 'Asset',
@@ -238,6 +250,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'Current Deposit',
+    paymentReceiptAtPayment: false,
     code: 'CURRAC',
     name: 'Natwest Current Account-10',
     type: 'Asset',
@@ -260,6 +276,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'CURRAC (DD)',
     name: 'Natwest Current Account-10',
     type: 'Asset',
@@ -282,6 +302,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'CURRAC - CZK',
     name: 'Do not Use',
     type: 'Asset',
@@ -304,6 +328,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'CURRAC - PLN',
     name: 'Do not Use',
     type: 'Asset',
@@ -326,6 +354,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'CURRAC WAYMADE (DD)',
     name: 'Natwest Current Account-10',
     type: 'Asset',
@@ -348,6 +380,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'EURAC',
     name: 'Natwest Current Account-10',
     type: 'Asset',
@@ -370,6 +406,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'FACFLOW',
     name: 'RBS Facflow-2103',
     type: 'Asset',
@@ -392,6 +432,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'FACFLOW-STOCK(E)',
     name: 'RBS Facflow-1009',
     type: 'Asset',
@@ -414,6 +458,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'FACFLOW-WAYMADE',
     name: 'RBS Facflow-2156',
     type: 'Asset',
@@ -436,6 +484,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'GROUP (FIN) EURO',
     name: 'Natwest- Group Finance (EU)',
     type: 'Asset',
@@ -458,6 +510,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'GROUP (FIN) GBP',
     name: 'Natwest- Group Finance (GB)',
     type: 'Asset',
@@ -480,6 +536,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC CURR (EURO)',
     name: 'HSBC CURR (EURO) 9007',
     type: 'Asset',
@@ -502,6 +562,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC CURR (GBP)',
     name: 'HSBC CURR (GBP) 6278',
     type: 'Asset',
@@ -524,6 +588,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (CZK)',
     name: 'HSBC GOW CURR (CZK) 049',
     type: 'Asset',
@@ -546,6 +614,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (DKK)',
     name: 'HSBC GOW CURR (DKK) 051',
     type: 'Asset',
@@ -568,6 +640,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (EURO)',
     name: 'HSBC GOW CURR (EURO) 736',
     type: 'Asset',
@@ -590,6 +666,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (GBP)',
     name: 'HSBC GOW CURR (GBP) 159',
     type: 'Asset',
@@ -612,6 +692,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (NOK)',
     name: 'HSBC GOW CURR (NOK) 774',
     type: 'Asset',
@@ -634,6 +718,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (PLN)',
     name: 'HSBC GOW CURR (PLN) 735',
     type: 'Asset',
@@ -656,6 +744,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC GOW CURR (USD)',
     name: 'HSBC GOW CURR (USD) 052',
     type: 'Asset',
@@ -678,6 +770,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC ID (EURO)',
     name: 'HSBC ID (EURO) 34308',
     type: 'Asset',
@@ -700,6 +796,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC ID (GBP)',
     name: 'HSBC ID (GBP) 34307',
     type: 'Asset',
@@ -722,6 +822,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'HSBC LAX ID (GBP)',
     name: 'HSBC ID (GBP) 46279',
     type: 'Asset',
@@ -744,6 +848,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'I/CO CASH',
     name: 'I/Co Netting with GLAX',
     type: 'Asset',
@@ -766,6 +874,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'I/CO CASH BNS',
     name: 'I/Co Cash BNS',
     type: 'Asset',
@@ -788,6 +900,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'I/CO CASH GHL',
     name: 'I/Co Cash GHL',
     type: 'Asset',
@@ -810,6 +926,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'I/CO CASH GLAX',
     name: 'I/Co Cash GLAX',
     type: 'Asset',
@@ -832,6 +952,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'I/CO CASH LBNS',
     name: 'I/Co Cash LBNS',
     type: 'Asset',
@@ -854,6 +978,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'I/CO CASH SPE',
     name: 'I/Co Cash SPE',
     type: 'Asset',
@@ -876,6 +1004,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'NET AP/AR',
     name: 'Netting AP/AR',
     type: 'Asset',
@@ -898,6 +1030,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'NET AP/AR (EURO)',
     name: 'Netting AP/AR (Euro)',
     type: 'Asset',
@@ -920,6 +1056,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'PROPERTY',
     name: 'RBS FACTORING',
     type: 'Asset',
@@ -942,6 +1082,10 @@ let nominalAccountsData = [
     voucherTypeDesc: '',
     instituteCode: '',
     officeCode: '',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: 'WRITE OFF',
     name: 'WRITE OFF',
     type: 'Expense',
@@ -965,6 +1109,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Expense Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '5100',
     name: 'Office Rent Expense',
     type: 'Expense',
@@ -987,6 +1135,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Payroll Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '5200',
     name: 'Salary Expense',
     type: 'Expense',
@@ -1009,6 +1161,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Revenue Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '4100',
     name: 'Sales Revenue',
     type: 'Revenue',
@@ -1031,6 +1187,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Cash Book Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '1010',
     name: 'Bank Account',
     type: 'Asset',
@@ -1053,6 +1213,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Receivables Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '1100',
     name: 'Accounts Receivable',
     type: 'Asset',
@@ -1075,6 +1239,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Payables Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '2000',
     name: 'Accounts Payable',
     type: 'Liability',
@@ -1097,6 +1265,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Expense Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '5300',
     name: 'Utilities Expense',
     type: 'Expense',
@@ -1119,6 +1291,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Revenue Voucher',
     instituteCode: 'INST-01',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '4200',
     name: 'Consulting Revenue',
     type: 'Revenue',
@@ -1141,6 +1317,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Customer Claims, Invoice',
     instituteCode: 'NATWEST',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '1100-GOW',
     name: 'Inter Co Debtors (Gowrie)',
     type: 'Asset',
@@ -1163,6 +1343,10 @@ let nominalAccountsData = [
     voucherTypeDesc: 'Customer Claims, Invoice',
     instituteCode: 'NATWEST',
     officeCode: 'OFF-01',
+    lockboxNo: '',
+    reconcilStartDate: '',
+    cashAccountType: 'None',
+    paymentReceiptAtPayment: false,
     code: '1100-SYR',
     name: 'Inter Co Debtors (Syri)',
     type: 'Asset',
@@ -6615,6 +6799,10 @@ function initNominalAccountModule() {
   const modalNaOfficeCode = document.getElementById('modalNaOfficeCode');
   const modalNaType = document.getElementById('modalNaType');
   const modalNaBalance = document.getElementById('modalNaBalance');
+  const modalNaLockboxNo = document.getElementById('modalNaLockboxNo');
+  const modalNaReconcilDate = document.getElementById('modalNaReconcilDate');
+  const modalNaCashAccType = document.getElementById('modalNaCashAccType');
+  const modalNaReceiptAtPayment = document.getElementById('modalNaReceiptAtPayment');
   const modalNaDefaultFlag = document.getElementById('modalNaDefaultFlag');
   const modalNaIntlFlag = document.getElementById('modalNaIntlFlag');
   const modalNaStmtFlag = document.getElementById('modalNaStmtFlag');
@@ -6638,6 +6826,10 @@ function initNominalAccountModule() {
   const editModalNaOfficeCode = document.getElementById('editModalNaOfficeCode');
   const editModalNaType = document.getElementById('editModalNaType');
   const editModalNaBalance = document.getElementById('editModalNaBalance');
+  const editModalNaLockboxNo = document.getElementById('editModalNaLockboxNo');
+  const editModalNaReconcilDate = document.getElementById('editModalNaReconcilDate');
+  const editModalNaCashAccType = document.getElementById('editModalNaCashAccType');
+  const editModalNaReceiptAtPayment = document.getElementById('editModalNaReceiptAtPayment');
   const editModalNaDefaultFlag = document.getElementById('editModalNaDefaultFlag');
   const editModalNaIntlFlag = document.getElementById('editModalNaIntlFlag');
   const editModalNaStmtFlag = document.getElementById('editModalNaStmtFlag');
@@ -6660,6 +6852,9 @@ function initNominalAccountModule() {
   const viewModalNaVoucherTypeDesc = document.getElementById('viewModalNaVoucherTypeDesc');
   const viewModalNaInstituteCode = document.getElementById('viewModalNaInstituteCode');
   const viewModalNaOfficeCode = document.getElementById('viewModalNaOfficeCode');
+  const viewModalNaLockboxNo = document.getElementById('viewModalNaLockboxNo');
+  const viewModalNaReconcilDate = document.getElementById('viewModalNaReconcilDate');
+  const viewModalNaCashAccType = document.getElementById('viewModalNaCashAccType');
   const viewModalNaFlags = document.getElementById('viewModalNaFlags');
 
   // Default selection to first row if not set
@@ -6678,11 +6873,16 @@ function initNominalAccountModule() {
       const aNum = (item.accountNumber || '').toLowerCase();
       const desc = (item.description || item.name || '').toLowerCase();
 
+      const lBox = (item.lockboxNo || '').toLowerCase();
+      const cType = (item.cashAccountType || '').toLowerCase();
+
       const matchQuery = !query ||
         sName.includes(query) ||
         pInst.includes(query) ||
         aNum.includes(query) ||
-        desc.includes(query);
+        desc.includes(query) ||
+        lBox.includes(query) ||
+        cType.includes(query);
 
       const matchCurr = !currFilter || item.currency === currFilter;
       const matchDefault = !defFilter || (defFilter === 'true' ? item.defaultFlag : !item.defaultFlag);
@@ -6711,7 +6911,7 @@ function initNominalAccountModule() {
     if (pageRows.length === 0) {
       const emptyTr = document.createElement('tr');
       emptyTr.innerHTML = `
-        <td colspan="16" style="text-align: center; color: #7f99b1; padding: 28px 8px; font-size: 11.5px;">
+        <td colspan="20" style="text-align: center; color: #7f99b1; padding: 28px 8px; font-size: 11.5px;">
           <i class="fa-solid fa-circle-exclamation" style="margin-right: 6px;"></i>No Nominal Accounts found matching criteria.
         </td>
       `;
@@ -6737,6 +6937,9 @@ function initNominalAccountModule() {
         const vTypeDescDisplay = escapeHtml(row.voucherTypeDesc || '');
         const instCodeDisplay = escapeHtml(row.instituteCode || '');
         const offCodeDisplay = escapeHtml(row.officeCode || '');
+        const lockboxDisplay = escapeHtml(row.lockboxNo || '');
+        const reconcilDateDisplay = escapeHtml(row.reconcilStartDate || '');
+        const cashAccTypeDisplay = escapeHtml(row.cashAccountType || 'None');
 
         tr.innerHTML = `
           <td style="text-align: center; color: #486581; font-weight: 600;">${actualIndex + 1}</td>
@@ -6760,6 +6963,12 @@ function initNominalAccountModule() {
           <td>${vTypeDescDisplay || '-'}</td>
           <td>${instCodeDisplay || '-'}</td>
           <td>${offCodeDisplay || '-'}</td>
+          <td>${lockboxDisplay || ''}</td>
+          <td style="text-align: center;">${reconcilDateDisplay || ''}</td>
+          <td><span style="font-weight: 500; color: #164f78;">${cashAccTypeDisplay}</span></td>
+          <td style="text-align: center;">
+            <input type="checkbox" style="cursor: pointer; accent-color: #2c7bb6;" ${row.paymentReceiptAtPayment ? 'checked' : ''} onclick="event.stopPropagation(); window.toggleNaReceiptAtPayment(${actualIndex})">
+          </td>
           <td style="text-align: center; white-space: nowrap;">
             <div style="display: flex; gap: 4px; justify-content: center;">
               <button type="button" class="btn-grid-action btn-edit-user" title="Edit Account" onclick="event.stopPropagation(); window.handleEditNa(${actualIndex})">
@@ -6823,6 +7032,13 @@ function initNominalAccountModule() {
     showToast(`"${item.shortName}": Statement Not Editable set to ${item.statementNotEditable ? 'Checked' : 'Unchecked'}.`, 'info');
   };
 
+  window.toggleNaReceiptAtPayment = function(index) {
+    const item = naCurrentDataset[index];
+    if (!item) return;
+    item.paymentReceiptAtPayment = !item.paymentReceiptAtPayment;
+    showToast(`"${item.shortName}": Payment Receipt At Payment set to ${item.paymentReceiptAtPayment ? 'Checked' : 'Unchecked'}.`, 'info');
+  };
+
   // Window callbacks for action buttons
   window.handleViewNa = function(index) {
     const item = naCurrentDataset[index];
@@ -6839,12 +7055,16 @@ function initNominalAccountModule() {
     if (viewModalNaVoucherTypeDesc) viewModalNaVoucherTypeDesc.textContent = item.voucherTypeDesc || '-';
     if (viewModalNaInstituteCode) viewModalNaInstituteCode.textContent = item.instituteCode || '-';
     if (viewModalNaOfficeCode) viewModalNaOfficeCode.textContent = item.officeCode || '-';
+    if (viewModalNaLockboxNo) viewModalNaLockboxNo.textContent = item.lockboxNo || '-';
+    if (viewModalNaReconcilDate) viewModalNaReconcilDate.textContent = item.reconcilStartDate || '-';
+    if (viewModalNaCashAccType) viewModalNaCashAccType.textContent = item.cashAccountType || 'None';
 
     if (viewModalNaFlags) {
       viewModalNaFlags.innerHTML = `
         <span class="${item.defaultFlag ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.defaultFlag ? 'check' : 'ban'}"></i> Default: ${item.defaultFlag ? 'Yes' : 'No'}</span>
         <span class="${item.intlCashAccount ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.intlCashAccount ? 'check' : 'ban'}"></i> International: ${item.intlCashAccount ? 'Yes' : 'No'}</span>
         <span class="${item.statementNotEditable ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.statementNotEditable ? 'check' : 'ban'}"></i> Stmt Not Editable: ${item.statementNotEditable ? 'Yes' : 'No'}</span>
+        <span class="${item.paymentReceiptAtPayment ? 'badge-default-yes' : 'badge-default-no'}"><i class="fa-solid fa-${item.paymentReceiptAtPayment ? 'check' : 'ban'}"></i> Receipt At Payment: ${item.paymentReceiptAtPayment ? 'Yes' : 'No'}</span>
       `;
     }
 
@@ -6867,11 +7087,15 @@ function initNominalAccountModule() {
     if (editModalNaVoucherTypeDesc) editModalNaVoucherTypeDesc.value = item.voucherTypeDesc || '';
     if (editModalNaInstituteCode) editModalNaInstituteCode.value = item.instituteCode || '';
     if (editModalNaOfficeCode) editModalNaOfficeCode.value = item.officeCode || '';
+    if (editModalNaLockboxNo) editModalNaLockboxNo.value = item.lockboxNo || '';
+    if (editModalNaReconcilDate) editModalNaReconcilDate.value = item.reconcilStartDate || '';
+    if (editModalNaCashAccType) editModalNaCashAccType.value = item.cashAccountType || 'None';
     if (editModalNaType) editModalNaType.value = item.type || 'Asset';
     if (editModalNaBalance) editModalNaBalance.value = item.balance || 'Debit';
     if (editModalNaDefaultFlag) editModalNaDefaultFlag.checked = !!item.defaultFlag;
     if (editModalNaIntlFlag) editModalNaIntlFlag.checked = !!item.intlCashAccount;
     if (editModalNaStmtFlag) editModalNaStmtFlag.checked = !!item.statementNotEditable;
+    if (editModalNaReceiptAtPayment) editModalNaReceiptAtPayment.checked = !!item.paymentReceiptAtPayment;
     if (editModalAlert) editModalAlert.innerHTML = '';
 
     if (editModalOverlay) editModalOverlay.classList.add('active');
@@ -6970,8 +7194,10 @@ function initNominalAccountModule() {
     if (addForm) addForm.reset();
     if (modalNaCurrency) modalNaCurrency.value = 'GBP';
     if (modalNaBalanceMethod) modalNaBalanceMethod.value = 'Detailed';
+    if (modalNaCashAccType) modalNaCashAccType.value = 'None';
     if (modalNaType) modalNaType.value = 'Asset';
     if (modalNaBalance) modalNaBalance.value = 'Debit';
+    if (modalNaReceiptAtPayment) modalNaReceiptAtPayment.checked = false;
     if (addModalAlert) addModalAlert.innerHTML = '';
     if (addModalOverlay) addModalOverlay.classList.add('active');
     setTimeout(() => { if (modalNaShortName) modalNaShortName.focus(); }, 50);
@@ -7000,11 +7226,15 @@ function initNominalAccountModule() {
       const voucherTypeDesc = (modalNaVoucherTypeDesc ? modalNaVoucherTypeDesc.value : '').trim();
       const instituteCode = (modalNaInstituteCode ? modalNaInstituteCode.value : '').trim();
       const officeCode = (modalNaOfficeCode ? modalNaOfficeCode.value : '').trim();
+      const lockboxNo = (modalNaLockboxNo ? modalNaLockboxNo.value : '').trim();
+      const reconcilStartDate = modalNaReconcilDate ? modalNaReconcilDate.value : '';
+      const cashAccountType = (modalNaCashAccType ? modalNaCashAccType.value : 'None').trim();
       const type = (modalNaType ? modalNaType.value : 'Asset').trim();
       const balance = (modalNaBalance ? modalNaBalance.value : 'Debit').trim();
       const defaultFlag = modalNaDefaultFlag ? modalNaDefaultFlag.checked : false;
       const intlCashAccount = modalNaIntlFlag ? modalNaIntlFlag.checked : false;
       const statementNotEditable = modalNaStmtFlag ? modalNaStmtFlag.checked : false;
+      const paymentReceiptAtPayment = modalNaReceiptAtPayment ? modalNaReceiptAtPayment.checked : false;
 
       if (!shortName || !paymentInstitute || !accountNumber || !description) {
         if (addModalAlert) {
@@ -7045,6 +7275,10 @@ function initNominalAccountModule() {
         voucherTypeDesc,
         instituteCode,
         officeCode,
+        lockboxNo,
+        reconcilStartDate,
+        cashAccountType,
+        paymentReceiptAtPayment,
         code: shortName,
         name: description,
         type,
@@ -7092,11 +7326,15 @@ function initNominalAccountModule() {
       const voucherTypeDesc = (editModalNaVoucherTypeDesc ? editModalNaVoucherTypeDesc.value : '').trim();
       const instituteCode = (editModalNaInstituteCode ? editModalNaInstituteCode.value : '').trim();
       const officeCode = (editModalNaOfficeCode ? editModalNaOfficeCode.value : '').trim();
+      const lockboxNo = (editModalNaLockboxNo ? editModalNaLockboxNo.value : '').trim();
+      const reconcilStartDate = editModalNaReconcilDate ? editModalNaReconcilDate.value : '';
+      const cashAccountType = (editModalNaCashAccType ? editModalNaCashAccType.value : 'None').trim();
       const type = (editModalNaType ? editModalNaType.value : 'Asset').trim();
       const balance = (editModalNaBalance ? editModalNaBalance.value : 'Debit').trim();
       const defaultFlag = editModalNaDefaultFlag ? editModalNaDefaultFlag.checked : false;
       const intlCashAccount = editModalNaIntlFlag ? editModalNaIntlFlag.checked : false;
       const statementNotEditable = editModalNaStmtFlag ? editModalNaStmtFlag.checked : false;
+      const paymentReceiptAtPayment = editModalNaReceiptAtPayment ? editModalNaReceiptAtPayment.checked : false;
 
       if (!paymentInstitute || !accountNumber || !description) {
         if (editModalAlert) {
@@ -7122,6 +7360,10 @@ function initNominalAccountModule() {
         nominalAccountsData[globalIdx].voucherTypeDesc = voucherTypeDesc;
         nominalAccountsData[globalIdx].instituteCode = instituteCode;
         nominalAccountsData[globalIdx].officeCode = officeCode;
+        nominalAccountsData[globalIdx].lockboxNo = lockboxNo;
+        nominalAccountsData[globalIdx].reconcilStartDate = reconcilStartDate;
+        nominalAccountsData[globalIdx].cashAccountType = cashAccountType;
+        nominalAccountsData[globalIdx].paymentReceiptAtPayment = paymentReceiptAtPayment;
         nominalAccountsData[globalIdx].type = type;
         nominalAccountsData[globalIdx].balance = balance;
         nominalAccountsData[globalIdx].defaultFlag = defaultFlag;
@@ -7185,7 +7427,11 @@ function initNominalAccountModule() {
       'Voucher Type',
       'Voucher Type Description',
       'Institute Code',
-      'Office Code'
+      'Office Code',
+      'Lockbox No',
+      'Reconciliation Start Date',
+      'Cash Account Type',
+      'Payment Receipt At Payment'
     ];
 
     const rows = nominalAccountsData.map(r => [
@@ -7202,7 +7448,11 @@ function initNominalAccountModule() {
       `"${(r.voucherType || '').replace(/"/g, '""')}"`,
       `"${(r.voucherTypeDesc || '').replace(/"/g, '""')}"`,
       `"${(r.instituteCode || '').replace(/"/g, '""')}"`,
-      `"${(r.officeCode || '').replace(/"/g, '""')}"`
+      `"${(r.officeCode || '').replace(/"/g, '""')}"`,
+      `"${(r.lockboxNo || '').replace(/"/g, '""')}"`,
+      `"${(r.reconcilStartDate || '').replace(/"/g, '""')}"`,
+      `"${(r.cashAccountType || 'None').replace(/"/g, '""')}"`,
+      `"${r.paymentReceiptAtPayment ? 'TRUE' : 'FALSE'}"`
     ]);
 
     const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');

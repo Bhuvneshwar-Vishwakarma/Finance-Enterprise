@@ -2222,7 +2222,7 @@ html, body {
    ========================================================================== */
 #naTable {
   width: 100%;
-  min-width: 1680px;
+  min-width: 2120px;
   table-layout: auto;
 }
 
